@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.npmrc
+node_modules/
+__pycache__/
+*.pdf
+*.key
+*.pem

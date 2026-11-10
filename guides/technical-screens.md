@@ -1,0 +1,95 @@
+# Technical screens: restore execution fluency
+
+## Practice the actual format
+
+Collect reliable information: language, environment, running/testing workflow, duration, allowed libraries/AI, and whether the round is algorithms, component building, incremental business rules, debugging, or discussion.
+
+Do not turn every engineering interview into either a difficult algorithm grind or a frontend-only exercise. Current role instructions beat general company anecdotes.
+
+## One rep, four phases
+
+1. **Clarify:** restate input/output, ordering, identity, mutation, errors, and scope.
+2. **Plan:** name the state/data structure, invariants, and smallest working path.
+3. **Implement and run:** demonstrate a normal case before accumulating extensions.
+4. **Review:** edge/negative tests, explanation, and one transferable correction.
+
+Reserve testing time inside the timebox. A partial solution with a clear working core and honest omissions is better preparation than an unexecuted polished design.
+
+## Practical families worth rotating
+
+- Nested navigation traversal: collect visible labels in defined order, including repeated labels and independent calls.
+- Async data loading: success, rejection, empty data, pending completion, cleanup.
+- Function composition: prepare reusable predicates or validators, then apply them independently.
+- Business-rule processing: validate before mutation; decompose decisions before they become tangled conditions.
+- UI selection/favorites: stable IDs, derived counts, repeat operations, owner-scoped rendering.
+- Event history: chronological order versus insertion order, grouped output, stable ties, input preservation.
+- Debugging: unfamiliar code with a clear contract, independently running checks, and small root-cause fixes.
+
+These are generic drill families, not a claimed list of questions for any employer.
+
+## Mechanisms to understand, not just memorize
+
+### Functions and async values
+
+- A function reference is not its invocation.
+- A returned Promise is not its fulfilled value.
+- Awaiting/chaining requires the right value; forgetting invocation can yield a function object instead of data.
+- Return/await the whole operation when the caller must know it finished.
+- A catch that returns normally recovers a rejection. Rethrow when propagation is part of the contract.
+- A return in `try` still executes `finally`; cleanup must not overwrite a newer operation or override outcomes accidentally.
+
+### Closures and composition
+
+A closure retains access to bindings from its lexical environment. A higher-order function accepts or returns functions. These describe different concepts, even when both occur in one API.
+
+Prepare data now and accept another argument later without expecting an inner function to read unrelated caller scope. Function names do not create object properties.
+
+### React debounce, races, and cache are different jobs
+
+- **Debounce:** limit starts after activity pauses.
+- **Request relevance:** decide which already-running work may update the current view.
+- **Cache:** reuse successful results under a defined key/freshness policy.
+
+A timer-owning debounce wrapper recreated every render does not share one timer. Preserving it while reading old captured state creates a different bug.
+
+Think: stable function/debouncer, latest data supplied as arguments, returned effect cleanup, and an explicit current-request rule. State is a render snapshot; a ref is persistent mutable bookkeeping. Initializing a ref from state does not synchronize it automatically.
+
+Invalidate obsolete results, errors, and loading cleanup on a new view, even before a new debounce timer fires. A generation distinguishes repeated requests for the same query; query equality alone does not.
+
+Cache normalized successful results, including empty arrays; do not disguise failures as successes. Define expiry boundaries and cache ownership. A cache hit must still invalidate older work even though it starts no request.
+
+### State and display
+
+- Define idle/loading/success-empty/success-data/error behavior.
+- Clear input is a transition, not merely "skip fetching."
+- A component owns both its state and its DOM subtree.
+- For rendering, created nodes must actually be inserted. Visually identical output can still fail an overly narrow test; understand the contract before changing code.
+
+### Sorting and ownership
+
+Map insertion order is not chronological order. Numeric timestamps and fixed-format date strings need appropriate comparisons. Reversing arbitrary input is not sorting it.
+
+Array sorting mutates its target. Sorting a newly built bucket differs from sorting the caller's array. Copy to satisfy the actual ownership contract, not every object indiscriminately.
+
+## Verify the exact requirement
+
+- For timing, use a request log or controlled clock; test the delay and final arguments, not just that results eventually appear.
+- For independent state, create two instances.
+- For rejected mutations, compare state before and after the rejection.
+- For snapshots, mutate a returned collection and check the owner and earlier snapshots remain unchanged.
+- For retries, check total attempt count, not just one happy retry.
+- For any scaffold, add one candidate-designed test after the supplied checks pass.
+
+A passing suite is useful evidence, not a completeness guarantee. Record what you verified and what remains.
+
+## Hint-driven work is still learning
+
+If stuck, ask for a trace, a value/type distinction, or the relevant lifecycle rather than the completed solution. If repeated hints become circular, switch explicitly to explanation and a separate reference. Later, try a small variation without looking.
+
+Do not label a coached solution an unaided mock. Do not use practice tools during a real assessment where they are forbidden.
+
+## Small CSS/layout pass when the round includes it
+
+Use an existing component. Refresh box model/sizing, max-width, spacing/alignment, Flexbox versus Grid, wrapping/overflow, long text, narrow screens, and visible focus. Recheck behavior afterward.
+
+Styling can be one component without being the whole round. Clarify fidelity requirements instead of assuming either pixel perfection or "styling does not matter."
