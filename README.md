@@ -8,7 +8,7 @@ This is a **standalone, anonymized draft toolkit**. It contains no personal stor
 
 | Need | Guide | Optional agent skill |
 | --- | --- | --- |
-| Resume is accurate but hard to scan or undersells impact | [Resume](./guides/resume.md) | [resume-coach](./skills/resume-coach/SKILL.md) |
+| Resume undersells impact, is hard to scan, or needs comparison with earlier versions | [Resume](./guides/resume.md) | [resume-coach](./skills/resume-coach/SKILL.md) |
 | Rusty in coding screens despite daily engineering work | [Practical technical screens](./guides/technical-screens.md) | [technical-screen-coach](./skills/technical-screen-coach/SKILL.md) |
 | Design answers remain high-level or lose structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
 | Real project depth gets lost in behavioral answers | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |

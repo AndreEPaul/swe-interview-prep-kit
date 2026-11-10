@@ -5,6 +5,7 @@
 | Fill from a real event | | | | | | |
 
 - What colleagues owned:
+- Actual work dates, employer, and role (not just where the bullet appears in a draft):
 - Product idea versus implementation ownership:
 - Constraints and alternatives:
 - Metric baseline/population/time period:
