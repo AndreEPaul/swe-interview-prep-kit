@@ -64,6 +64,12 @@ Distinguish:
 
 Preserve acquisition/promotion dates, the actual work period/employer for each achievement, and real language breadth. De-jargon internal names. Avoid replacing a credible senior narrative with unsupported hype.
 
+## Preserve the candidate's voice
+
+- Use AI as an editor and coach, not a template for interchangeable resumes. Preserve natural vocabulary, concrete detail, and preferred tone instead of defaulting to stock buzzwords, inflated verbs, or identical bullet formulas.
+- Start from the candidate's wording. Prefer the smallest useful edit; ask for a tone preference or example only when needed. Common action verbs are not inherently wrong, and a smoother rewrite is not automatically better.
+- Invite the candidate to read proposed text aloud and choose wording they would actually use and can explain. Keep factual scope, clarity, and readability intact; do not preserve ambiguity merely to preserve voice.
+
 ## Output
 
 - Lead with strengths and the highest-value actions; group secondary checks separately. Scale depth to the request and stopping point, not a rigid finding count.

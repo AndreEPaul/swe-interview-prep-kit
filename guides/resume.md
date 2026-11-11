@@ -98,6 +98,17 @@ Tie each achievement to its actual employer, role, and work period, especially w
 - Choose concise, natural phrasing rather than layers of compounds and adjectives.
 - Use a length/layout appropriate to career and market; one page is not a universal rule.
 
+### Keep the candidate's voice
+
+Use AI as an editor and coach, not a substitute professional persona. Heavy rewriting can flatten different people's experience into the same stock verbs, buzzwords, and sentence patterns. The goal is a clearer version of the candidate, not the most generic "resume-like" wording.
+
+- Start from the candidate's draft and how they naturally explain the work. If tone is unclear, ask for a preference or a short example; do not make a writing sample mandatory.
+- Preserve concrete project details, natural vocabulary, and preferred tone. Fix ambiguity and jargon without replacing every sentence or forcing every bullet into one formula.
+- Prefer the smallest useful edit. Offer alternatives when helpful, explain what changed, and let the candidate choose the phrasing. Common action verbs are not inherently wrong.
+- Have the candidate read proposed wording aloud: "Would I actually say this, and can I explain every phrase?" Revise wording they would not comfortably own.
+
+Voice does not excuse unclear writing or unsupported claims. Preserve accuracy and readability alongside individuality; a smoother sentence is not automatically a better one.
+
 ## 6. Review criteria
 
 1. **Accuracy:** every claim has an owner and source.
