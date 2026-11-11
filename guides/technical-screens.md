@@ -84,7 +84,7 @@ Array sorting mutates its target. Sorting a newly built bucket differs from sort
 - For retries, check total attempt count, not just one happy retry.
 - After existing checks pass, add a candidate-designed case for a requirement they did not cover, whether those checks came from a scaffold or the candidate.
 
-A passing suite is useful evidence, not a completeness guarantee. Record what you verified and what remains.
+A passing suite is useful evidence, not a completeness guarantee. Record what you verified and what remains. If the review stops at one useful hint or one failing seam, explicitly name important contract cases still untested or deferred; that is honest scoping, not a reason to run an exhaustive suite before helping.
 
 ## Hint-driven work is still learning
 

@@ -48,6 +48,7 @@ For stateful business/debugging work, trace validation before mutation, identity
 - Distinguish a real contract bug from a narrow harness assumption or optional hardening.
 - Do not infer completion from an old solution, scaffold comment, green infrastructure tests, or reference implementation.
 - Check requirements beyond the existing tests, whoever wrote them. Candidate-designed edge cases matter even when the starting suite is green.
+- A one-hint or timeboxed review may cover only part of the contract. Name important requirements still untested or deferred rather than implying a complete review; do not require exhaustive checks before the first useful hint.
 
 ## Compact practice record
 
