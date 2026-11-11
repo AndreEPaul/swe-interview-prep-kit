@@ -27,21 +27,23 @@ This is an outline, not a ghostwritten first-person account. Do not manufacture 
 
 If publishing progression statistics, include raw counts, period boundaries, stage definitions, manual-source limitations, pending outcomes at the snapshot, and alternate explanations. Do not call an improvement statistically significant without an appropriate analysis.
 
+The optional [process inventory](./templates/process-inventory.csv) can organize candidate-selected records privately. Define stages consistently; final-stage participation and the eventual outcome are separate fields. A filled inventory is not part of the generic toolkit.
+
 Examples may be synthetic, but label them. Do not imply a synthetic improved resume bullet is an actual shipped result. General reviewer lessons should not be attributed as exact quotes unless verified and permitted.
 
 ## Publication checklist
 
-- Keep this `peer-kit/` folder in its own repository. Do not publish or import the separate private personal handoff or its history.
+- Keep this toolkit in its own repository. Do not publish or import candidate documents, private coaching records, or another repository's personal history.
 - Read every file in the exact publication artifact.
 - Remove identifying anecdotes, contacts, exact private compensation, customer/internal identifiers, and links into a private workspace.
 - Do not include employer code/configuration, assessments, paid-source text/screenshots, third-party candidate accounts, offer PDFs, or private communications.
 - Do not redistribute a culture memo or other copyrighted source by pasting it into the kit.
 - Confirm any direct quotation, attribution, and permission.
 - Choose a license for the original material deliberately; this draft does not assign rights in third-party material.
-- Check that links and skills work without the personal handoff.
+- Check that links and skills work without any private workspace or other repository.
 - Validate the current tools/runtime guidance in the environment you actually recommend.
 - Make no claims of guaranteed offers or causal proof.
 
-If the separate private handoff is available, its optional checker can validate this folder with `--peer-only` (defaulting to a sibling `peer-kit/`) or `--peer-only --peer-root /path/to/peer-kit`. The toolkit has no dependency on that checker or the private repository.
+Keep real beta inputs, extractions, feedback, and filled templates in a separate private location, not this repository. Ignore rules are only a backup: review the exact publication artifact and history before sharing. Check internal links, skill name/description metadata, and the coaching behavior separately; static checks do not establish coaching quality or automatic discovery.
 
 Nothing in this package creates, pushes, or publishes a repository.

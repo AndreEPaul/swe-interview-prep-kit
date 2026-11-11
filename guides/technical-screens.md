@@ -6,6 +6,10 @@ Collect reliable information: language, environment, running/testing workflow, d
 
 Do not turn every engineering interview into either a difficult algorithm grind or a frontend-only exercise. Current role instructions beat general company anecdotes.
 
+The workflow is language-neutral; the worked mechanism explanations below lean JavaScript/TypeScript and React. Adapt to the requested language rather than importing a frontend task into every interview. Use a supplied attempt as the starting point, including pasted code, and say which version was actually reviewed.
+
+Use permitted or original practice. An announced preparation topic can guide a new exercise, not reconstruction of confidential assessment content. Generalize employer code/designs and keep candidate files and requested records in a confirmed private location outside the toolkit.
+
 ## One rep, four phases
 
 1. **Clarify:** restate input/output, ordering, identity, mutation, errors, and scope.
@@ -78,7 +82,7 @@ Array sorting mutates its target. Sorting a newly built bucket differs from sort
 - For rejected mutations, compare state before and after the rejection.
 - For snapshots, mutate a returned collection and check the owner and earlier snapshots remain unchanged.
 - For retries, check total attempt count, not just one happy retry.
-- For any scaffold, add one candidate-designed test after the supplied checks pass.
+- After existing checks pass, add a candidate-designed case for a requirement they did not cover, whether those checks came from a scaffold or the candidate.
 
 A passing suite is useful evidence, not a completeness guarantee. Record what you verified and what remains.
 
@@ -86,7 +90,11 @@ A passing suite is useful evidence, not a completeness guarantee. Record what yo
 
 If stuck, ask for a trace, a value/type distinction, or the relevant lifecycle rather than the completed solution. If repeated hints become circular, switch explicitly to explanation and a separate reference. Later, try a small variation without looking.
 
+You can request an explanation, worked example, or reference at any time; this is teaching mode, not a failed attempt at learning. Record actual help as none / hint / explanation / scaffold / reference, with a description rather than a numerical score. Do not infer personal characteristics from an observable practice difficulty.
+
 Do not label a coached solution an unaided mock. Do not use practice tools during a real assessment where they are forbidden.
+
+Use the [practice and debrief record](../templates/practice-record.md) when helpful. Return a brief debrief in chat; save it only when requested to a confirmed private location.
 
 ## Small CSS/layout pass when the round includes it
 

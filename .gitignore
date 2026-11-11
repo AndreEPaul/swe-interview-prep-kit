@@ -6,5 +6,11 @@
 node_modules/
 __pycache__/
 *.pdf
+*.doc
+*.docx
+*.rtf
+private/
+local/
+scratch/
 *.key
 *.pem

@@ -1,12 +1,18 @@
 # Design interviews: choose the right frame
 
-Begin by identifying the task: backend/distributed architecture, frontend schema/state design, product implementation planning, or a project deep dive. A familiar runbook is a scaffold, not permission to answer a different question.
+Begin by identifying the frame: frontend schema/state, backend/distributed, mixed full-stack, or a real-project deep dive. Product implementation planning can use the frontend or mixed frame. A familiar runbook is a scaffold, not permission to answer a different question.
+
+For a mixed or unknown frame, propose a bounded browser-to-API-to-store flow as an assumption the candidate can steer, then choose the important seam to explore. For a real-project deep dive, establish the actual system, personal ownership, constraints, decisions, alternatives, and outcomes; keep proposed redesigns separate from what was really shipped.
+
+This guide provides a worked frontend example and backend principles, not a comprehensive distributed-systems course. Use original or permitted practice, including original exercises on an announced preparation topic; do not reconstruct confidential assessments or request employer-internal designs/code. Keep candidate material and requested records outside the toolkit in a confirmed private location.
 
 ## Shared spine
 
 **Requirements -> meaningful estimates -> data/state model -> API -> components/flow -> deep dive -> failures/measurement/trade-offs -> close.**
 
 Use the interviewer's order if provided. Check in, but do not wait to be led through every step.
+
+If the practice slot is shorter than the real round, agree a smaller flow/deep dive and a stopping point. Keep time for failure handling, a trade-off, feedback, and the close. A requested explanation or reference is teaching mode: distinguish it from the candidate's independent choices and record the actual help, not an unaided score.
 
 ## What changes by format
 
@@ -73,7 +79,7 @@ Do not add an identical monitoring paragraph to every system. Connect the measur
 
 ## Whiteboard delivery
 
-Use three readable zones: scope/questions, model/contracts, components/numbered flow. Label arrows with events/data. A state table and an interaction trace often communicate more than many boxes.
+Use three readable zones: scope/questions, model/contracts, components/numbered flow. Label arrows with events/data. A state table and an interaction trace often communicate more than many boxes. For a text-only round, use headings, tables, and numbered flows instead of requiring a diagram.
 
 Walk between the UX mock and the relevant model/component. Keep a small deferred list. Do not spend the round decorating the board or transcribing an essay.
 

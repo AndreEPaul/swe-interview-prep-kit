@@ -11,6 +11,7 @@
 - Limits, estimates, or ongoing work:
 - Reflection / actual changed habit:
 - What others owned:
+- Evidence source and unresolved fact questions:
 
 ## Follow-up depth
 
@@ -27,4 +28,6 @@
 - Core decision/action:
 - Outcome/reflection:
 
-Do not fill gaps with invented details. Giving feedback and receiving it are different events.
+- Mode/timebox and help received: none / hint / explanation / scaffold / reference; describe it:
+
+Do not fill gaps with invented details. Giving feedback and receiving it are different events. Keep filled cards outside the toolkit; save only when requested to a confirmed private path.

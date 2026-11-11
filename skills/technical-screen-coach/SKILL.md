@@ -9,24 +9,26 @@ description: Coach practical coding, frontend, async, business-rule, or debuggin
 
 - Confirm format, language, runtime, duration, allowed libraries/assistance, and candidate's available time.
 - Separate current official instructions, remembered questions, anecdotes, and assumptions.
-- Select one small original or permitted practice task. Do not reproduce protected interview statements.
+- Use the task/attempt the candidate brought, or select one small original or permitted task. An announced preparation topic can guide original practice, not reconstruction of confidential assessment questions.
 - Define output, edge/error/mutation rules, and measurable requirements before scoring.
+
+Do not request confidential employer code or designs; use a generalized or synthetic equivalent. Keep candidate files and records outside the toolkit; save only when requested to a confirmed private path. Review only the supplied files/snippets, not unrelated personal folders or prior sessions.
 
 ## Default mode
 
 1. Candidate restates task, clarifies, and outlines an approach.
 2. Candidate attempts the first runnable increment.
-3. Read the actual saved code and contract before reviewing.
+3. Read the actual saved code or supplied snippet and contract before reviewing; state which you inspected rather than assuming they match.
 4. Run the smallest relevant checks when tools are available. Otherwise state the limitation and request output.
 5. Give one narrow hint and let the candidate reason.
 6. Review the correction and one relevant regression/edge case.
-7. Record evidence, help level, remaining gaps, and one next target.
+7. Give a brief record of evidence, help received, remaining gaps, and one next target.
 
-Do not silently edit the candidate's solution. References belong in a separate file and are provided when requested or explicitly switching to teaching mode.
+Start from an existing attempt rather than forcing a restart. Do not silently edit the candidate's solution. Teaching mode means a requested explanation, worked example, or reference instead of an independent attempt; switch when asked without requiring every hint first. Keep references separate and have the candidate explain or verify generated work.
 
 ## Hint ladder
 
-Prefer a trace or value/type/ownership distinction, then the relevant operation/lifecycle, then a conceptual explanation. If the learner is looping, offer a clear explanation instead of increasingly cryptic hints.
+Prefer a trace or value/type/ownership distinction, then the relevant operation/lifecycle, then a conceptual explanation. If the learner is looping, offer a clear explanation instead of increasingly cryptic hints. Discuss observable code/reasoning, not inferred personal characteristics.
 
 For frontend async work, distinguish:
 
@@ -45,7 +47,14 @@ For stateful business/debugging work, trace validation before mutation, identity
 - Check two instances or repeated calls when independence matters.
 - Distinguish a real contract bug from a narrow harness assumption or optional hardening.
 - Do not infer completion from an old solution, scaffold comment, green infrastructure tests, or reference implementation.
-- Candidate-designed tests matter after supplied checks pass.
+- Check requirements beyond the existing tests, whoever wrote them. Candidate-designed edge cases matter even when the starting suite is green.
+
+## Compact practice record
+
+- Task, current artifact, mode, and timebox.
+- Actual checks and outcomes, separating candidate/reference evidence and anything not run.
+- Help received: none / hint / explanation / scaffold / reference; describe the assistance, not a numerical level.
+- Root cause, remaining uncertainty, and one next target. Return the record in chat unless saving is requested to a confirmed private path.
 
 Timebox the whole session, including review. Do not add a full mock by default near interview day. Record coached work as coached, not an unaided score.
 

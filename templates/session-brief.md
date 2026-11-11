@@ -9,8 +9,9 @@
 - Anecdotes or assumptions, clearly labeled:
 - One target skill or uncertainty:
 - Scope and explicit non-goals:
-- Preferred mode: discussion / hinted attempt / timed mock / reference walkthrough:
+- Preferred mode: discussion / hinted attempt / timed mock / explanation / reference walkthrough:
 - Stopping point and break:
 - Desired artifact:
+- Private save location outside the toolkit, only if saving is requested:
 
-Do not treat a template as consent to start an exercise or edit files. Confirm the next action.
+Use information already supplied; unknown fields need not block the next useful step. Do not treat a template as consent to start an exercise or edit files. Confirm the next action.

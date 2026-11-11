@@ -3,8 +3,9 @@
 - Date / format / timebox:
 - Requirement or prompt source: original / permitted external / candidate recollection:
 - Starting state: blank / attempt / completed snapshot / reference:
+- Mode: independent attempt / coached practice / teaching (explanation or worked example):
 - What I attempted:
-- Help received: none / conceptual hint / syntax hint / scaffold / reference:
+- Help received: none / hint / explanation / scaffold / reference; describe the actual assistance:
 - What I explained:
 - Actual checks run and outputs:
 - Candidate tests versus infrastructure/reference tests:
@@ -22,4 +23,4 @@
 - Confirmed outcome and date, or pending:
 - Reusable pattern without reproducing restricted material:
 
-Do not let confidence, rapport, or a test count become an invented result.
+Help labels describe assistance, not numerical levels or a score; combine them when appropriate. Do not let confidence, rapport, or a test count become an invented result. Keep filled records outside the toolkit and save only when requested to a confirmed private path.

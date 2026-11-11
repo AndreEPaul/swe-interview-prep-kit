@@ -15,6 +15,8 @@ This is a **standalone, anonymized draft toolkit**. It contains no personal stor
 
 Use the shared [coaching protocol](./COACHING_PROTOCOL.md) to keep practice honest, evidence-based, and sustainable.
 
+The methods adapt to the actual role and language. Worked technical explanations lean JavaScript/TypeScript and React; the design guide includes a frontend example and backend principles. This is not an exhaustive algorithms curriculum or distributed-systems course.
+
 ## A small first week
 
 1. **Inventory, 20 minutes:** list actual interview formats, known constraints, and one specific weakness. Use the [session brief](./templates/session-brief.md).
@@ -27,10 +29,35 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 
 ## Use with an AI assistant
 
-- No installation is required: open a guide and paste the relevant skill instructions into a practice session.
-- Ask for a hint-first coach, not an instant solution generator.
-- If the tool supports repository agent skills, copy a selected complete skill folder into its supported skills directory. For tools that use `.github/skills/`, each folder's `SKILL.md` supplies the name and description. Other tools may use a different discovery path.
-- The four skills are self-contained; they do not depend on sibling guides or an enterprise account.
+### Start without installing anything
+
+Open a fresh conversation in this folder and choose one prompt. Replace bracketed inputs; unknown details are fine.
+
+| Goal | Opening prompt |
+| --- | --- |
+| Resume diagnostic | Read `skills/resume-coach/SKILL.md` and follow it for this session. Review `[resume path]` for `[target role]`. Start with a prioritized diagnostic, not a rewrite. I have `[time]`. |
+| Technical practice | Read `skills/technical-screen-coach/SKILL.md` and follow it for this session. I want to practice `[format]` in `[language/runtime]` for `[time]`. Use small hints and let me attempt first. |
+| Design practice | Read `skills/system-design-coach/SKILL.md` and follow it for this session. I have `[time]` for `[frontend/backend/mixed/project deep-dive]` practice. Clarify the frame before starting. |
+| Behavioral refresh | Read `skills/behavioral-coach/SKILL.md` and follow it for this session. Help me rehearse `[prompt or real event]` for `[time]`, with one follow-up at a time. |
+
+If the assistant cannot read local files, paste the complete selected `SKILL.md` and provide only the material needed for the session. Each skill includes its essential rules and a compact record format; guides and templates add depth but are not required.
+
+For a clean local trial, add:
+
+> Use only this toolkit and the documents or facts I provide, not previous conversations, account memories, or sibling folders. Do not edit the toolkit. Ask for a private working location before saving candidate material.
+
+### Optional automatic discovery
+
+Reading a skill file is not the same as registering it. This repository's top-level `skills/` folder is a distribution layout, not a default Copilot discovery path.
+
+For tools that support `.github/skills/`, copy one complete skill folder into the intended practice workspace so the result is `.github/skills/<name>/SKILL.md`. Start a new conversation and check the host's available-skills list. In Copilot CLI, use `/skills` to inspect whether the expected name and source are available; if not, use explicit-file loading and consult that tool's current installation guidance. Other tools may use different discovery paths. Installing or editing global settings is optional, not part of using this kit.
+
+### Keep the work private
+
+- Keep resumes, extracted document text, story banks, reviews, and practice outputs in a separately chosen private location outside this toolkit. Confirm the save path before writing; ignore rules are a backup, not a privacy control.
+- For a friend's document, confirm permission to review if not already established and keep factual questions easy to relay. Permission to review is not permission to publish or upload elsewhere.
+- Use permitted material; generalize confidential employer code or designs instead of pasting them.
+- Ask for explanations or separate references when useful. Record that help as coached work, not an unaided mock.
 - Do not use the assistant during an assessment where assistance is prohibited. Preparation permission is not interview permission.
 
 ## Templates
@@ -41,6 +68,8 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 - [Design worksheet](./templates/design-worksheet.md)
 - [Practice/debrief record](./templates/practice-record.md)
 - [Process inventory CSV](./templates/process-inventory.csv)
+
+The inventory is optional personal tracking, not a scorecard: `furthest_stage` is your consistently defined stage label; `final_stage_reached` records true/false/unknown separately from the outcome. Use `source_type` to distinguish recollection, calendar, or recruiter communication. Keep the filled file private and do not infer missing dates or outcomes.
 
 ## Before sharing
 

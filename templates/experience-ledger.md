@@ -1,8 +1,12 @@
 # Experience and claim ledger
 
-| Project / event | User problem | My role | Actual decision/action | Outcome | Evidence / scope | Measured / estimated / planned / unknown |
-| --- | --- | --- | --- | --- | --- | --- |
-| Fill from a real event | | | | | | |
+Use a small record for selected high-value claims. For a document-only or proxy review, label what the source says and leave unavailable facts open rather than completing them by inference.
+
+| Project / event | Claim as written (optional) | User problem | My role | Actual decision/action | Outcome | Evidence / scope / open question | Measured / estimated / planned / unknown |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Fill from a real event | | | | | | | |
+
+Evidence source is a separate axis: document-stated / candidate-reported / externally corroborated. A candidate's clarification is not an independent audit, and a planned result is not a measured outcome.
 
 - What colleagues owned:
 - Actual work dates, employer, and role (not just where the bullet appears in a draft):
@@ -14,4 +18,4 @@
 - Claim still needing verification:
 - Feedback and actual follow-through:
 
-Use this before resume or story polishing. An attractive sentence is not evidence.
+An attractive sentence is not evidence. This record supports selected revisions; it is not compulsory homework before useful feedback. Keep filled records private and outside the toolkit; save only to a confirmed path when requested.

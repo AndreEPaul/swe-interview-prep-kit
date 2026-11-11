@@ -8,6 +8,14 @@ Earlier resume versions add another perspective: how responsibilities became evi
 
 This is a method, not a quotation from a particular reviewer or a guarantee about applicant-tracking systems. Begin with the actual current resume and target roles. A resume is evidence of what a draft says, not independent verification of its claims.
 
+## Start with a useful diagnostic
+
+Confirm the selected file, target track/level, desired output, and available time where unknown. If only a resume and a level are supplied, give a provisional review now: strengths, the highest-value actions, and a few focused questions. Keep secondary checks separate rather than requiring a full evidence ledger or job description before offering value.
+
+Distinguish a known factual conflict, an ambiguity needing clarification, a positioning improvement, and optional polish. Missing supporting detail is not automatically wrong or a reason to stop using the resume.
+
+For a friend's resume, establish permission once if needed and make questions forwardable. Keep source files, extractions, and feedback outside the toolkit; save only to a confirmed private path when requested. Do not search neighboring personal files to audit an answer about versions, or treat review permission as permission to publish/upload elsewhere.
+
 ## Optional: learn from earlier versions
 
 Old versions are useful inputs, not a prerequisite or a reason to postpone improving the current resume.
@@ -27,23 +35,27 @@ Keep personal documents, reviewer identities, and actual before/after bullets pr
 
 For each project, record:
 
+- The claim as written, if reviewing an existing draft.
 - The user/business problem and why it mattered.
 - Your personal role and the team's broader scope.
 - Decisions/actions you can explain under follow-up.
 - Outcome, baseline, population/time period, and source.
-- Whether a figure is measured, estimated, or unknown.
+- Whether a figure is measured, estimated, planned, or unknown.
+- Its source separately: document-stated, candidate-reported, or externally corroborated; clarification is not an independent audit.
 - What you did not own, and what is confidential.
 
-Use the [ledger template](../templates/experience-ledger.md). If a fact is missing, ask. Do not fill the gap with a plausible metric.
+Use the [experience and claim ledger](../templates/experience-ledger.md) for selected high-value claims, not as compulsory homework for every bullet. If a fact is missing, ask. Do not fill the gap with a plausible metric.
 
 ## 2. Choose a coherent target narrative
 
-A summary should answer what kind of engineer you are and what value you bring. It should not be a compressed inventory of every project, adjective, and technology.
+A summary is optional. When useful, it should answer what kind of engineer you are and what value you bring, not be a compressed inventory of every project, adjective, and technology. Ordering the experience may communicate the narrative without an extra paragraph.
 
 - Align evidence with the actual role; do not claim new experience to match keywords.
 - Represent breadth without implying equal depth in every stack.
 - Avoid accidentally positioning a product engineer as a specialist in an unrelated niche merely because recent AI/tooling work dominates the text.
 - Preserve real relevant earlier language or backend work when it matters to the role.
+
+For senior roles, look for appropriate scope, personal technical judgment, delivery responsibility, cross-team leverage, operability, and outcomes where relevant. These are lenses, not a requirement that every project demonstrate every category. A skill need not appear literally in a bullet, and listing several technologies does not imply equal depth in all of them.
 
 ## 3. Shape bullets around impact and decisions
 
@@ -52,6 +64,8 @@ Useful structure:
 > Outcome or useful capability -> personal action/technical mechanism -> scope or constraint.
 
 Not every bullet needs a number. A verified capability, deadline met, failure mode removed, or manual step eliminated can be meaningful.
+
+Keep distinctions such as gross versus incremental revenue, adoption versus active use, and program-level projected savings versus the individual's completed contribution. Do not treat every missing source or baseline as a false claim or demand full measurement methodology inline; clarify the figures that matter most.
 
 **Synthetic example, not a candidate claim:**
 
@@ -79,24 +93,28 @@ Tie each achievement to its actual employer, role, and work period, especially w
 
 - Replace internal names/acronyms with an understandable product purpose.
 - Show why the technical work mattered before listing implementation detail.
-- Keep dates, promotions, acquisitions, and employer transitions accurate.
+- Keep dates, promotions, acquisitions, and employer transitions accurate. Ask for the actual education credential if only a field is listed; do not assume a degree or require graduation year/GPA.
 - Avoid unsupported "industry-leading," "revolutionized," or "expert in" claims.
 - Choose concise, natural phrasing rather than layers of compounds and adjectives.
 - Use a length/layout appropriate to career and market; one page is not a universal rule.
 
-## 6. Review in passes
+## 6. Review criteria
 
 1. **Accuracy:** every claim has an owner and source.
 2. **Relevance:** the most important evidence is prominent.
 3. **Scan:** can an unfamiliar reader identify role, scope, and outcomes quickly?
 4. **Depth:** could you explain every highlighted bullet in a technical interview?
 5. **Consistency:** do the current draft, evidence ledger, and interview stories agree on ownership, dates, and delivered scope?
-6. **Document:** review the actual exported file for layout and readable text, not just Markdown. Identical extracted words can have different visual layouts; neither inspection establishes a particular ATS result.
+6. **Document:** inspect extracted text and rendered pages when available, whatever the source format. State pages/layout not inspected. Identical extracted words can have different visual layouts; neither inspection establishes a particular ATS result.
 
-When using AI, request two alternatives for one bullet, compare them, and confirm the facts before accepting. A polished rewrite that changes scope is a regression.
+Depth and consistency may need candidate answers; mark them unassessed rather than failed. Optional export hygiene includes title/author properties and link usability. If a managed sensitivity label appears, flag it for the candidate to check applicable sharing rules; do not advise removing it or moving a work-managed file.
+
+When drafting is requested, ask for one or two alternatives for a bullet, compare them, and confirm the facts before accepting. A polished rewrite that changes scope is a regression. A diagnostic-only request does not require rewritten text.
+
+Public research is optional, only for a material question. Use non-identifying public queries and authoritative sources if needed; generic company facts do not establish an individual's employment or project history.
 
 ## Small workflow
 
-Spend one session improving the summary and two important bullets. If earlier versions are available, use them to recover relevant evidence or catch drift rather than restarting the whole document. Preserve the previous version and a short change rationale. Test the revised narrative with a real reader when possible, without treating one reader's stylistic preference as universal hiring law.
+Choose a bounded goal within the available time, such as two important bullets or a summary if useful. If earlier versions are available, use them to recover relevant evidence or catch drift rather than restarting the whole document. Preserve the previous version and a short change rationale. Test the revised narrative with a real reader when possible, without treating one reader's stylistic preference as universal hiring law.
 
 Privacy: resumes are intended to disclose selected professional information, not employer secrets or third-party personal data.

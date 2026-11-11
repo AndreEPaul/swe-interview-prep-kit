@@ -4,6 +4,8 @@
 
 Establish the role, interview type, language/environment, duration, allowed assistance, and candidate's available energy. Separate current official instructions, the candidate's actual experience, third-party anecdotes, and assumptions.
 
+Use a task, story, or attempt the candidate already brought; do not restart the session just to follow a numbered loop. Ask only the missing setup questions that affect the next step. Brief related setup questions can be batched; probe one topic at a time afterward.
+
 Choose the smallest exercise that exposes a useful gap. A practical UI candidate may benefit more from search/state/async work than a random difficult graph problem; another role may genuinely require algorithms. Neither becomes a universal rule.
 
 ## The loop
@@ -24,7 +26,11 @@ Choose the smallest exercise that exposes a useful gap. A practical UI candidate
 - Offer a partial scaffold if requested.
 - Provide a separate reference when asked or when the candidate chooses a teaching mode.
 
+**Teaching mode** means the candidate chooses an explanation, worked example, or reference rather than an independent attempt. Switch when requested; do not require them to exhaust the hints first. Keep reference work separate and have the candidate explain or verify what they learned.
+
 Do not keep a frustrated learner guessing indefinitely. Giving an explicit explanation at the right point can be more useful than preserving an artificial "unaided" score. Record the help honestly.
+
+For practice records use **none / hint / explanation / scaffold / reference**, describing what was supplied and combining labels when appropriate. A hint may be conceptual, trace-based, or syntax help; these are descriptions, not numerical levels or a score.
 
 ## Non-negotiable accuracy habits
 
@@ -41,7 +47,13 @@ Do not keep a frustrated learner guessing indefinitely. Giving an explicit expla
 
 Use original practice or material the candidate is permitted to use. Do not reconstruct proprietary assessments, redistribute paid problem prose, or assist in a prohibited live round.
 
+An announced preparation topic can guide an original exercise; it does not grant permission to reproduce confidential assessment material. Generalize employer code/designs and use only the minimum permitted context.
+
 For resume/behavioral work, separate observed facts, estimates, plans, personal interpretations, and unknowns. Never manufacture metrics, feedback, or a completed outcome.
+
+Keep the source of a claim separate from its measurement status: document-stated, candidate-reported, or externally corroborated is different from measured, estimated, planned, or unknown. A candidate's clarification helps resolve scope but is not an independent audit.
+
+Keep candidate inputs, extracted text, reviews, and practice artifacts outside the toolkit in a confirmed private location. Save only when requested. A proxy review should acknowledge permission and relayed facts without repeatedly demanding proof or blocking useful provisional feedback. Do not treat review permission as permission for external uploads or publication.
 
 For AI-assisted coding practice, the candidate must understand and verify generated changes. Tool fluency does not mean unbounded access or automatic approval for actions.
 
@@ -52,5 +64,6 @@ For AI-assisted coding practice, the candidate must understand and verify genera
 - Change requirements only after the current milestone is understood.
 - Before interview day, prefer a short recall sheet over another long lesson.
 - Capture useful lessons in files the candidate controls; do not rely on an assistant retaining memory.
+- Agree a stopping point within the available time, including review. If the slot is short, narrow the task rather than silently omit verification or the close.
 
 Do not infer personal characteristics or mental-health explanations from a practice struggle. Discuss observable performance and the next useful action.
