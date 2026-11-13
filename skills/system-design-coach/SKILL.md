@@ -7,6 +7,8 @@ description: Run structured frontend, backend, mixed full-stack, or project-deep
 
 ## Select the frame
 
+Use a supplied preparation brief as context, not a required prerequisite. Reuse answered setup facts, keep uncertainties explicit, and honor later candidate corrections.
+
 Confirm the frame: frontend schema/state, backend/distributed, mixed full-stack, or a real-project deep dive. Use the prompt/attempt already supplied. Confirm interview duration, available practice time, provided mock/template, and whiteboard/text format without re-asking answered questions.
 
 For a mixed or unknown frame, propose a bounded browser-to-API-to-store flow as a steerable assumption, then choose the important seam to explore. Product implementation planning can use the frontend or mixed frame, not an unrelated architecture script.

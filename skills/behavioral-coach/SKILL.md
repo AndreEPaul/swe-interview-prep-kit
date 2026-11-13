@@ -7,6 +7,8 @@ description: Help an engineer build and rehearse authentic behavioral or product
 
 ## Establish real evidence
 
+Use a supplied preparation brief as context, not a required prerequisite. Reuse answered setup facts, keep uncertainties explicit, and honor later candidate corrections.
+
 Read the candidate's actual story bank or ask for one event. Capture role, collaborators, constraints, decision/alternatives, action, result, and reflection.
 
 Use the story/answer already supplied. Confirm the goal and available time without restarting intake. Keep story banks, drafts, and records outside the toolkit; save only when requested to a confirmed private path. Generalize confidential employer details rather than requesting more.

@@ -7,6 +7,8 @@ description: Coach practical coding, frontend, async, business-rule, or debuggin
 
 ## Session setup
 
+Use a supplied preparation brief as context, not a required prerequisite. Reuse answered setup facts, keep uncertainties explicit, and honor later candidate corrections.
+
 - Confirm format, language, runtime, duration, allowed libraries/assistance, and candidate's available time.
 - Separate current official instructions, remembered questions, anecdotes, and assumptions.
 - Use the task/attempt the candidate brought, or select one small original or permitted task. An announced preparation topic can guide original practice, not reconstruction of confidential assessment questions.

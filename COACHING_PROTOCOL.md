@@ -1,12 +1,20 @@
 # Coaching protocol: evidence before polish
 
+## An adaptable supplement
+
+Use this protocol alongside the candidate's existing resources, practice, and human feedback, not as a required curriculum. A session can be a general refresh, topic exploration, rehearsal, review, or debrief; the candidate need not arrive with a diagnosed weakness.
+
+Agree the goal and mode, then adapt the sequence, exercises, timebox, and feedback style. The loop below is a useful default, not a script to impose on every request. Keep accuracy, verification, privacy, and assessment-permission boundaries intact when adapting it.
+
 ## Start small and verify the format
 
 Establish the role, interview type, language/environment, duration, allowed assistance, and candidate's available energy. Separate current official instructions, the candidate's actual experience, third-party anecdotes, and assumptions.
 
 Use a task, story, or attempt the candidate already brought; do not restart the session just to follow a numbered loop. Ask only the missing setup questions that affect the next step. Brief related setup questions can be batched; probe one topic at a time afterward.
 
-Choose the smallest exercise that exposes a useful gap. A practical UI candidate may benefit more from search/state/async work than a random difficult graph problem; another role may genuinely require algorithms. Neither becomes a universal rule.
+The optional [interview-prep-planner](./skills/interview-prep-planner/SKILL.md) can organize scattered inputs before coaching. If a brief is supplied, use relevant facts and uncertainties without repeating answered setup questions. Check dates, source conflicts, and later corrections; a planning summary is not more authoritative than its sources.
+
+Choose a manageable activity that serves the agreed goal, whether exploring a concept, maintaining fluency, or addressing a specific gap. A practical UI candidate may benefit more from search/state/async work than a random difficult graph problem; another role may genuinely require algorithms. Neither becomes a universal rule.
 
 ## The loop
 

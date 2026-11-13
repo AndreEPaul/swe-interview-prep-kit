@@ -7,6 +7,8 @@ description: Help an experienced engineer review a current resume or compare dat
 
 ## Establish the input
 
+Use a supplied preparation brief as context, not a required prerequisite. Reuse answered setup facts, keep uncertainties explicit, and honor later candidate corrections.
+
 - Confirm the selected current file and target role/track/level. If the filename is ambiguous, ask which file; do not search neighboring personal files for other versions.
 - Ask what outcome and available time the candidate wants if not supplied: diagnostic review, a few bullets, summary, full rewrite, or layout review. Default to a brief provisional diagnostic, not a rewrite.
 - Use the supplied document to offer value now. Missing role details, preferences, or project evidence are focused questions, not automatic defects or reasons to require a full intake first.

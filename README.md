@@ -1,10 +1,37 @@
 # Interview fluency for experienced engineers
 
-A reusable preparation kit for people who are capable in their jobs but out of practice at interviews. The goal is to make existing judgment visible under unfamiliar constraints, not treat professional experience as a substitute for practice.
+A collection of practical guides, optional AI coaching skills, and blank templates to support your interview preparation. Built with experienced engineers in mind, whether you're returning to interviews after a long break, preparing for a particular round, exploring a topic, or keeping a light practice habit.
 
 This is a **standalone, anonymized draft toolkit**. It contains no personal story bank, named reviewers, company interview reports, or copied assessment questions. Nothing has been published, and no hiring outcome is guaranteed.
 
+## What this is
+
+- **A supplement to your existing preparation.** Use it alongside courses, problem sites, books, official interview guidance, mock interviews, and feedback from other people. You do not need to replace a routine that already works.
+- **A flexible starting point for practice and review.** Explore a topic, rehearse an answer, review an attempt, ask for an explanation, or debrief an interview. You do not need to identify a specific weakness before starting.
+- **A set of pieces you can adapt.** Read a guide without AI, use one coaching skill on its own, or combine a few templates with your own resources. Change the exercises, order, timeboxes, and feedback style to suit your goals.
+
+The aim is to help you understand and communicate your own engineering judgment under interview constraints, not make everyone follow the same preparation process.
+
+## What this is not
+
+- A complete curriculum, exhaustive question bank, or prescription for every role and interview format.
+- A required sequence, universal scoring rubric, prediction of a company's questions, or guarantee of an offer.
+- A replacement for hands-on practice, your own judgment, or human feedback. AI suggestions can be wrong; check facts and results, keep your own voice, and reject advice that does not fit.
+- Permission to use assistance during an assessment that prohibits it. Adapt the preparation method, not the boundaries around accuracy, privacy, or permitted use.
+
+## Optional: build context first
+
+If you have interview information but are unsure how to use it, start with [interview-prep-planner](./skills/interview-prep-planner/SKILL.md). Supply whatever is useful: selected recruiter-email excerpts, a job description, role/round details, your background or recent feedback, available prep time, and resources you already use.
+
+It turns those inputs into a short brief distinguishing confirmed facts from assumptions, suggested priorities with reasons, a manageable approach, relevant coaching routes, and questions worth resolving. Incomplete information is fine; it should help you choose a next step, not make you complete a questionnaire.
+
+The proposal is yours to change. Ask for a different pace, topic, exercise, explanation, or review style. It will not start practice or launch other coaches just because you supplied context. If you already know what you want, skip planning and use a specialist skill directly.
+
+You can keep the context in the optional [session brief](./templates/session-brief.md), saved privately outside this toolkit when useful.
+
 ## Start with the problem you actually have
+
+If you have a particular goal or sticking point, these are some useful routes. They are examples, not prerequisites or limits on how to use the kit.
 
 | Need | Guide | Optional agent skill |
 | --- | --- | --- |
@@ -17,9 +44,9 @@ Use the shared [coaching protocol](./COACHING_PROTOCOL.md) to keep practice hone
 
 The methods adapt to the actual role and language. Worked technical explanations lean JavaScript/TypeScript and React; the design guide includes a frontend example and backend principles. This is not an exhaustive algorithms curriculum or distributed-systems course.
 
-## A small first week
+## One possible starting week
 
-1. **Inventory, 20 minutes:** list actual interview formats, known constraints, and one specific weakness. Use the [session brief](./templates/session-brief.md).
+1. **Inventory, 20 minutes:** list actual interview formats, known constraints, and a goal or uncertainty. Use the [session brief](./templates/session-brief.md), with the planner if helpful.
 2. **Technical rep, 30-45 minutes:** one original problem, running code, one review. Record hints and evidence, not just a score.
 3. **Design, 30-45 minutes:** one user journey with state/data ownership, a request flow, a failure, and a trade-off.
 4. **Behavioral, 20 minutes:** one true story and two probing follow-ups.
@@ -33,8 +60,13 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 
 Open a fresh conversation in this folder and choose one prompt. Replace bracketed inputs; unknown details are fine.
 
+If you want general preparation rather than help with a specific problem, start with:
+
+> Read README.md. I'm preparing for [role or interview type] and have [time]. I'd like a general refresh or to explore [topic, if any]. Help me choose a useful starting point using this toolkit and the other resources I already use. Ask only the context you need, and agree the scope with me before starting an exercise or building a plan.
+
 | Goal | Opening prompt |
 | --- | --- |
+| Interview context and priorities | Read `skills/interview-prep-planner/SKILL.md` and follow it for this session. Here are the interview materials and background I can share: `[excerpts/files/notes]`. I have `[available prep time, if known]` and already use `[resources, if any]`. Propose a short brief and preparation options; distinguish confirmed instructions from assumptions and wait for me to choose a next step. |
 | Resume diagnostic | Read `skills/resume-coach/SKILL.md` and follow it for this session. Review `[resume path]` for `[target role]`. Start with a prioritized diagnostic, not a rewrite. I have `[time]`. |
 | Technical practice | Read `skills/technical-screen-coach/SKILL.md` and follow it for this session. I want to practice `[format]` in `[language/runtime]` for `[time]`. Use small hints and let me attempt first. |
 | Design practice | Read `skills/system-design-coach/SKILL.md` and follow it for this session. I have `[time]` for `[frontend/backend/mixed/project deep-dive]` practice. Clarify the frame before starting. |
