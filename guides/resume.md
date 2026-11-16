@@ -129,3 +129,5 @@ Public research is optional, only for a material question. Use non-identifying p
 Choose a bounded goal within the available time, such as two important bullets or a summary if useful. If earlier versions are available, use them to recover relevant evidence or catch drift rather than restarting the whole document. Preserve the previous version and a short change rationale. Test the revised narrative with a real reader when possible, without treating one reader's stylistic preference as universal hiring law.
 
 Privacy: resumes are intended to disclose selected professional information, not employer secrets or third-party personal data.
+
+For applying the same accurate narrative to a profile, website, or portfolio without duplicating every resume sentence, see [professional presence](./professional-presence.md).

@@ -10,6 +10,8 @@ The workflow is language-neutral; the worked mechanism explanations below lean J
 
 Use permitted or original practice. An announced preparation topic can guide a new exercise, not reconstruction of confidential assessment content. Generalize employer code/designs and keep candidate files and requested records in a confirmed private location outside the toolkit.
 
+For a format that explicitly permits AI-generated investigation or code, use the separate [AI-assisted interview workflow](./ai-assisted-interviews.md). It practices directing, understanding, and verifying delegated work; it is not the same mode as a candidate-first attempt with coaching hints.
+
 ## One rep, four phases
 
 1. **Clarify:** restate input/output, ordering, identity, mutation, errors, and scope.

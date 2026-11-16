@@ -7,6 +7,7 @@
 - Confirmed facts versus candidate reports, inferences, unknowns, or conflicts:
 - Language, environment, running/testing workflow:
 - Allowed libraries and AI/tools:
+- For explicitly AI-assisted practice: coding-assistant role/actions/data boundaries versus extra coaching, and own-words explanation expectations:
 - Duration and actual available practice time:
 - Candidate's own recent interview evidence:
 - Background, strengths, and feedback relevant to this goal:
