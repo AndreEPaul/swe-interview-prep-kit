@@ -6,6 +6,7 @@
 - Mode: independent attempt / coached practice / teaching (explanation or worked example):
 - What I attempted:
 - Help received: none / hint / explanation / scaffold / reference; describe the actual assistance:
+- If AI-assisted: permitted coding-tool use and delegated work versus extra coaching; what I could explain and independently check:
 - What I explained:
 - Actual checks run and outputs:
 - Candidate tests versus infrastructure/reference tests:

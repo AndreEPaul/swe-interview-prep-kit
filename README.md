@@ -36,7 +36,9 @@ If you have a particular goal or sticking point, these are some useful routes. T
 | Need | Guide | Optional agent skill |
 | --- | --- | --- |
 | Resume undersells impact, is hard to scan, or needs comparison with earlier versions | [Resume](./guides/resume.md) | [resume-coach](./skills/resume-coach/SKILL.md) |
+| Make your professional profile clear and consistent without a personal-brand routine | [Professional presence](./guides/professional-presence.md) | No dedicated skill; start with the guide |
 | Rusty in coding screens despite daily engineering work | [Practical technical screens](./guides/technical-screens.md) | [technical-screen-coach](./skills/technical-screen-coach/SKILL.md) |
+| Practice a round that explicitly permits AI-assisted development | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
 | Design answers remain high-level or lose structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
 | Real project depth gets lost in behavioral answers | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
 
@@ -69,6 +71,7 @@ If you want general preparation rather than help with a specific problem, start 
 | Interview context and priorities | Read `skills/interview-prep-planner/SKILL.md` and follow it for this session. Here are the interview materials and background I can share: `[excerpts/files/notes]`. I have `[available prep time, if known]` and already use `[resources, if any]`. Propose a short brief and preparation options; distinguish confirmed instructions from assumptions and wait for me to choose a next step. |
 | Resume diagnostic | Read `skills/resume-coach/SKILL.md` and follow it for this session. Review `[resume path]` for `[target role]`. Start with a prioritized diagnostic, not a rewrite. I have `[time]`. |
 | Technical practice | Read `skills/technical-screen-coach/SKILL.md` and follow it for this session. I want to practice `[format]` in `[language/runtime]` for `[time]`. Use small hints and let me attempt first. |
+| AI-assisted interview practice | Read `skills/ai-assisted-interview-coach/SKILL.md` and follow it as my practice coach. My permitted coding tool/scope is `[instructions or unknown]`, my practice repo/format is `[details or not yet chosen]`, and I have `[time]`. Agree the roles and milestones before starting; ask me to explain and verify generated work rather than silently solving it for me. |
 | Design practice | Read `skills/system-design-coach/SKILL.md` and follow it for this session. I have `[time]` for `[frontend/backend/mixed/project deep-dive]` practice. Clarify the frame before starting. |
 | Behavioral refresh | Read `skills/behavioral-coach/SKILL.md` and follow it for this session. Help me rehearse `[prompt or real event]` for `[time]`, with one follow-up at a time. |
 
