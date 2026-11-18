@@ -47,4 +47,4 @@ Event -> state/navigation -> request -> response relevance -> rendered/stored ou
 - Help received: none / hint / explanation / scaffold / reference; describe it:
 - One next improvement:
 
-For a real-project deep dive, separate actual decisions/results from proposed redesigns. For a short session, narrow the flow but keep a failure, a trade-off, and the close. Keep filled worksheets outside the toolkit and save only when requested to a confirmed private path.
+For a real-project deep dive, separate actual decisions/results from proposed redesigns. For a short session, narrow the flow but keep a failure, a trade-off, and the close. Keep filled worksheets outside this repository and save only when requested to a confirmed private path.

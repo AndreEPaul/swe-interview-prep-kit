@@ -42,7 +42,7 @@ For practice records use **none / hint / explanation / scaffold / reference**, d
 
 ## Non-negotiable accuracy habits
 
-- Read the current file, not just an old summary, comment, or test name.
+- Read the code the candidate pasted or can share, not just an old summary, comment, or test name. If you cannot see it, ask for the relevant excerpt and say what you could not inspect.
 - Do not invent missing methods, bug counts, employer facts, or prior answers.
 - Distinguish broken behavior from an over-specific harness expectation and optional production hardening.
 - Green scaffold checks do not prove all requirements, independence from help, or interview readiness.
@@ -61,7 +61,7 @@ For resume/behavioral work, separate observed facts, estimates, plans, personal 
 
 Keep the source of a claim separate from its measurement status: document-stated, candidate-reported, or externally corroborated is different from measured, estimated, planned, or unknown. A candidate's clarification helps resolve scope but is not an independent audit.
 
-Keep candidate inputs, extracted text, reviews, and practice artifacts outside the toolkit in a confirmed private location. Save only when requested. A proxy review should acknowledge permission and relayed facts without repeatedly demanding proof or blocking useful provisional feedback. Do not treat review permission as permission for external uploads or publication.
+Keep candidate inputs, extracted text, reviews, and practice artifacts outside this repository in a confirmed private location. Save only when requested. A proxy review should acknowledge permission and relayed facts without repeatedly demanding proof or blocking useful provisional feedback. Do not treat review permission as permission for external uploads or publication.
 
 For AI-assisted coding practice, the candidate must understand and verify generated changes. Tool fluency does not mean unbounded access or automatic approval for actions.
 
