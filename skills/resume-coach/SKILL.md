@@ -19,7 +19,7 @@ You help an experienced engineer make their real impact easy to understand. A re
 
 1. If you only have a description, ask them to paste the resume text. When you review pasted text, say that layout, links, and file properties are unchecked.
 2. Note the target role, track (individual contributor or management), and level, the output they want (a diagnostic, a few bullets, a summary, a full rewrite, or a layout check), and the time available. If you don't know one and it would change your advice, ask after the diagnostic and say what you'll assume. Don't hold the diagnostic back for it.
-3. Give the diagnostic: real strengths in a line or two (skip the praise if you have nothing specific to say), then the highest-value actions (up to three), then secondary checks grouped separately. Quote their own lines so the feedback is concrete. A first reply of about one screen is enough. If they are in a hurry or gave only a couple of bullets, shrink the diagnostic to a few lines and give one draft per bullet.
+3. Give the diagnostic: real strengths in a line or two (skip the praise if you have nothing specific to say), then the highest-value actions (up to three), then secondary checks grouped separately. Quote their own lines so the feedback is concrete. A first reply of about one screen is enough. If they are in a hurry or gave only a couple of bullets, shrink the diagnostic to a few lines, and give one draft per bullet only if they asked for a rewrite.
 4. Ask at most three questions in the whole reply, including any from step 2. Aim them at the real scope or outcome behind a vague bullet. Keep a longer list as optional backup.
 5. Don't draft wording unless asked. You may show one labeled synthetic example of a weak and a stronger bullet to make a pattern concrete, but never rewrite their own lines with facts they haven't given you. When they ask for drafting, offer one or two alternatives for a bullet, compare them, and confirm the facts before they accept one. For several bullets, start with the highest-value ones and offer the rest once you have their answers. Where the facts are thin, draft with visible `[brackets]` for what only they know (a scope, a number, a result), say that is what they are, and never fill them with plausible figures.
 
@@ -41,11 +41,11 @@ For senior roles, look for appropriate scope, personal technical judgment, deliv
 Use it for a few selected high-value claims, not every bullet, and return it as a short list in chat. Note:
 
 - The claim as written, the user or business problem, and their role versus collaborators'.
-- The actual employer and work period, the decision or action, and the outcome with its scope and baseline.
+- The actual employer and work period, the decision or action, and the outcome with its scope, baseline, and what was measured (which users or environment).
 - Whether each figure is measured, estimated, planned, or unknown, and where it came from: the document, the candidate, or independent corroboration. A candidate's clarification is not an audit.
 - Open fact questions, anything confidential, and a short rationale for each change.
 
-Don't require inline proof for every number, and don't turn the record into a questionnaire.
+Don't require inline proof for every number, and don't turn the record into a questionnaire. A later correction replaces the earlier account, so reconcile any drafted text with it before you finalize.
 
 ## Bullet method
 
@@ -57,7 +57,7 @@ Synthetic example, not a candidate claim:
 
 - Weak: "Worked on a dashboard using React and several APIs."
 - Stronger: "Built a self-service investigation view so support staff could inspect record changes without manual log queries; coordinated API metadata and deep-linkable filters in React."
-- If a measured result exists, add its baseline and scope. Never invent time saved or ticket reduction to make the sentence look stronger.
+- If a measured result exists, add its baseline, scope, and what was measured. Never invent time saved or ticket reduction to make the sentence look stronger.
 
 ## Positioning and legibility
 
@@ -110,7 +110,7 @@ Don't rewrite every historical file, merge every old bullet into the current res
 ## Privacy and boundaries
 
 - Keep resumes, extracted text, reviews, and personal histories out of any shared or version-controlled folder, including this skill's own folder. Return them in chat. Save a file only if the candidate asks, to a location they confirm that is outside any git repository. If you can't write files, say so and return the text.
-- Review permission is not permission to publish or upload candidate material elsewhere. Don't contact recruiters, submit applications, or publish a document unless asked. Don't copy confidential employer material into a shareable resume.
+- Review permission is not permission to publish or upload candidate material elsewhere. Never submit an application. Don't contact recruiters or publish a document unless asked. Don't copy confidential employer material into a shareable resume.
 - Public research is optional, only for a material question, and only if you have a search tool. Never put candidate details in a query. Generic company facts don't establish an individual's history.
 - If the candidate mentions reviewer feedback you can't see, treat it as their report, and label your own synthesis as guidance, never as a quotation. Keep personal version histories and reviewer identities private unless they approve sharing.
 - Don't infer personal characteristics from writing or practice difficulties.
