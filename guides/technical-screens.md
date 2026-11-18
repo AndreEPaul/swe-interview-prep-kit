@@ -6,9 +6,9 @@ Collect reliable information: language, environment, running/testing workflow, d
 
 Do not turn every engineering interview into either a difficult algorithm grind or a frontend-only exercise. Current role instructions beat general company anecdotes.
 
-The workflow is language-neutral; the worked mechanism explanations below lean JavaScript/TypeScript and React. Adapt to the requested language rather than importing a frontend task into every interview. Use a supplied attempt as the starting point, including pasted code, and say which version was actually reviewed.
+The workflow is language-neutral; the worked mechanism explanations below lean JavaScript/TypeScript and React, with a short Python companion. Adapt to the requested language rather than importing a frontend task into every interview. Use a supplied attempt as the starting point, including pasted code, and say which version was actually reviewed.
 
-Use permitted or original practice. An announced preparation topic can guide a new exercise, not reconstruction of confidential assessment content. Generalize employer code/designs and keep candidate files and requested records in a confirmed private location outside the toolkit.
+Use permitted or original practice. An announced preparation topic can guide a new exercise, not reconstruction of confidential assessment content. Generalize employer code/designs and keep candidate files and requested records in a confirmed private location outside this repository.
 
 For a format that explicitly permits AI-generated investigation or code, use the separate [AI-assisted interview workflow](./ai-assisted-interviews.md). It practices directing, understanding, and verifying delegated work; it is not the same mode as a candidate-first attempt with coaching hints.
 
@@ -37,18 +37,32 @@ These are generic drill families, not a claimed list of questions for any employ
 
 ### Functions and async values
 
-- A function reference is not its invocation.
-- A returned Promise is not its fulfilled value.
-- Awaiting/chaining requires the right value; forgetting invocation can yield a function object instead of data.
-- Return/await the whole operation when the caller must know it finished.
-- A catch that returns normally recovers a rejection. Rethrow when propagation is part of the contract.
+A function reference is not its invocation, and a Promise is not its fulfilled value. Mixing either up hands the wrong kind of value to the next step:
+
+```js
+setTimeout(save, 100);    // the timer calls save after 100 ms
+setTimeout(save(), 100);  // calls save now; the timer gets whatever save returned
+
+getUser().name;           // undefined: this reads the Promise
+(await getUser()).name;   // reads the user
+```
+
+- Return or await the whole operation when the caller must know it finished.
+- A `catch` that returns normally recovers a rejection. Rethrow when propagation is part of the contract.
+- Inside `try`, `return fn()` hands back the promise before it settles, so a later rejection skips your `catch`. `return await fn()` keeps the rejection inside it.
 - A return in `try` still executes `finally`; cleanup must not overwrite a newer operation or override outcomes accidentally.
 
 ### Closures and composition
 
-A closure retains access to bindings from its lexical environment. A higher-order function accepts or returns functions. These describe different concepts, even when both occur in one API.
+A closure retains access to bindings from its lexical environment. A higher-order function accepts or returns functions. These are different concepts, even when both appear in one API:
 
-Prepare data now and accept another argument later without expecting an inner function to read unrelated caller scope. Function names do not create object properties.
+```js
+const minLength = (n) => (s) => s.length >= n;  // higher-order: returns a function; the inner one closes over n
+const atLeast3 = minLength(3);
+atLeast3("ab");  // false
+```
+
+Prepare data now and accept another argument later, without expecting an inner function to read scope it was not defined in. A function's name is a variable in scope, not a property of an object: declaring `function isAdult() {}` does not make `rules.isAdult` exist.
 
 ### React debounce, races, and cache are different jobs
 
@@ -56,11 +70,23 @@ Prepare data now and accept another argument later without expecting an inner fu
 - **Request relevance:** decide which already-running work may update the current view.
 - **Cache:** reuse successful results under a defined key/freshness policy.
 
-A timer-owning debounce wrapper recreated every render does not share one timer. Preserving it while reading old captured state creates a different bug.
+A timer-owning debounce wrapper recreated every render does not share one timer. Preserving it (with a ref or memoization) while reading old captured state creates a different bug: a stale closure.
 
 Think: stable function/debouncer, latest data supplied as arguments, returned effect cleanup, and an explicit current-request rule. State is a render snapshot; a ref is persistent mutable bookkeeping. Initializing a ref from state does not synchronize it automatically.
 
-Invalidate obsolete results, errors, and loading cleanup on a new view, even before a new debounce timer fires. A generation distinguishes repeated requests for the same query; query equality alone does not.
+Invalidate obsolete results, errors, and loading cleanup on a new view, even before a new debounce timer fires. Give each request a generation (a counter) and apply a response only if its generation is still the latest:
+
+```js
+let latest = 0;
+async function search(query) {
+  const id = ++latest;                    // this request's generation
+  const results = await fetchResults(query);
+  if (id !== latest) return;              // a newer request started; drop this response
+  show(results);
+}
+```
+
+A counter identifies the request, not just its text. If the user types `a`, then `ab`, then `a` again, two requests carry the same query, and only the counter says which one may still update the screen. Without the guard, a slow response to an older request can arrive last and overwrite newer results.
 
 Cache normalized successful results, including empty arrays; do not disguise failures as successes. Define expiry boundaries and cache ownership. A cache hit must still invalidate older work even though it starts no request.
 
@@ -68,14 +94,39 @@ Cache normalized successful results, including empty arrays; do not disguise fai
 
 - Define idle/loading/success-empty/success-data/error behavior.
 - Clear input is a transition, not merely "skip fetching."
-- A component owns both its state and its DOM subtree.
+- Each component instance owns its own state and the DOM it renders. Two instances must not share state or update each other's nodes.
 - For rendering, created nodes must actually be inserted. Visually identical output can still fail an overly narrow test; understand the contract before changing code.
 
 ### Sorting and ownership
 
 Map insertion order is not chronological order. Numeric timestamps and fixed-format date strings need appropriate comparisons. Reversing arbitrary input is not sorting it.
 
-Array sorting mutates its target. Sorting a newly built bucket differs from sorting the caller's array. Copy to satisfy the actual ownership contract, not every object indiscriminately.
+Array sorting mutates its target. Sorting a newly built bucket differs from sorting the caller's array. Copy to satisfy the actual ownership contract, not every object indiscriminately: `[...events].sort(compare)`, or `events.toSorted(compare)` in current runtimes.
+
+### The same ideas in Python
+
+If your round is in Python, practice the matching traps:
+
+```python
+async def get_user(): return {"name": "Ada"}
+
+get_user()["name"]            # TypeError: this is a coroutine, not the dict
+(await get_user())["name"]    # "Ada" (inside another async function)
+
+fns = [lambda: i for i in range(3)]
+[f() for f in fns]            # [2, 2, 2]: each lambda looks up i when called, after the loop ended
+fns = [lambda i=i: i for i in range(3)]   # bind the current value instead: [0, 1, 2]
+
+def add(item, bucket=[]):     # the default list is created once and shared by every call
+    bucket.append(item)
+    return bucket
+
+xs = [3, 1, 2]
+xs.sort()                     # sorts in place and returns None
+sorted(xs)                    # returns a new list
+```
+
+For Java, Go, C#, or another language, map the same four ideas: an async result is not its completion, what a closure captures, defaults and shared state that outlive a call, and operations that mutate versus copy.
 
 ## Verify the exact requirement
 

@@ -60,7 +60,7 @@ If you have permitted work samples, make them understandable:
 
 Do not publish employer code, customer data, internal screenshots, private assessments, or credentials to prove you did meaningful work. A high-level permitted description can be enough. Absence of public examples does not need an apology.
 
-Review visibility, activity-notification, and contact settings before editing. Choose what is appropriate for your circumstances; making updates need not mean broadcasting a job search. Use only contact details you are comfortable exposing, and keep private drafts/reviews outside the toolkit. An assistant should propose changes, not log in, publish, message people, or expand access without an explicit request.
+Review visibility, activity-notification, and contact settings before editing. Choose what is appropriate for your circumstances; making updates need not mean broadcasting a job search. Use only contact details you are comfortable exposing, and keep private drafts/reviews outside this repository. An assistant should propose changes, not log in, publish, message people, or expand access without an explicit request.
 
 ## A bounded refresh, not an ongoing obligation
 

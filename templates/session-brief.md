@@ -20,6 +20,6 @@
 - Stopping point and break:
 - Desired artifact:
 - Optional coaching route and compact handoff context:
-- Private save location outside the toolkit, only if saving is requested:
+- Private save location outside this repository, only if saving is requested:
 
 Use information already supplied; fill only useful fields and leave unknowns explicit. This is optional context, not a required form or consent to start an exercise, launch another coach, or edit files. Agree the next action unless it was already explicitly requested.

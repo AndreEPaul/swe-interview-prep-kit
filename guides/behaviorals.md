@@ -4,7 +4,7 @@
 
 Build a small set of real examples covering delivery, ambiguity, conflict, failure, feedback, mentorship, product scoping, and technical judgment. Do not fabricate one story per value.
 
-Start with a story or answer the candidate already brought. A requested framing explanation or draft is appropriate coaching; distinguish it from an unaided rehearsal and do not invent missing history. Keep story banks, drafts, and requested cards outside the toolkit in a confirmed private location. Generalize confidential employer details rather than requesting more.
+Start with a story or answer the candidate already brought. A requested framing explanation or draft is appropriate coaching; distinguish it from an unaided rehearsal and do not invent missing history. Keep story banks, drafts, and requested cards outside this repository in a confirmed private location. Generalize confidential employer details rather than requesting more.
 
 For each card, record:
 

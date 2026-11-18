@@ -1,10 +1,10 @@
 # Design interviews: choose the right frame
 
-Begin by identifying the frame: frontend schema/state, backend/distributed, mixed full-stack, or a real-project deep dive. Product implementation planning can use the frontend or mixed frame. A familiar runbook is a scaffold, not permission to answer a different question.
+Begin by identifying the frame: frontend (the state, data flow, and API behind a screen), backend/distributed (services, storage, and scale), mixed full-stack, or a real-project deep dive. Product implementation planning can use the frontend or mixed frame. A rehearsed template is a scaffold, not permission to answer a different question.
 
 For a mixed or unknown frame, propose a bounded browser-to-API-to-store flow as an assumption the candidate can steer, then choose the important seam to explore. For a real-project deep dive, establish the actual system, personal ownership, constraints, decisions, alternatives, and outcomes; keep proposed redesigns separate from what was really shipped.
 
-This guide provides a worked frontend example and backend principles, not a comprehensive distributed-systems course. Use original or permitted practice, including original exercises on an announced preparation topic; do not reconstruct confidential assessments or request employer-internal designs/code. Keep candidate material and requested records outside the toolkit in a confirmed private location.
+This guide provides a worked frontend example and backend principles, not a comprehensive distributed-systems course. Use original or permitted practice, including original exercises on an announced preparation topic; do not reconstruct confidential assessments or request employer-internal designs/code. Keep candidate material and requested records outside this repository in a confirmed private location.
 
 ## Shared spine
 
@@ -16,7 +16,7 @@ If the practice slot is shorter than the real round, agree a smaller flow/deep d
 
 ## What changes by format
 
-| Beat | Backend/distributed emphasis | Frontend schema/state emphasis |
+| Beat | Backend/distributed emphasis | Frontend emphasis (screen state and data flow) |
 | --- | --- | --- |
 | Requirements | Operations, correctness, availability, latency, load shape | User job, mock behavior, navigation, loading/error/empty states, accessibility |
 | Estimates | Throughput, storage, bandwidth, fan-out where relevant | Dataset versus loaded/rendered rows, payload size, request frequency, acceptable freshness |
@@ -68,7 +68,7 @@ For a critical component, ask:
 - What work is bounded, retried, rejected, or degraded safely?
 - How would we know?
 
-Name concrete signals:
+Name concrete signals. These are the four "golden signals" from Google's [Site Reliability Engineering book](https://sre.google/sre-book/monitoring-distributed-systems/):
 
 - **Latency:** tail percentiles for the important path; trace dependency/application time.
 - **Errors:** distinguish expected invalid input from unexpected failures.

@@ -24,4 +24,4 @@
 - Confirmed outcome and date, or pending:
 - Reusable pattern without reproducing restricted material:
 
-Help labels describe assistance, not numerical levels or a score; combine them when appropriate. Do not let confidence, rapport, or a test count become an invented result. Keep filled records outside the toolkit and save only when requested to a confirmed private path.
+Help labels describe assistance, not numerical levels or a score; combine them when appropriate. Do not let confidence, rapport, or a test count become an invented result. Keep filled records outside this repository and save only when requested to a confirmed private path.

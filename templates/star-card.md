@@ -30,4 +30,4 @@
 
 - Mode/timebox and help received: none / hint / explanation / scaffold / reference; describe it:
 
-Do not fill gaps with invented details. Giving feedback and receiving it are different events. Keep filled cards outside the toolkit; save only when requested to a confirmed private path.
+Do not fill gaps with invented details. Giving feedback and receiving it are different events. Keep filled cards outside this repository; save only when requested to a confirmed private path.
