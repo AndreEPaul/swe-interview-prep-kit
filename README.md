@@ -1,113 +1,140 @@
-# Interview fluency for experienced engineers
+# peer-kit
 
-A collection of practical guides, optional AI coaching skills, and blank templates to support your interview preparation. Built with experienced engineers in mind, whether you're returning to interviews after a long break, preparing for a particular round, exploring a topic, or keeping a light practice habit.
+Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
 
-This is a **standalone, anonymized draft toolkit**. It contains no personal story bank, named reviewers, company interview reports, or copied assessment questions. Nothing has been published, and no hiring outcome is guaranteed.
+The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills. Each one asks the assistant to have you attempt first, give the smallest useful help, say what help it gave, and never invent details about your experience. The guides and templates are useful without any AI.
 
-## What this is
+Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
-- **A supplement to your existing preparation.** Use it alongside courses, problem sites, books, official interview guidance, mock interviews, and feedback from other people. You do not need to replace a routine that already works.
-- **A flexible starting point for practice and review.** Explore a topic, rehearse an answer, review an attempt, ask for an explanation, or debrief an interview. You do not need to identify a specific weakness before starting.
-- **A set of pieces you can adapt.** Read a guide without AI, use one coaching skill on its own, or combine a few templates with your own resources. Change the exercises, order, timeboxes, and feedback style to suit your goals.
+> **Early release.** Corrections and ideas are welcome (see [CONTRIBUTING.md](./CONTRIBUTING.md)), and the [limits](#limits) are real.
 
-The aim is to help you understand and communicate your own engineering judgment under interview constraints, not make everyone follow the same preparation process.
+## What's inside
 
-## What this is not
+- **Guides:** short preparation notes on resumes, coding screens, AI-assisted rounds, design, behavioral stories, and professional presence.
+- **Coaching skills:** instructions that make an AI assistant a practice partner for each of those topics except professional presence, plus an optional planner that turns scattered interview details into a short brief.
+- **Templates:** blank worksheets for briefs, stories, evidence, design practice, and practice records.
+- **A [coaching protocol](./COACHING_PROTOCOL.md):** the ground rules behind every skill, explained in full.
 
-- A complete curriculum, exhaustive question bank, or prescription for every role and interview format.
-- A required sequence, universal scoring rubric, prediction of a company's questions, or guarantee of an offer.
-- A replacement for hands-on practice, your own judgment, or human feedback. AI suggestions can be wrong; check facts and results, keep your own voice, and reject advice that does not fit.
-- Permission to use assistance during an assessment that prohibits it. Adapt the preparation method, not the boundaries around accuracy, privacy, or permitted use.
+## How the coaching works
 
-## Optional: build context first
+- **You go first.** The assistant plays the interviewer. You restate the task, attempt it, and explain your thinking before it helps.
+- **Smallest useful help, labeled.** Hints come before explanations, and explanations before reference answers. Help is recorded as none, hint, explanation, scaffold, or reference. The labels describe what was supplied. They are not a score.
+- **No made-up details.** The coach is told not to invent metrics, quotes, or decisions. Missing facts become visible `[placeholders]` and questions for you. Assistants can still slip, so check what it writes against what really happened.
+- **Short starts.** The first reply is useful on its own. It asks at most three questions and says what it will assume if you skip one.
+- **Evidence over verdicts.** It reviews the code or draft you actually pasted, says what it couldn't check, and doesn't predict outcomes or rate your readiness.
+- **Practice only.** No help in a live assessment that forbids outside help. Nothing is saved unless you ask, and then only to a folder you confirm. What you paste still goes to your AI provider; see [Keep your material private](#keep-your-material-private).
 
-If you have interview information but are unsure how to use it, start with [interview-prep-planner](./skills/interview-prep-planner/SKILL.md). Supply whatever is useful: selected recruiter-email excerpts, a job description, role/round details, your background or recent feedback, available prep time, and resources you already use.
+## What it looks like
 
-It turns those inputs into a short brief distinguishing confirmed facts from assumptions, suggested priorities with reasons, a manageable approach, relevant coaching routes, and questions worth resolving. Incomplete information is fine; it should help you choose a next step, not make you complete a questionnaire.
+An illustrative excerpt, abridged from a test run of [behavioral-coach](./skills/behavioral-coach/SKILL.md) on a made-up story. Results vary by model and run, and this isn't a transcript of real use.
 
-The proposal is yours to change. Ask for a different pace, topic, exercise, explanation, or review style. It will not start practice or launch other coaches just because you supplied context. If you already know what you want, skip planning and use a specialist skill directly.
+**You:**
 
-You can keep the context in the optional [session brief](./templates/session-brief.md), saved privately outside this toolkit when useful.
+> Can you polish this story? The question is "Tell me about a time you disagreed with a coworker." My draft: "On my last team we had to pick a message queue for the new notifications service. A senior engineer wanted Kafka and I wanted SQS because we were already on AWS and the team was small. I pushed back in the design review and eventually we went with SQS. It reduced latency by 40% and everyone was happy. My manager said it was a great call." Also please add some detail about how I convinced them. I don't remember exactly what I said but something persuasive would be good.
 
-## Start with the problem you actually have
+**Coach:**
 
-If you have a particular goal or sticking point, these are some useful routes. They are examples, not prerequisites or limits on how to use the kit.
+> What works: it's a real technical disagreement with a clear stake. You give your own reasons (already on AWS, small team). […]
+>
+> Biggest gap: the decision itself. "I pushed back… and eventually we went with SQS" skips how it was resolved, and the senior engineer's side is just a label. As written it reads as "I was right and won", which is where follow-ups will dig.
+>
+> I can't make up how you convinced them. Anything you don't actually remember doing won't survive a follow-up, and it would be my story, not yours. Exact words don't matter, but a rough account of what you did does. Two questions:
+>
+> 1. What was the senior engineer's actual case for Kafka?
+> 2. Roughly, what did you do between the design review and the final decision (a comparison, numbers, a prototype, a side conversation, something else)?
+>
+> If nothing comes back, a disagreement you remember better will serve you more than this one. Meanwhile, here is a draft built only from what you've told me. It's coached framing, not your unaided answer, so put it in your own words before you rehearse it:
+>
+> > On my last team we had to choose a message queue for a new notifications service. A senior engineer wanted Kafka [their reasons]. I wanted SQS because we were already on AWS and the team was small. I pushed back in the design review [what you said or showed]. [How it was resolved and who made the final call.] We went with SQS. [Result: latency reduced by 40%. Say whether measured or estimated, and against what.] My manager said it was a great call. [What you'd do differently, or what you took from it.]
+>
+> I dropped "everyone was happy" because nobody can check it. I kept your manager's line as praise, not a result. I tagged the 40% because an interviewer will ask what it was measured against, and I can't tell yet.
+>
+> Help so far: scaffold (I supplied a partial draft; every fact is yours). […]
 
-| Need | Guide | Optional agent skill |
+## Get started
+
+Whichever way you start, say what you want and the assistant should pick the matching skill. If it doesn't, name one: "use the behavioral-coach skill".
+
+**1. Paste a skill into any chat (no setup).** Open an AI assistant, paste the raw text of one skill's `SKILL.md` (linked in the table below), and put your first message under it. Each skill stands alone, so you don't need the other files.
+
+**2. Open your assistant in a clone.**
+
+```bash
+git clone https://github.com/AndreEPaul/peer-kit.git ~/peer-kit
+cd ~/peer-kit
+```
+
+Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and save nothing inside the clone. That makes this a good way to try the kit. For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
+
+**3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), then:
+
+- GitHub Copilot CLI: `copilot skill add ~/peer-kit/skills`, then `copilot skill list` to check. This points at your clone, so `git pull` updates the skills. (Checked with Copilot CLI 1.0.114.)
+- Claude Code: `mkdir -p ~/.claude/skills && cp -r ~/peer-kit/skills/* ~/.claude/skills/`. This is a copy, so repeat it after `git pull`. You can then type `/behavioral-coach` and so on, or just describe what you want. See [Claude Code's skills documentation](https://code.claude.com/docs/en/skills).
+- Other tools: the skills use the open [Agent Skills format](https://agentskills.io/specification). Check where your tool loads skills from, and if you can't find out, paste the file instead.
+
+Then start your assistant from a private practice folder outside any git repository, so anything it saves stays out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
+
+**If the coach drifts.** In a long chat an assistant can lose track of its instructions. If it hands you answers before you have tried, or fills in details you didn't give, say so plainly (for example, "hint only" or "don't invent that"), or start a fresh chat and paste the skill again.
+
+## Pick a starting point
+
+| If you want to... | Read | Practice with |
 | --- | --- | --- |
-| Resume undersells impact, is hard to scan, or needs comparison with earlier versions | [Resume](./guides/resume.md) | [resume-coach](./skills/resume-coach/SKILL.md) |
-| Make your professional profile clear and consistent without a personal-brand routine | [Professional presence](./guides/professional-presence.md) | No dedicated skill; start with the guide |
-| Rusty in coding screens despite daily engineering work | [Practical technical screens](./guides/technical-screens.md) | [technical-screen-coach](./skills/technical-screen-coach/SKILL.md) |
-| Practice a round that explicitly permits AI-assisted development | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
-| Design answers remain high-level or lose structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
-| Real project depth gets lost in behavioral answers | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
+| Work out where to start, or organize recruiter notes, a job description, and dates into a short brief | No guide | [interview-prep-planner](./skills/interview-prep-planner/SKILL.md) |
+| Make your resume show real impact | [Resume](./guides/resume.md) | [resume-coach](./skills/resume-coach/SKILL.md) |
+| Get fluent in live coding again | [Practical technical screens](./guides/technical-screens.md) | [technical-screen-coach](./skills/technical-screen-coach/SKILL.md) |
+| Prepare for a round that allows an AI assistant | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
+| Give design answers more structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
+| Tell project stories with real depth | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
+| Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill yet; start with the guide |
 
-Use the shared [coaching protocol](./COACHING_PROTOCOL.md) to keep practice honest, evidence-based, and sustainable.
+Example first messages. Replace the brackets, and leave out what you don't know:
 
-The methods adapt to the actual role and language. Worked technical explanations lean JavaScript/TypeScript and React; the design guide includes a frontend example and backend principles. This is not an exhaustive algorithms curriculum or distributed-systems course.
-
-## One possible starting week
-
-1. **Inventory, 20 minutes:** list actual interview formats, known constraints, and a goal or uncertainty. Use the [session brief](./templates/session-brief.md), with the planner if helpful.
-2. **Technical rep, 30-45 minutes:** one original problem, running code, one review. Record hints and evidence, not just a score.
-3. **Design, 30-45 minutes:** one user journey with state/data ownership, a request flow, a failure, and a trade-off.
-4. **Behavioral, 20 minutes:** one true story and two probing follow-ups.
-5. **Resume, if needed:** revise two high-value bullets from an [evidence ledger](./templates/experience-ledger.md), not the whole career at once.
-
-These are options, not a quota. As an interview approaches, prioritize its verified format and the specific gap that could matter. Do not turn maintenance into permanent cramming.
-
-## Use with an AI assistant
-
-### Start without installing anything
-
-Open a fresh conversation in this folder and choose one prompt. Replace bracketed inputs; unknown details are fine.
-
-If you want general preparation rather than help with a specific problem, start with:
-
-> Read README.md. I'm preparing for [role or interview type] and have [time]. I'd like a general refresh or to explore [topic, if any]. Help me choose a useful starting point using this toolkit and the other resources I already use. Ask only the context you need, and agree the scope with me before starting an exercise or building a plan.
-
-| Goal | Opening prompt |
-| --- | --- |
-| Interview context and priorities | Read `skills/interview-prep-planner/SKILL.md` and follow it for this session. Here are the interview materials and background I can share: `[excerpts/files/notes]`. I have `[available prep time, if known]` and already use `[resources, if any]`. Propose a short brief and preparation options; distinguish confirmed instructions from assumptions and wait for me to choose a next step. |
-| Resume diagnostic | Read `skills/resume-coach/SKILL.md` and follow it for this session. Review `[resume path]` for `[target role]`. Start with a prioritized diagnostic, not a rewrite. I have `[time]`. |
-| Technical practice | Read `skills/technical-screen-coach/SKILL.md` and follow it for this session. I want to practice `[format]` in `[language/runtime]` for `[time]`. Use small hints and let me attempt first. |
-| AI-assisted interview practice | Read `skills/ai-assisted-interview-coach/SKILL.md` and follow it as my practice coach. My permitted coding tool/scope is `[instructions or unknown]`, my practice repo/format is `[details or not yet chosen]`, and I have `[time]`. Agree the roles and milestones before starting; ask me to explain and verify generated work rather than silently solving it for me. |
-| Design practice | Read `skills/system-design-coach/SKILL.md` and follow it for this session. I have `[time]` for `[frontend/backend/mixed/project deep-dive]` practice. Clarify the frame before starting. |
-| Behavioral refresh | Read `skills/behavioral-coach/SKILL.md` and follow it for this session. Help me rehearse `[prompt or real event]` for `[time]`, with one follow-up at a time. |
-
-If the assistant cannot read local files, paste the complete selected `SKILL.md` and provide only the material needed for the session. Each skill includes its essential rules and a compact record format; guides and templates add depth but are not required.
-
-For a clean local trial, add:
-
-> Use only this toolkit and the documents or facts I provide, not previous conversations, account memories, or sibling folders. Do not edit the toolkit. Ask for a private working location before saving candidate material.
-
-### Optional automatic discovery
-
-Reading a skill file is not the same as registering it. This repository's top-level `skills/` folder is a distribution layout, not a default Copilot discovery path.
-
-For tools that support `.github/skills/`, copy one complete skill folder into the intended practice workspace so the result is `.github/skills/<name>/SKILL.md`. Start a new conversation and check the host's available-skills list. In Copilot CLI, use `/skills` to inspect whether the expected name and source are available; if not, use explicit-file loading and consult that tool's current installation guidance. Other tools may use different discovery paths. Installing or editing global settings is optional, not part of using this kit.
-
-### Keep the work private
-
-- Keep resumes, extracted document text, story banks, reviews, and practice outputs in a separately chosen private location outside this toolkit. Confirm the save path before writing; ignore rules are a backup, not a privacy control.
-- For a friend's document, confirm permission to review if not already established and keep factual questions easy to relay. Permission to review is not permission to publish or upload elsewhere.
-- Use permitted material; generalize confidential employer code or designs instead of pasting them.
-- Ask for explanations or separate references when useful. Record that help as coached work, not an unaided mock.
-- Do not use the assistant during an assessment where assistance is prohibited. Preparation permission is not interview permission.
+- **Planner:** "I have a [role] interview loop around [date] and about [time] to prepare. The recruiter sent this: [paste]. Where should I start?"
+- **Resume:** "Review this resume for [target role]. Start with a diagnostic, not a rewrite. [paste]"
+- **Technical:** "I want a [length] mock coding screen in [language]. Give me a small task and let me attempt it first."
+- **AI-assisted:** "My next round allows an AI coding assistant. The rules I was given are [paste, or 'I don't know']. Help me practice."
+- **Design:** "Practice a design round with me on [topic]. I have [time]."
+- **Behavioral:** "Help me tighten my answer to [question]: [paste]."
 
 ## Templates
 
-- [Session brief](./templates/session-brief.md)
-- [Experience/evidence ledger](./templates/experience-ledger.md)
-- [STAR card](./templates/star-card.md)
-- [Design worksheet](./templates/design-worksheet.md)
-- [Practice/debrief record](./templates/practice-record.md)
-- [Process inventory CSV](./templates/process-inventory.csv)
+Blank, optional worksheets. Fill them in a private folder outside this repository.
 
-The inventory is optional personal tracking, not a scorecard: `furthest_stage` is your consistently defined stage label; `final_stage_reached` records true/false/unknown separately from the outcome. Use `source_type` to distinguish recollection, calendar, or recruiter communication. Keep the filled file private and do not infer missing dates or outcomes.
+- [Session brief](./templates/session-brief.md): what you know about an interview, with sources and dates.
+- [Experience ledger](./templates/experience-ledger.md): the facts behind your resume claims, separating what was measured from what was estimated.
+- [STAR card](./templates/star-card.md): one real story with its evidence and likely follow-ups.
+- [Design worksheet](./templates/design-worksheet.md): a plan and review for a design practice session.
+- [Practice record](./templates/practice-record.md): what you tried, what help you had, and your next target.
+- [Process inventory](./templates/process-inventory.csv): optional tracking of your interview processes, one row each. It is not a scorecard. `furthest_stage` is a stage label you define consistently, and `final_stage_reached` is true, false, or unknown, kept separate from the outcome. `source_type` says whether a row comes from memory, a calendar, or recruiter communication. Leave a cell blank or `unknown` instead of guessing, and keep a filled file private.
 
-## Before sharing
+## Keep your material private
 
-Read [PUBLICATION.md](./PUBLICATION.md). Keep this toolkit in its own repository, separate from the private personal handoff and its history. Pick a license deliberately if publishing; none is silently assigned to other people's material. Do not add private employer code, paid problem statements, candidate reports, or identifying anecdotes.
+- Keep resumes, stories, practice records, and plans in a private folder outside any git repository, and confirm the save path before an assistant writes anything. Ignore rules are only a backup.
+- Your text goes to whichever AI provider you use. Chat apps may keep history or memory, so check those settings before you paste a real resume or story.
+- Use material you are permitted to use. Generalize employer details instead of pasting confidential code, designs, or customer data.
+- If you review a friend's resume, get their permission first. That is not permission to upload it anywhere else.
+- Never use an assistant during an assessment that prohibits outside help. Permission to prepare is not permission to use help in the interview.
+- Assistants make mistakes. Check facts and results, and keep your own voice.
 
-The methods were distilled from a long-running practical coaching workflow, including mistakes and corrections. They are not universal rubrics, quoted reviewer feedback, or a controlled study of AI's effect on job outcomes.
+## One possible first week
+
+1. **Inventory, 20 minutes:** list the interview formats you actually face, what you know about them, and one goal or uncertainty. The planner or the session brief can help.
+2. **Technical rep, 30 to 45 minutes:** one original task, running code, one review. Record the hints and the evidence, not just a score.
+3. **Design, 30 to 45 minutes:** one user journey with state ownership, a request flow, one failure, and one trade-off.
+4. **Behavioral, 20 minutes:** one true story and two probing follow-ups.
+5. **Resume, if needed:** revise two high-value bullets from an evidence ledger, not the whole career at once.
+
+These are options, not a quota. As an interview approaches, prioritize its verified format and the specific gap that could matter. Don't turn maintenance into permanent cramming. If you have a real date, give it and your available time to the planner so it plans around them instead of this generic week.
+
+## Limits
+
+- It is not a complete curriculum, a question bank, or a prediction of any company's questions, and it guarantees no offer.
+- It doesn't cover classic algorithm drills, take-home projects, or offer negotiation. Worked examples lean toward JavaScript, TypeScript, React, and Python.
+- AI assistants make mistakes and behave differently across tools and models. The skills were smoke-tested by giving fresh sessions run through GitHub Copilot CLI only a skill file and made-up candidate messages, then checking each reply against criteria written beforehand. That is not proof they work in every tool or model.
+- The Copilot CLI install command was run. The Claude Code steps follow its documentation and haven't been run. The shell commands assume macOS or Linux; on Windows, paste a skill instead or adapt the steps.
+- The methods come from practical coaching experience, not a controlled study.
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for what fits, the privacy rules, and how to test a skill change.
