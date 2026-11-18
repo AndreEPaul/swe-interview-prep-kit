@@ -221,8 +221,9 @@ def check_link(
     try:
         dest = path if not base else (path.parent / base).resolve()
         inside = dest == root or root in dest.parents
-        found = inside and exists_exact_case(root, dest)
-    except (OSError, ValueError, RuntimeError):  # name too long, NUL byte, symlink loop
+        # exists() follows symlinks; resolve() stopped raising on symlink loops in Python 3.13
+        found = inside and dest.exists() and exists_exact_case(root, dest)
+    except (OSError, ValueError, RuntimeError):  # name too long, NUL byte, symlink loop before 3.13
         problems.append(Problem(where, number, f"broken link: {target}"))
         return
     if not inside:
