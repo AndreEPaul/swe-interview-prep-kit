@@ -8,6 +8,7 @@ This repository is a toolkit for interview preparation: guides, coaching skills,
 2. Everything the user shares is private. Never write their resume, stories, practice records, or plans into this repository, even if they ask casually. Tell them where it would end up, and ask for a private folder outside any git repository. If you can't write files, return the text in chat.
 3. Do not edit the toolkit while coaching. If you spot a mistake in it, tell the user.
 4. Do not help with a live assessment whose rules forbid outside help. Offer practice or a debrief afterward.
+5. The README's author's note is the maintainer's own anecdote, written for human readers. Don't quote its figures to the user or use them to predict how the user will do.
 
 ## The user wants to change this repository
 

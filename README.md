@@ -8,6 +8,21 @@ Use it alongside whatever already works for you: courses, problem sites, books, 
 
 > **Early release.** Corrections and ideas are welcome (see [CONTRIBUTING.md](./CONTRIBUTING.md)), and the [limits](#limits) are real.
 
+## Author's note
+
+peer-kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
+
+For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where peer-kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
+
+<details>
+<summary>How I counted</summary>
+
+- **Data and period:** the interview processes in my own log, spanning a little over a year. None of them straddled the date I started working with the coach, so each one falls in exactly one group.
+- **"Reached the final round":** got to the final loop with the hiring team, which is the last interview stage of a process, whether or not an offer followed.
+- **Other explanations:** more interviews behind me, which roles and companies I applied to, and the job market could account for some or all of the difference. One process moves a rate by about 6 to 7 points, and with groups this small, a gap like this could also appear by chance alone.
+
+</details>
+
 ## What's inside
 
 - **Guides:** short preparation notes on resumes, coding screens, AI-assisted rounds, design, behavioral stories, and professional presence.
@@ -136,7 +151,7 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 - It doesn't cover classic algorithm drills, take-home projects, or offer negotiation. Worked examples lean toward JavaScript, TypeScript, React, and Python.
 - AI assistants make mistakes and behave differently across tools and models. The skills were smoke-tested by giving fresh sessions run through GitHub Copilot CLI only a skill file and made-up candidate messages, then checking each reply against criteria written beforehand. That is not proof they work in every tool or model.
 - The Copilot CLI install command was run. The Claude Code steps follow its documentation and haven't been run. The shell commands assume macOS or Linux; on Windows, paste a skill instead or adapt the steps.
-- The methods come from practical coaching experience, not a controlled study.
+- The methods come from one engineer's experience with AI coaching (see the [author's note](#authors-note)), not from a controlled study.
 
 ## Contributing
 
