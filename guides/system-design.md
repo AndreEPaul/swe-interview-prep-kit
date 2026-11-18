@@ -2,7 +2,7 @@
 
 Begin by identifying the frame: frontend (the state, data flow, and API behind a screen), backend/distributed (services, storage, and scale), mixed full-stack, or a real-project deep dive. Product implementation planning can use the frontend or mixed frame. A rehearsed template is a scaffold, not permission to answer a different question.
 
-For a mixed or unknown frame, propose a bounded browser-to-API-to-store flow as an assumption the candidate can steer, then choose the important seam to explore. For a real-project deep dive, establish the actual system, personal ownership, constraints, decisions, alternatives, and outcomes; keep proposed redesigns separate from what was really shipped.
+For a mixed or unknown frame, the candidate states a bounded flow as an assumption (for example, browser to API to store) and invites the interviewer to steer it, then chooses the important seam to explore. For a real-project deep dive, establish the actual system, personal ownership, constraints, decisions, alternatives, and outcomes; keep proposed redesigns separate from what was really shipped.
 
 This guide provides a worked frontend example and backend principles, not a comprehensive distributed-systems course. Use original or permitted practice, including original exercises on an announced preparation topic; do not reconstruct confidential assessments or request employer-internal designs/code. Keep candidate material and requested records outside this repository in a confirmed private location.
 

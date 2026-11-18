@@ -62,7 +62,7 @@ const atLeast3 = minLength(3);
 atLeast3("ab");  // false
 ```
 
-Prepare data now and accept another argument later, without expecting an inner function to read scope it was not defined in. A function's name is a variable in scope, not a property of an object: declaring `function isAdult() {}` does not make `rules.isAdult` exist.
+Prepare data now and accept another argument later, without expecting an inner function to read scope it was not defined in. Declaring `function isAdult() {}` creates a name in scope; it does not add `isAdult` to an object such as `rules`.
 
 ### React debounce, races, and cache are different jobs
 
@@ -74,27 +74,38 @@ A timer-owning debounce wrapper recreated every render does not share one timer.
 
 Think: stable function/debouncer, latest data supplied as arguments, returned effect cleanup, and an explicit current-request rule. State is a render snapshot; a ref is persistent mutable bookkeeping. Initializing a ref from state does not synchronize it automatically.
 
-Invalidate obsolete results, errors, and loading cleanup on a new view, even before a new debounce timer fires. Give each request a generation (a counter) and apply a response only if its generation is still the latest:
+Invalidate obsolete results, errors, and loading cleanup on a new view, even before a new debounce timer fires. Give each input a generation (a counter) and apply an outcome only if its generation is still the latest:
 
 ```js
 let latest = 0;
-async function search(query) {
-  const id = ++latest;                    // this request's generation
-  const results = await fetchResults(query);
-  if (id !== latest) return;              // a newer request started; drop this response
-  show(results);
+const debouncedSearch = debounce(search, 300);
+
+function onInput(query) {
+  const id = ++latest;                    // every new input starts a new generation
+  debouncedSearch(query, id);
+}
+
+async function search(query, id) {
+  try {
+    const results = await fetchResults(query);
+    if (id === latest) show(results);     // a newer input exists otherwise; drop this response
+  } catch (err) {
+    if (id === latest) showError(err);
+  } finally {
+    if (id === latest) setLoading(false);
+  }
 }
 ```
 
-A counter identifies the request, not just its text. If the user types `a`, then `ab`, then `a` again, two requests carry the same query, and only the counter says which one may still update the screen. Without the guard, a slow response to an older request can arrive last and overwrite newer results.
+Bumping the counter on input, not when the request starts, is what makes a response that arrives during the debounce wait count as stale. A counter identifies the input, not just its text. If the user types `a`, then `ab`, then `a` again, two requests carry the same query, and only the counter says which one may still update the screen. Without the guard, a slow response to an older request can arrive last and overwrite newer results.
 
-Cache normalized successful results, including empty arrays; do not disguise failures as successes. Define expiry boundaries and cache ownership. A cache hit must still invalidate older work even though it starts no request.
+Unless the spec says otherwise, cache normalized successful results, including empty arrays; do not disguise failures as successes. Define expiry boundaries and cache ownership. A cache hit must still invalidate older work even though it starts no request.
 
 ### State and display
 
 - Define idle/loading/success-empty/success-data/error behavior.
 - Clear input is a transition, not merely "skip fetching."
-- Each component instance owns its own state and the DOM it renders. Two instances must not share state or update each other's nodes.
+- Each component instance owns its own state and the DOM it renders. Two instances should not share state by accident or update each other's nodes.
 - For rendering, created nodes must actually be inserted. Visually identical output can still fail an overly narrow test; understand the contract before changing code.
 
 ### Sorting and ownership
@@ -110,14 +121,15 @@ If your round is in Python, practice the matching traps:
 ```python
 async def get_user(): return {"name": "Ada"}
 
-get_user()["name"]            # TypeError: this is a coroutine, not the dict
-(await get_user())["name"]    # "Ada" (inside another async function)
+async def main():
+    # get_user()["name"] would raise TypeError: a coroutine is not the dict
+    return (await get_user())["name"]   # "Ada"; await only works inside an async function
 
 fns = [lambda: i for i in range(3)]
 [f() for f in fns]            # [2, 2, 2]: each lambda looks up i when called, after the loop ended
 fns = [lambda i=i: i for i in range(3)]   # bind the current value instead: [0, 1, 2]
 
-def add(item, bucket=[]):     # the default list is created once and shared by every call
+def add(item, bucket=[]):     # the default list is created once and shared by every call that omits it
     bucket.append(item)
     return bucket
 

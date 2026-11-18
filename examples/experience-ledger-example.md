@@ -14,13 +14,13 @@ The template is a wide table. This example lays the same fields out as rows so i
 | My role | I designed and wrote the client-side fetching and caching. A teammate owned the API changes. |
 | Actual decision/action | Replaced a request on every keystroke with a debounced request that ignores stale responses, and cached recent queries. I also considered server-side pagination alone, and rejected it because the API team could not change that endpoint that quarter. |
 | Outcome | Median page load went from 2.4 s to 1.1 s on the team's performance dashboard, comparing the two weeks before and after release. |
-| Evidence / scope / open question | A dashboard screenshot is saved privately. The claim says 60%, but 2.4 s to 1.1 s is about a 54% cut. Open question: which figure do I state? |
+| Evidence / scope / open question | A dashboard screenshot is saved privately. The claim says 60%, but 2.4 s to 1.1 s is about a 54% cut. The teammate's API change shipped in the same release, so the dashboard shows the combined effect, not my part alone. Open question: which figure do I state, and how do I credit both changes? |
 | Measured / estimated / planned / unknown | Measured (median, two-week windows). Source: externally corroborated by the dashboard. |
 
 - What colleagues owned: the API changes (a teammate) and the dashboard instrumentation (the platform team).
 - Metric baseline/population/time period: median page load across all searches, two weeks before and two weeks after release.
 - What I can explain under technical follow-up: how the stale-response check works, why the cache key includes the filters as well as the query, and what the user sees on an error.
-- Claim still needing verification: the 60%. Use the dashboard figure.
+- Claim still needing verification: the 60%. Use the dashboard figure, and say the release also included an API change.
 
 ## Entry 2: a figure with no source yet
 
@@ -40,5 +40,6 @@ A resume bullet drafted from this entry keeps the gap visible instead of filling
 ## What the ledger caught
 
 - A claim that did not match its own evidence (60% against about 54%), found before an interviewer asked.
+- A shared result: the dashboard measures the whole release, so the bullet should not credit the full drop to the client work alone.
 - An estimate that was about to be stated as a fact. It stays an estimate until it has a source.
 - What colleagues owned, written down, so each bullet says what I did and not what the team did.
