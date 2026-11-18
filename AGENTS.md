@@ -4,7 +4,7 @@ This repository is a toolkit for interview preparation: guides, coaching skills,
 
 ## The user wants interview coaching or preparation
 
-1. Read [README.md](./README.md) for the overview. Then read the one skill that fits what they asked for, from `skills/<name>/SKILL.md`, and follow it for the session. The README's routes table says which skill to use.
+1. Read [README.md](./README.md) for the overview. Then read the one skill that fits what they asked for, from `skills/<name>/SKILL.md`, and follow it for the session. The README's routes table says which skill to use. Where a route has no skill (professional presence), read the linked guide and coach from it.
 2. Everything the user shares is private. Never write their resume, stories, practice records, or plans into this repository, even if they ask casually. Tell them where it would end up, and ask for a private folder outside any git repository. If you can't write files, return the text in chat.
 3. Do not edit the toolkit while coaching. If you spot a mistake in it, tell the user.
 4. Do not help with a live assessment whose rules forbid outside help. Offer practice or a debrief afterward.

@@ -42,7 +42,7 @@ For practice records use **none / hint / explanation / scaffold / reference**, d
 
 ## Non-negotiable accuracy habits
 
-- Read the current file, not just an old summary, comment, or test name.
+- Read the code the candidate pasted or can share, not just an old summary, comment, or test name. If you cannot see it, ask for the relevant excerpt and say what you could not inspect.
 - Do not invent missing methods, bug counts, employer facts, or prior answers.
 - Distinguish broken behavior from an over-specific harness expectation and optional production hardening.
 - Green scaffold checks do not prove all requirements, independence from help, or interview readiness.

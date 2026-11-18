@@ -2,7 +2,7 @@
 
 Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
 
-The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills. Each one asks the assistant to have you attempt first, give the smallest useful help, say what help it gave, and never invent details about your experience. The guides and templates are useful without any AI.
+The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills. Each one asks the assistant to work from what you bring (an attempt, a draft, or your notes), give the smallest useful help, say what help it gave, and never invent details about your experience. The guides and templates are useful without any AI.
 
 Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
@@ -17,12 +17,12 @@ Use it alongside whatever already works for you: courses, problem sites, books, 
 
 ## How the coaching works
 
-- **You go first.** The assistant plays the interviewer. You restate the task, attempt it, and explain your thinking before it helps.
+- **You go first.** In the practice coaches the assistant plays the interviewer: you restate the task, attempt it, and explain your thinking before it helps. The resume coach and planner review what you bring instead. You can ask for an explanation at any time, and it is simply labeled as help.
 - **Smallest useful help, labeled.** Hints come before explanations, and explanations before reference answers. Help is recorded as none, hint, explanation, scaffold, or reference. The labels describe what was supplied. They are not a score.
 - **No made-up details.** The coach is told not to invent metrics, quotes, or decisions. Missing facts become visible `[placeholders]` and questions for you. Assistants can still slip, so check what it writes against what really happened.
-- **Short starts.** The first reply is useful on its own. It asks at most three questions and says what it will assume if you skip one.
+- **Short starts.** The first reply is useful on its own. It asks at most three questions and says what it will assume for any setup question you skip.
 - **Evidence over verdicts.** It reviews the code or draft you actually pasted, says what it couldn't check, and doesn't predict outcomes or rate your readiness.
-- **Practice only.** No help in a live assessment that forbids outside help. Nothing is saved unless you ask, and then only to a folder you confirm. What you paste still goes to your AI provider; see [Keep your material private](#keep-your-material-private).
+- **Practice only.** The coach declines to help in a live assessment that forbids outside help. It is told to save nothing unless you ask, and then only to a folder you confirm. What you paste still goes to your AI provider; see [Keep your material private](#keep-your-material-private).
 
 ## What it looks like
 
@@ -69,10 +69,10 @@ Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do)
 **3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), then:
 
 - GitHub Copilot CLI: `copilot skill add ~/peer-kit/skills`, then `copilot skill list` to check. This points at your clone, so `git pull` updates the skills. (Checked with Copilot CLI 1.0.114.)
-- Claude Code: `mkdir -p ~/.claude/skills && cp -r ~/peer-kit/skills/* ~/.claude/skills/`. This is a copy, so repeat it after `git pull`. You can then type `/behavioral-coach` and so on, or just describe what you want. See [Claude Code's skills documentation](https://code.claude.com/docs/en/skills).
+- Claude Code: `mkdir -p ~/.claude/skills && cp -r ~/peer-kit/skills/* ~/.claude/skills/`. This is a copy that overwrites any skill of the same name, so look at `ls ~/.claude/skills` first, and repeat the copy after `git pull` to update. You can then type `/behavioral-coach` and so on, or just describe what you want. See [Claude Code's skills documentation](https://code.claude.com/docs/en/skills).
 - Other tools: the skills use the open [Agent Skills format](https://agentskills.io/specification). Check where your tool loads skills from, and if you can't find out, paste the file instead.
 
-Then start your assistant from a private practice folder outside any git repository, so anything it saves stays out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
+Then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
 
 **If the coach drifts.** In a long chat an assistant can lose track of its instructions. If it hands you answers before you have tried, or fills in details you didn't give, say so plainly (for example, "hint only" or "don't invent that"), or start a fresh chat and paste the skill again.
 
@@ -113,7 +113,7 @@ Filled examples, all synthetic and labeled as such: an [experience ledger](./exa
 
 ## Keep your material private
 
-- Keep resumes, stories, practice records, and plans in a private folder outside any git repository, and confirm the save path before an assistant writes anything. Ignore rules are only a backup.
+- Keep resumes, stories, practice records, and plans in a private folder outside any git repository, and confirm the save path before an assistant writes anything. Ignore rules are only a backup. Create the folder, then check it with `git -C ~/prep-notes rev-parse --is-inside-work-tree`: you want "not a git repository", and if it prints `true`, pick another folder. Skip folders that sync to a service you don't want holding your resume.
 - Your text goes to whichever AI provider you use. Chat apps may keep history or memory, so check those settings before you paste a real resume or story.
 - Use material you are permitted to use. Generalize employer details instead of pasting confidential code, designs, or customer data.
 - If you review a friend's resume, get their permission first. That is not permission to upload it anywhere else.

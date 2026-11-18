@@ -14,7 +14,7 @@ Welcome:
 Out of scope:
 
 - Question banks, or "real questions asked at company X".
-- Anything that helps someone during a live assessment that forbids outside help.
+- Anything that helps someone during a live assessment whose rules forbid outside help.
 - Promises of outcomes. No guaranteed offers, and no causal claims from personal experience.
 
 ## Privacy rules
@@ -36,8 +36,8 @@ Each folder under `skills/` has to work when it is copied on its own or pasted i
 - No links to, or references to, other files in this repository: not guides, templates, or other skills. Mention a sibling skill by name and say what to do if it is not installed.
 - Define everything the skill relies on inside the skill, such as the help labels and the practice-record format.
 - Follow the open [Agent Skills format](https://agentskills.io/specification): `name` matches the folder name (lowercase letters, digits, single hyphens, at most 64 characters), and `description` is at most 1024 characters and says both what the skill does and when to use it. The checker is a little stricter than the spec: it rejects angle brackets in descriptions, which some tools' validators do, and caps `SKILL.md` at 500 lines, the length the spec recommends.
-- The first reply should deliver something useful before asking anything, and then ask at most three questions, each with a stated default.
-- Never save the candidate's material without a location they confirm that is outside any git repository, and never help with a live assessment.
+- The first reply should deliver something useful before asking anything, and then ask at most three questions. For a setup choice, state the default you will assume. For a fact only the candidate knows, leave it unknown instead of guessing.
+- Never save the candidate's material without a location they confirm that is outside any git repository. Decline to help with a live assessment whose rules forbid outside help, and offer practice or a debrief afterward.
 
 ## Checks
 
@@ -54,7 +54,7 @@ To also catch names that must never appear, put one term per line in a file outs
 python3 tools/check.py --deny-list ~/peer-kit-deny.txt
 ```
 
-You can set `PEER_KIT_DENY_LIST` instead of passing the flag. Matches are reported by line number only, so the output never prints the term.
+You can set `PEER_KIT_DENY_LIST` instead of passing the flag. A match is reported by file and line number, not by the matched text. A file path that itself contains a term is still printed.
 
 ## Testing a skill change
 
@@ -63,7 +63,7 @@ Static checks cannot tell you whether a coach behaves well. For any change to a 
 1. **Write down what a good reply looks like before you read one.** For example: at most three questions, no invented facts, the candidate attempts first, help is labeled, nothing is saved.
 2. **Test cold.** In a fresh session, give an assistant only the skill file and a synthetic candidate message, and ask it to reply and then report what was unclear:
 
-   > Read only this file: `<path to SKILL.md>`. Act as the assistant it describes and answer the candidate message below in plain chat. Then add READER NOTES: what you were not given, what was unclear or contradictory, what you would cut, and what would break in a different AI tool.
+   > Use only the skill text below (or the attached SKILL.md). Act as the assistant it describes and answer the candidate message below in plain chat. Then add READER NOTES: what you were not given, what was unclear or contradictory, what you would cut, and what would break in a different AI tool.
 
 3. **Include a trap.** Examples: vague resume bullets with a request for numbers, a story with an unsupported claim, a pasted bug that has a tempting full fix.
 4. **Retest with a different message.** If your test message ends up as an example in the skill, the skill will pass by echoing it.
