@@ -200,6 +200,14 @@ class CheckTests(unittest.TestCase):
         self.assertHas(problems, "x/big.txt: file is larger than 1 MB")
         self.assertFalse(any(".env.sample" in p for p in problems), problems)
 
+    def test_media_and_exports_are_forbidden(self) -> None:
+        banned = ["shot.PNG", "photo.jpeg", "mock.m4a", "call.webm", "mock.vtt", "recruiter.eml", "invite.ics", "traffic.har"]
+        problems = self.tree({f"x/{name}": "x" for name in banned} | {"x/diagram.svg": "<svg/>\n"}).problems()
+        for name in banned:
+            with self.subTest(name):
+                self.assertHas(problems, f"x/{name}: {Path(name).suffix} files must not be committed")
+        self.assertFalse(any("diagram.svg" in p for p in problems), problems)
+
     def test_line_endings_bom_and_line_numbers(self) -> None:
         tree = self.tree()
         guide = tree.root / "guides/a.md"

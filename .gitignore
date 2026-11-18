@@ -14,3 +14,21 @@ local/
 scratch/
 *.key
 *.pem
+# Screenshots, recordings, transcripts, and mail or calendar exports can hold private details.
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.heic
+*.mp3
+*.m4a
+*.wav
+*.mp4
+*.mov
+*.webm
+*.vtt
+*.srt
+*.eml
+*.msg
+*.ics

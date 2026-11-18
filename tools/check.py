@@ -44,6 +44,10 @@ FORBIDDEN_SUFFIXES = {
     ".pem", ".key", ".p12", ".pfx", ".log",
     ".ppt", ".pptx", ".xls", ".xlsx", ".odt", ".tgz", ".7z", ".rar", ".bz2", ".xz",
     ".jks", ".keystore", ".sqlite", ".db", ".mp4", ".mov", ".heic",
+    # Screenshots, recordings, transcripts, and mail or calendar exports can all hold private details.
+    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff", ".heif",
+    ".mp3", ".m4a", ".wav", ".aac", ".flac", ".ogg", ".opus", ".webm", ".mkv", ".avi", ".m4v",
+    ".vtt", ".srt", ".eml", ".msg", ".mbox", ".pst", ".ics", ".har",
 }
 MAX_FILE_BYTES = 1_000_000
 MAX_SKILL_LINES = 500
