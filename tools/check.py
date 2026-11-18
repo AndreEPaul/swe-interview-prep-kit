@@ -10,9 +10,10 @@ forbidden file types, and privacy patterns (machine paths, emails, secrets, and 
 optional private deny-list). Standard library only; PyYAML is used for stricter
 frontmatter parsing when it is installed. Exit status is 1 if any problem is found.
 
-Deny-list file: one term per line, matched case-insensitively as a whole word; start
-a line with "re:" for a regular expression; "#" starts a comment. Keep that file
-outside this repository. Matches are reported by line number, never by term.
+Deny-list file: one term per line, matched case-insensitively as a whole word on a
+single line; start a line with "re:" for a regular expression; "#" at the start of a
+line or after whitespace starts a comment. Keep that file outside this repository.
+Matches are reported by line number, never by term.
 """
 
 from __future__ import annotations
@@ -41,6 +42,8 @@ TEXT_SUFFIXES = {".md", ".csv", ".json", ".yml", ".yaml", ".txt", ".py", ".js", 
 FORBIDDEN_SUFFIXES = {
     ".pdf", ".doc", ".docx", ".rtf", ".pages", ".zip", ".tar", ".gz",
     ".pem", ".key", ".p12", ".pfx", ".log",
+    ".ppt", ".pptx", ".xls", ".xlsx", ".odt", ".tgz", ".7z", ".rar", ".bz2", ".xz",
+    ".jks", ".keystore", ".sqlite", ".db", ".mp4", ".mov", ".heic",
 }
 MAX_FILE_BYTES = 1_000_000
 MAX_SKILL_LINES = 500
@@ -48,27 +51,33 @@ SKILL_KEYS = {"name", "description", "license", "compatibility", "metadata", "al
 SKILL_NAME = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 FRONTMATTER = re.compile(r"\A---\r?\n(.*?)\r?\n---[ \t]*(?:\r?\n|\Z)", re.S)
 
-FENCE = re.compile(r"^ {0,3}(`{3,}|~{3,})")
+FENCE = re.compile(r"^[ \t>]*(`{3,}(?=[^`]*$)|~{3,})")
 HEADING = re.compile(r"^ {0,3}#{1,6}[ \t]+(.*?)[ \t]*#*[ \t]*$")
 INLINE_CODE = re.compile(r"(?<!`)(`+)(?!`)(.+?)(?<!`)\1(?!`)")
 LINK = re.compile(
     r"!?\[(?:[^\[\]\\]|\\.|\[[^\[\]]*\])*\]\(\s*(<[^>\n]*>|(?:[^()\s]|\([^()\s]*\))*)"
 )
-REF_DEF = re.compile(r"^ {0,3}\[[^\]]+\]:\s*(<[^>]*>|\S+)")
+REF_DEF = re.compile(r"^ {0,3}\[(?!\^)[^\]]+\]:\s*(<[^>]*>|\S+)(?:\s+(?:\"[^\"]*\"|'[^']*'|\([^)]*\)))?\s*$")
 HTML_ID = re.compile(r"\b(?:id|name)\s*=\s*[\"']([^\"']+)[\"']", re.I)
 EXTERNAL = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 
-EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,})")
+EMAIL = re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,})")
 ALLOWED_EMAIL_DOMAINS = {"example.com", "example.org", "example.net", "users.noreply.github.com"}
-GENERIC_HOME_NAMES = {"you", "your-name", "yourname", "name", "user", "username", "me", "someone", "example"}
-HOME_PATH = re.compile(r"(?:/Users/|/home/)([A-Za-z0-9._-]+)/|[A-Za-z]:\\Users\\([^\\\s]+)\\")
+ALLOWED_EMAIL_ADDRESSES = {"git@github.com", "noreply@github.com", "noreply@anthropic.com"}
+GENERIC_HOME_NAMES = {"you", "your-name", "yourname", "name", "user", "username", "me", "someone", "example", "runner"}
+HOME_PATH = re.compile(  # POSIX names are case-sensitive on purpose, so API routes such as /users/42 pass
+    r"(?<![\w.~-])(?:/Users/|/home/)([A-Za-z0-9._-]+)(?![A-Za-z0-9._-])"
+    r"|(?i:[A-Za-z]:\\{1,2}Users\\{1,2})([^\\\s\"'`]+)"
+)
 PRIVACY_PATTERNS = [
     ("agent session path", re.compile(r"[.]copilot/session-state|[.]claude/projects/|[.]codex/sessions")),
-    ("private key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
+    ("private key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY( BLOCK)?-----")),
     ("GitHub token", re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{20,})\b")),
-    ("AWS access key id", re.compile(r"\bAKIA[0-9A-Z]{16}\b")),
+    ("AWS access key id", re.compile(r"\b(?:AKIA|ASIA)[0-9A-Z]{16}\b")),
     ("Slack token", re.compile(r"\bxox[abprs]-[A-Za-z0-9-]{10,}")),
-    ("API secret key", re.compile(r"\bsk-[A-Za-z0-9]{20,}\b")),
+    ("API secret key", re.compile(r"\bsk-[A-Za-z0-9_-]{20,}")),
+    ("Google API key", re.compile(r"\bAIza[0-9A-Za-z_-]{35}")),
+    ("JSON web token", re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.")),
 ]
 
 
@@ -84,6 +93,25 @@ class Problem(NamedTuple):
 
 def rel(root: Path, path: Path) -> str:
     return path.relative_to(root).as_posix()
+
+
+def lines_of(text: str) -> List[str]:
+    """Split on \\n, \\r\\n and \\r only; str.splitlines() also splits on U+2028, \\x0c, \\x85 and shifts line numbers."""
+    lines = re.split(r"\r\n|\r|\n", text)
+    return lines[:-1] if lines and lines[-1] == "" else lines
+
+
+def exists_exact_case(root: Path, dest: Path) -> bool:
+    """Existence check that is case-sensitive on every OS (macOS and Windows would accept 'B.MD', Linux CI would not)."""
+    current = root
+    try:
+        for part in dest.relative_to(root).parts:
+            if part not in os.listdir(current):
+                return False
+            current = current / part
+    except (OSError, ValueError):
+        return False
+    return True
 
 
 def list_files(root: Path) -> List[Path]:
@@ -106,24 +134,30 @@ def list_files(root: Path) -> List[Path]:
     return found
 
 
-def outside_fences(text: str) -> Iterator[Tuple[int, str]]:
+def outside_fences(text: str, unclosed: Optional[List[int]] = None) -> Iterator[Tuple[int, str]]:
     """Yield (line number, raw line) for markdown lines that are not inside fenced code."""
     fence: Optional[str] = None
-    for number, line in enumerate(text.splitlines(), 1):
+    opened = 0
+    for number, line in enumerate(lines_of(text), 1):
         match = FENCE.match(line)
         if fence:
-            closing = line.strip()
+            closing = line.lstrip(" \t>").rstrip()
             if match and closing[0] == fence[0] and len(match.group(1)) >= len(fence) and not closing.strip(fence[0]):
                 fence = None
             continue
         if match:
-            fence = match.group(1)
+            fence, opened = match.group(1), number
             continue
         yield number, line
+    if fence and unclosed is not None:
+        unclosed.append(opened)
 
 
 def slugify(heading: str) -> str:
-    """GitHub-style heading anchor (without the duplicate-suffix handling)."""
+    """Approximate GitHub heading anchor (duplicate suffixes are added by the caller).
+
+    Headings with emoji, underscores, or HTML entities can differ from GitHub's anchors.
+    """
     text = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"\1", heading)
     text = re.sub(r"<[^>]+>", "", text).strip().lower()
     return re.sub(r"[^\w\- ]", "", text).replace(" ", "-")
@@ -156,7 +190,8 @@ def scan_markdown(root: Path, texts: Dict[Path, str], problems: List[Problem]) -
     anchors = {p: heading_anchors(texts[p]) for p in md_files}
     for path in md_files:
         info.edges[path] = set()
-        for number, line in outside_fences(texts[path]):
+        unclosed: List[int] = []
+        for number, line in outside_fences(texts[path], unclosed):
             visible = INLINE_CODE.sub("", line)
             targets = [m.group(1) for m in LINK.finditer(visible)]
             ref = REF_DEF.match(visible)
@@ -166,6 +201,8 @@ def scan_markdown(root: Path, texts: Dict[Path, str], problems: List[Problem]) -
                 check_link(root, path, number, target, anchors, info, problems)
             for span in INLINE_CODE.finditer(line):
                 info.code_paths.append((path, number, span.group(2).strip()))
+        if unclosed:
+            problems.append(Problem(rel(root, path), unclosed[0], "code fence is never closed; the rest of the file is not checked"))
     return info
 
 
@@ -180,17 +217,22 @@ def check_link(
         return
     base, _, fragment = target.partition("#")
     base = unquote(base.split("?", 1)[0])
-    dest = path if not base else (path.parent / base).resolve()
     where = rel(root, path)
     try:
-        dest.relative_to(root)
-    except ValueError:
+        dest = path if not base else (path.parent / base).resolve()
+        inside = dest == root or root in dest.parents
+        found = inside and exists_exact_case(root, dest)
+    except (OSError, ValueError, RuntimeError):  # name too long, NUL byte, symlink loop
+        problems.append(Problem(where, number, f"broken link: {target}"))
+        return
+    if not inside:
         problems.append(Problem(where, number, f"link leaves the repository: {target}"))
         return
-    if not dest.exists():
+    if not found:
         problems.append(Problem(where, number, f"broken link: {target}"))
         return
     if dest.is_dir():
+        info.links.append((path, number, dest))
         for index in ("README.md", "SKILL.md"):
             if (dest / index).is_file():
                 info.edges[path].add(dest / index)
@@ -209,8 +251,8 @@ def check_code_paths(root: Path, info: MarkdownInfo, problems: List[Problem]) ->
         first = span.split("/", 1)[0]
         if "/" not in span or first not in CHECKED_PATH_ROOTS or re.search(r"[\s<>*{}$|]|\.\.\.", span):
             continue
-        target = span.partition("#")[0]
-        if not (root / target).exists():
+        target = os.path.normpath(span.partition("#")[0])
+        if not any(exists_exact_case(root, base / target) for base in (root, path.parent)):
             problems.append(Problem(rel(root, path), number, f"`{span}` does not exist in this repository"))
 
 
@@ -228,7 +270,7 @@ def check_reachability(root: Path, files: List[Path], info: MarkdownInfo, proble
                 queue.append(nxt)
     for path in files:
         parts = path.relative_to(root).parts
-        if parts[0] in CONTENT_DIRS and len(parts) > 1 and path.suffix in {".md", ".csv"} and path not in reached:
+        if parts[0] in CONTENT_DIRS and len(parts) > 1 and path.suffix.lower() in {".md", ".csv"} and path not in reached:
             problems.append(Problem(rel(root, path), 0, "not reachable from README.md through links"))
 
 
@@ -252,7 +294,7 @@ def read_frontmatter(text: str) -> Tuple[Optional[Dict[str, object]], List[str]]
     if yaml is not None:
         try:
             fields = yaml.safe_load(block)
-        except yaml.YAMLError as exc:
+        except (yaml.YAMLError, ValueError) as exc:  # ValueError: PyYAML builds datetime.date for 2024-13-45
             return None, errors + [f"invalid YAML: {str(exc).splitlines()[0]}"]
         if not isinstance(fields, dict):
             return None, errors + ["frontmatter is not a mapping"]
@@ -260,6 +302,8 @@ def read_frontmatter(text: str) -> Tuple[Optional[Dict[str, object]], List[str]]
     fields = {}
     last = None
     for line in block.splitlines():
+        if not line.strip() or line.lstrip().startswith("#") or line.startswith("- "):
+            continue
         if line[:1].isspace() and last:
             fields[last] = f"{fields[last]} {line.strip()}".strip()
             continue
@@ -298,11 +342,13 @@ def check_skills(root: Path, files: List[Path], texts: Dict[Path, str], info: Ma
         if text.count("\n") > MAX_SKILL_LINES:
             problems.append(Problem(where, 0, f"longer than {MAX_SKILL_LINES} lines; move detail into references/"))
         for path, number, dest in info.links:
-            if folder in path.parents and folder not in dest.parents:
+            if folder in path.parents and dest != folder and folder not in dest.parents:
                 problems.append(Problem(rel(root, path), number,
                                         f"skill links outside its own folder ({rel(root, dest)}); skills must stand alone"))
         for path, number, span in info.code_paths:
-            if folder in path.parents and "/" in span and span.split("/", 1)[0] in CHECKED_PATH_ROOTS:
+            if folder not in path.parents or "/" not in span or span.lstrip("./").split("/", 1)[0] not in CHECKED_PATH_ROOTS:
+                continue
+            if not exists_exact_case(root, folder / os.path.normpath(span.partition("#")[0])):
                 problems.append(Problem(rel(root, path), number,
                                         f"skill refers to repository path `{span}`; skills must stand alone"))
 
@@ -325,13 +371,26 @@ def check_skill_fields(where: str, folder_name: str, fields: Dict[str, object], 
     else:
         if len(description) > 1024:
             problems.append(Problem(where, 1, f"description is {len(description)} characters; the limit is 1024"))
-        if "<" in description or ">" in description:
+        if re.search(r"</?[A-Za-z][^>]*>", description):
             problems.append(Problem(where, 1, "description must not contain angle brackets"))
+    compat = fields.get("compatibility")
+    if "compatibility" in fields and not (isinstance(compat, str) and 1 <= len(compat.strip()) <= 500):
+        problems.append(Problem(where, 1, "compatibility must be a string of 1-500 characters"))
+    meta, tools = fields.get("metadata"), fields.get("allowed-tools")
+    if yaml is not None:  # the no-PyYAML fallback parser flattens nested values into strings
+        if meta is not None and not (isinstance(meta, dict) and all(isinstance(k, str) and isinstance(v, str) for k, v in meta.items())):
+            problems.append(Problem(where, 1, 'metadata must map string keys to string values (quote numbers: version: "1.0")'))
+        if tools is not None and not isinstance(tools, str):
+            problems.append(Problem(where, 1, "allowed-tools must be one space-separated string, not a list"))
 
 
 def check_csv(root: Path, path: Path, text: str, problems: List[Problem]) -> None:
     where = rel(root, path)
-    rows = list(csv.reader(text.splitlines()))
+    try:
+        rows = list(csv.reader(lines_of(text)))
+    except csv.Error as exc:  # e.g. NUL bytes on Python 3.9
+        problems.append(Problem(where, 0, f"malformed CSV: {exc}"))
+        return
     if not rows or not any(rows[0]):
         problems.append(Problem(where, 1, "CSV has no header row"))
         return
@@ -345,9 +404,12 @@ def check_csv(root: Path, path: Path, text: str, problems: List[Problem]) -> Non
 
 def check_privacy(where: str, text: str, deny: List[Tuple[int, "re.Pattern[str]"]],
                   problems: List[Problem]) -> None:
-    for number, line in enumerate(text.splitlines(), 1):
+    for number, line in enumerate(lines_of(text), 1):
         for match in EMAIL.finditer(line):
-            if match.group(1).lower() not in ALLOWED_EMAIL_DOMAINS:
+            domain = match.group(1).lower()
+            if match.group(0).lower() in ALLOWED_EMAIL_ADDRESSES:
+                continue
+            if not any(domain == d or domain.endswith("." + d) for d in ALLOWED_EMAIL_DOMAINS):
                 problems.append(Problem(where, number, "email address (use an example.com address or remove it)"))
         for match in HOME_PATH.finditer(line):
             owner = (match.group(1) or match.group(2) or "").lower()
@@ -364,7 +426,7 @@ def check_privacy(where: str, text: str, deny: List[Tuple[int, "re.Pattern[str]"
 def check_whitespace(where: str, text: str, problems: List[Problem]) -> None:
     if "\r" in text:
         problems.append(Problem(where, 0, "CRLF line endings; use LF"))
-    for number, line in enumerate(text.splitlines(), 1):
+    for number, line in enumerate(lines_of(text), 1):
         if line != line.rstrip():
             problems.append(Problem(where, number, "trailing whitespace"))
     if text and not text.endswith("\n"):
@@ -380,7 +442,7 @@ def check_file_policy(root: Path, path: Path, problems: List[Problem]) -> None:
         problems.append(Problem(where, 0, "symlinks are not allowed"))
     elif path.suffix.lower() in FORBIDDEN_SUFFIXES:
         problems.append(Problem(where, 0, f"{path.suffix} files must not be committed"))
-    elif name in {".DS_Store", ".npmrc", ".env"} or (name.startswith(".env.") and not name.endswith(".example")):
+    elif name in {".DS_Store", ".npmrc", ".env"} or (name.startswith(".env.") and not name.endswith((".example", ".sample", ".template"))):
         problems.append(Problem(where, 0, "local environment or config file must not be committed"))
     elif path.stat().st_size > MAX_FILE_BYTES:
         problems.append(Problem(where, 0, "file is larger than 1 MB"))
@@ -388,14 +450,20 @@ def check_file_policy(root: Path, path: Path, problems: List[Problem]) -> None:
 
 def load_deny_list(path: Path) -> List[Tuple[int, "re.Pattern[str]"]]:
     entries = []
-    for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-        line = raw.strip()
+    for number, raw in enumerate(path.read_text(encoding="utf-8-sig").splitlines(), 1):
+        line = re.sub(r"\s+#.*$", "", raw.strip())  # a trailing "  # note" is a comment too, as documented
         if not line or line.startswith("#"):
             continue
-        if line.startswith("re:"):
-            entries.append((number, re.compile(line[3:], re.I)))
-        else:
-            entries.append((number, re.compile(r"(?<!\w)" + re.escape(line) + r"(?!\w)", re.I)))
+        try:
+            if line.startswith("re:"):
+                body = line[3:].strip()
+                if not body:
+                    raise ValueError("empty regular expression")
+                entries.append((number, re.compile(body, re.I)))
+            else:
+                entries.append((number, re.compile(r"(?<![^\W_])" + re.escape(line) + r"(?![^\W_])", re.I)))
+        except (re.error, ValueError) as exc:
+            raise ValueError(f"deny-list line {number}: {exc}")
     return entries
 
 
@@ -411,16 +479,28 @@ def run(root: Path, deny: Optional[List[Tuple[int, "re.Pattern[str]"]]] = None) 
         for entry, pattern in deny:
             if pattern.search(where):
                 problems.append(Problem(where, 0, f"path matches deny-list line {entry}"))
-        if path.is_symlink() or path.suffix.lower() not in TEXT_SUFFIXES:
+        if path.is_symlink():
             continue
+        is_text = path.suffix.lower() in TEXT_SUFFIXES
         try:
-            text = path.read_text(encoding="utf-8")
+            if path.stat().st_size > MAX_FILE_BYTES:
+                continue
+            text = path.read_bytes().decode("utf-8")  # read_text() would fold CRLF into LF before check_whitespace sees it
         except UnicodeDecodeError:
-            problems.append(Problem(where, 0, "not valid UTF-8"))
+            if is_text:
+                problems.append(Problem(where, 0, "not valid UTF-8"))
+            continue
+        except OSError as exc:
+            problems.append(Problem(where, 0, f"cannot read file: {exc.strerror or exc}"))
+            continue
+        if text.startswith("\ufeff"):
+            problems.append(Problem(where, 1, "starts with a UTF-8 byte-order mark; save the file without BOM"))
+            text = text[1:]
+        check_privacy(where, text, deny, problems)
+        if not is_text:
             continue
         texts[path] = text
         check_whitespace(where, text, problems)
-        check_privacy(where, text, deny, problems)
         if path.suffix.lower() == ".csv":
             check_csv(root, path, text, problems)
         elif path.suffix.lower() == ".json":
@@ -429,6 +509,10 @@ def run(root: Path, deny: Optional[List[Tuple[int, "re.Pattern[str]"]]] = None) 
             except ValueError as exc:
                 problems.append(Problem(where, 0, f"invalid JSON: {exc}"))
     info = scan_markdown(root, texts, problems)
+    listed = set(files)
+    for path, number, dest in info.links:
+        if dest.is_file() and dest not in listed:
+            problems.append(Problem(rel(root, path), number, f"link target {rel(root, dest)} is ignored by git, so it will not be published"))
     check_code_paths(root, info, problems)
     check_reachability(root, files, info, problems)
     check_skills(root, files, texts, info, problems)
@@ -439,20 +523,27 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent,
                         help="repository root (default: the parent of tools/)")
-    parser.add_argument("--deny-list", type=Path, default=os.environ.get("PEER_KIT_DENY_LIST"),
+    parser.add_argument("--deny-list", type=Path, default=os.environ.get("PEER_KIT_DENY_LIST") or None,
                         help="private file of terms that must not appear (env: PEER_KIT_DENY_LIST)")
     args = parser.parse_args(argv)
+    if not args.root.is_dir():
+        print(f"repository root not found: {args.root}", file=sys.stderr)
+        return 2
     deny = None
     if args.deny_list:
         deny_path = Path(args.deny_list).expanduser()
         if not deny_path.is_file():
             print(f"deny-list file not found: {deny_path}", file=sys.stderr)
             return 2
-        deny = load_deny_list(deny_path)
+        try:
+            deny = load_deny_list(deny_path)
+        except (OSError, ValueError) as exc:  # UnicodeDecodeError is a ValueError
+            print(f"cannot use deny-list {deny_path}: {exc}", file=sys.stderr)
+            return 2
     problems, count = run(args.root, deny)
     for problem in problems:
         print(problem)
-    suffix = "" if deny is not None else " (no deny-list supplied)"
+    suffix = f" (deny-list: {len(deny)} term(s))" if deny is not None else " (no deny-list supplied)"
     if problems:
         print(f"FAIL: {len(problems)} problem(s) in {count} files{suffix}")
         return 1
