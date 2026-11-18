@@ -6,9 +6,10 @@
 
 Checks markdown links and anchors, that every guide/skill/template is reachable
 from README.md, skill frontmatter and standalone-ness, CSV shape, whitespace,
-forbidden file types, and privacy patterns (machine paths, emails, secrets, and an
-optional private deny-list). Standard library only; PyYAML is used for stricter
-frontmatter parsing when it is installed. Exit status is 1 if any problem is found.
+forbidden file types, and privacy patterns (machine paths, emails, phone numbers, secrets, links to
+meetings, private workspaces, and hiring systems, and an optional private deny-list). Standard library
+only; PyYAML is used for stricter frontmatter parsing when it is installed. Exit status is 1 if any
+problem is found.
 
 Deny-list file: one term per line, matched case-insensitively as a whole word on a
 single line; start a line with "re:" for a regular expression; "#" at the start of a
@@ -73,6 +74,8 @@ HOME_PATH = re.compile(  # POSIX names are case-sensitive on purpose, so API rou
     r"(?<![\w.~-])(?:/Users/|/home/)([A-Za-z0-9._-]+)(?![A-Za-z0-9._-])"
     r"|(?i:[A-Za-z]:\\{1,2}Users\\{1,2})([^\\\s\"'`]+)"
 )
+# A placeholder such as "your-name" is fine in a profile link; a real-looking handle is not.
+PLACEHOLDER_HANDLE = r"(?!(?:you|your-name|yourname|your-handle|yourhandle|name|handle|user|username|someone|example)\b)"
 PRIVACY_PATTERNS = [
     ("agent session path", re.compile(r"[.]copilot/session-state|[.]claude/projects/|[.]codex/sessions")),
     ("private key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY( BLOCK)?-----")),
@@ -82,6 +85,31 @@ PRIVACY_PATTERNS = [
     ("API secret key", re.compile(r"\bsk-[A-Za-z0-9_-]{20,}")),
     ("Google API key", re.compile(r"\bAIza[0-9A-Za-z_-]{35}")),
     ("JSON web token", re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.")),
+    # Contact details and links that point at a person, a meeting, a private workspace, or a hiring process, as pasted
+    # from recruiter emails and calendar invites. Each link needs a path or tenant name, so home pages and docs pass.
+    # Hosts are anchored with \b or a one-character lookbehind instead of a leading [a-z0-9-]+, which keeps long lines linear.
+    ("phone number (use a fictional 555 number or remove it)", re.compile(
+        r"(?<![\w.+/-])(?:\+?1[ .-]?)?\(?(?!555)[2-9]\d{2}\)?[ .-]?(?!555)[2-9]\d{2}[ .-]\d{4}(?![\w-])"
+        r"|(?<![\w+])\+[2-9]\d{0,2}[ .-]?\(?\d{1,4}\)?[ .-]\d{3,4}[ .-]\d{3,4}(?![\w-])")),
+    ("personal profile or scheduling link (remove it, or use a placeholder such as your-name)", re.compile(
+        r"\b(?:linkedin\.com/(?:in|pub)/|calendly\.com/|cal\.com/|savvycal\.com/|youcanbook\.me/|calendar\.app\.google/)"
+        + PLACEHOLDER_HANDLE + r"[a-z0-9_%.-]+", re.I)),
+    ("meeting link (remove it)", re.compile(
+        r"\b(?:zoom\.us/(?:j|my|s|wc)/|meet\.google\.com/[a-z]{3}-[a-z]{4}-[a-z]{3}\b|chime\.aws/\d+"
+        r"|teams\.[a-z0-9.-]{1,40}/(?:l/meetup-join|meet)/|webex\.com/(?:meet|join)/)", re.I)),
+    ("link into a private document, workspace, or ticket system (remove it)", re.compile(
+        r"\b(?:docs\.google\.com/(?:document|spreadsheets|presentation|forms)/d/|drive\.google\.com/(?:file|drive|open)"
+        r"|onedrive\.live\.com/|1drv\.ms/|notion\.so/|dropbox\.com/(?:s|sh|scl)/|app\.slack\.com/client/"
+        r"|dev\.azure\.com/[a-z0-9_-])"
+        r"|[a-z0-9]\.(?:sharepoint\.com|notion\.site|atlassian\.net)\b"
+        r"|[a-z0-9]\.slack\.com/(?:archives|messages|files|team)/"
+        r"|(?<=[a-z0-9])(?<!\bcode)(?<!\bmarketplace)\.visualstudio\.com\b", re.I)),
+    ("link into a hiring or assessment system (remove it)", re.compile(
+        r"\b(?:(?:job-)?boards\.greenhouse\.io/[a-z0-9_-]|jobs\.lever\.co/[a-z0-9_-]|jobs\.ashbyhq\.com/[a-z0-9_-]"
+        r"|apply\.workable\.com/[a-z0-9_-]|hackerrank\.com/tests?/|app\.codility\.com/c/"
+        r"|(?:app\.)?coderpad\.io/(?-i:[A-Z0-9]{6,})|codesignal\.com/(?:candidate|assessments))"
+        r"|[a-z0-9]\.myworkdayjobs\.com\b"
+        r"|(?<=[a-z0-9])(?<!\bwww)\.hirevue\.com\b", re.I)),
 ]
 
 

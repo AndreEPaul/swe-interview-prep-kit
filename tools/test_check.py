@@ -7,6 +7,7 @@ import io
 import os
 import tempfile
 import textwrap
+import time
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -54,6 +55,11 @@ class CheckTests(unittest.TestCase):
 
     def assertHas(self, problems: list[str], fragment: str) -> None:
         self.assertTrue(any(fragment in p for p in problems), f"{fragment!r} not in {problems}")
+
+    def privacy_messages(self, text: str) -> list[str]:
+        problems: list[check.Problem] = []
+        check.check_privacy("x.md", text + "\n", [], problems)
+        return [p.message for p in problems]
 
     def test_clean_tree_passes(self) -> None:
         self.assertEqual(self.tree().problems(), [])
@@ -184,6 +190,38 @@ class CheckTests(unittest.TestCase):
             with self.subTest(text):
                 problems = self.tree({"guides/a.md": f"# Guide\n\n{text}\n"}).problems()
                 self.assertEqual(any(p.startswith("guides/a.md:3:") for p in problems), expected, problems)
+
+    def test_contact_details_and_private_links(self) -> None:
+        flagged = {
+            "phone number": ["call 212-456-" "7890", "(212) 456-" "7890", "+1 212 456 " "7890", "+44 20 7946 " "0958"],
+            "personal profile or scheduling link": ["https://www.linkedin.com/in/" "alice-b", "calendly.com/" "alice/30min"],
+            "meeting link": ["https://us02web.zoom.us" "/j/1234567890", "https://meet.google.com/" "abc-defg-hij",
+                             "https://chime.aws" "/1234567890", "https://acme.webex.com" "/meet/alice",
+                             "https://teams.contoso" ".net/l/meetup-join/19%3ameeting", "https://teams.live" ".com/meet/9876543210"],
+            "link into a private document": ["https://docs.google.com" "/document/d/1AbC", "https://acme.sharepoint" ".com/sites/x",
+                                             "https://acme.slack.com" "/archives/C123", "https://acme.atlassian" ".net/browse/ABC-1",
+                                             "https://acme.visualstudio" ".com/project"],
+            "link into a hiring or assessment system": ["https://boards.greenhouse" ".io/acme/jobs/1", "https://app.coderpad" ".io/ABC123XY",
+                                                        "https://acme.wd5.myworkdayjobs" ".com/en-US/x", "https://acme.hirevue" ".com/x"],
+        }
+        fine = ["call 212-555-0100 or (555) 123-4567 or +1 415 555 0100", "2024-01-15, v2.345.678.9012, 185,000-220,000",
+                "https://www.linkedin.com/in/your-name", "https://calendly.com/", "https://zoom.us/pricing", "https://meet.google.com/landing",
+                "https://api.slack.com/methods/chat.postMessage", "https://code.visualstudio.com/docs", "https://developer.atlassian.com/x",
+                "https://coderpad.io/sandbox", "https://www.hirevue.com/", "https://www.hackerrank.com/challenges/two-sum"]
+        for label, samples in flagged.items():
+            for text in samples:
+                with self.subTest(text):
+                    self.assertTrue(any(m.startswith(label) for m in self.privacy_messages(text)), text)
+        for text in fine:
+            with self.subTest(text):
+                self.assertEqual(self.privacy_messages(text), [])
+
+    def test_long_lines_do_not_stall_the_privacy_patterns(self) -> None:
+        # A leading [a-z0-9-]+ in a host pattern takes ~18 s on a 50,000-character line; these patterns take milliseconds.
+        for line in ("a-" * 25_000, "a." * 25_000, "1 " * 25_000, "(" * 50_000, "calendly.com/" * 4_000):
+            started = time.monotonic()
+            self.privacy_messages(line)
+            self.assertLess(time.monotonic() - started, 5, line[:12])
 
     def test_whitespace_and_forbidden_files(self) -> None:
         problems = self.tree({"guides/a.md": "# Guide  \n", "notes.pdf": "x"}).problems()
