@@ -104,9 +104,12 @@ Blank, optional worksheets. Fill them in a private folder outside this repositor
 - [Session brief](./templates/session-brief.md): what you know about an interview, with sources and dates.
 - [Experience ledger](./templates/experience-ledger.md): the facts behind your resume claims, separating what was measured from what was estimated.
 - [STAR card](./templates/star-card.md): one real story with its evidence and likely follow-ups.
+- [Recall sheet](./templates/recall-sheet.md): a one-page review for the last day or two, built from stories you have already confirmed.
 - [Design worksheet](./templates/design-worksheet.md): a plan and review for a design practice session.
 - [Practice record](./templates/practice-record.md): what you tried, what help you had, and your next target.
-- [Process inventory](./templates/process-inventory.csv): optional tracking of your interview processes, one row each. It is not a scorecard. `furthest_stage` is a stage label you define consistently, and `final_stage_reached` is true, false, or unknown, kept separate from the outcome. `source_type` says whether a row comes from memory, a calendar, or recruiter communication. Leave a cell blank or `unknown` instead of guessing, and keep a filled file private.
+- [Process inventory](./templates/process-inventory.csv): optional tracking of your interview processes, one row each. It is not a scorecard. The [field guide](./templates/process-inventory-fields.md) explains each column.
+
+Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md) and a [practice record](./examples/practice-record-example.md).
 
 ## Keep your material private
 
