@@ -2,6 +2,8 @@
 
 Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
 
+The "peer" in peer-kit means fellow engineers: it is shared by one experienced engineer with others who want help preparing for interviews.
+
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills. Each one asks the assistant to work from what you bring (an attempt, a draft, or your notes), give the smallest useful help, say what help it gave, and never invent details about your experience. The guides and templates are useful without any AI.
 
 Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
