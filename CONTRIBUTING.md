@@ -44,9 +44,12 @@ Each folder under `skills/` has to work when it is copied on its own or pasted i
 ```bash
 python3 tools/check.py
 python3 -m unittest discover -s tools -v
+npx markdownlint-cli2 "**/*.md"
 ```
 
-The checker needs Python 3.9 or newer and no packages. If PyYAML is installed it parses skill frontmatter with it. It checks Markdown links and anchors (file names must match their exact capitalization, as on Linux), backticked repository paths, that every guide, skill, and template is reachable from the README, skill frontmatter and standalone-ness, CSV shape, line endings, forbidden file types, and privacy patterns such as email addresses, home-directory paths, and secrets in every text file. CI runs both commands on every pull request.
+The last command needs Node.js. It enforces ordinary Markdown style (heading levels, list markers, a language on every code fence) with the settings in `.markdownlint-cli2.yaml`. Line length is deliberately not limited, because each paragraph is one line.
+
+The checker needs Python 3.9 or newer and no packages. If PyYAML is installed it parses skill frontmatter with it. It checks Markdown links and anchors (file names must match their exact capitalization, as on Linux), backticked repository paths, that every guide, skill, and template is reachable from the README, skill frontmatter and standalone-ness, CSV shape, line endings, forbidden file types, and privacy patterns such as email addresses, home-directory paths, and secrets in every text file. CI runs all three commands on every pull request.
 
 To also catch names that must never appear, put one term per line in a file outside this repository: employers, colleagues, interviewers, product names. A line starting with `re:` is a regular expression, and `#` at the start of a line or after whitespace starts a comment. Terms match case-insensitively as whole words within a single line, so a term wrapped across two lines is missed. Then run:
 

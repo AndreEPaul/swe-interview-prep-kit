@@ -36,3 +36,15 @@ jobs:
         run: python tools/check.py
       - name: Checker tests
         run: python -m unittest discover -s tools -v
+
+  markdown:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      # Third-party, so pinned to a commit. Dependabot keeps the pin current. Settings: .markdownlint-cli2.yaml
+      - uses: DavidAnson/markdownlint-cli2-action@696eb3f2509270d7b882d2aa68347bc676e7af34 # v25.0.0
+        with:
+          globs: "**/*.md"
