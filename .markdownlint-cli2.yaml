@@ -4,7 +4,7 @@ config:
   default: true
   # Each paragraph is one line, so wrapping at 80 columns would only add diff noise.
   MD013: false
-  # The README folds the author's note into a <details> block.
+  # Collapsible sections use <details> and <summary>. No other inline HTML is allowed.
   MD033:
     allowed_elements: [details, summary]
 ignores:

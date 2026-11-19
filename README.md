@@ -34,6 +34,11 @@ For what it's worth, here is my own anecdote. I kept a log of my interview proce
 
 ## How the coaching works
 
+In the practice coaches you go first, and the assistant gives the smallest useful help and says what help it gave. It is told not to make up details about your experience, and to decline help in a live assessment that forbids outside help. The [coaching protocol](./COACHING_PROTOCOL.md) explains the ground rules in full.
+
+<details>
+<summary>The six ground rules</summary>
+
 - **You go first.** In the practice coaches the assistant plays the interviewer: you restate the task, attempt it, and explain your thinking before it helps. The resume coach and planner review what you bring instead. You can ask for an explanation at any time, and it is simply labeled as help.
 - **Smallest useful help, labeled.** Hints come before explanations, and explanations before reference answers. Help is recorded as none, hint, explanation, scaffold, or reference. The labels describe what was supplied. They are not a score.
 - **No made-up details.** The coach is told not to invent metrics, quotes, or decisions. Missing facts become visible `[placeholders]` and questions for you. Assistants can still slip, so check what it writes against what really happened.
@@ -41,7 +46,10 @@ For what it's worth, here is my own anecdote. I kept a log of my interview proce
 - **Evidence over verdicts.** It reviews the code or draft you actually pasted, says what it couldn't check, and doesn't predict outcomes or rate your readiness.
 - **Practice only.** The coach declines to help in a live assessment that forbids outside help. It is told to save nothing unless you ask, and then only to a folder you confirm. What you paste still goes to your AI provider; see [Keep your material private](#keep-your-material-private).
 
-## What it looks like
+</details>
+
+<details>
+<summary>What it looks like: a sample exchange</summary>
 
 An illustrative excerpt, abridged from a test run of [behavioral-coach](./skills/behavioral-coach/SKILL.md) on a made-up story. Results vary by model and run, and this isn't a transcript of real use.
 
@@ -68,6 +76,8 @@ An illustrative excerpt, abridged from a test run of [behavioral-coach](./skills
 >
 > Help so far: scaffold (I supplied a partial draft; every fact is yours). […]
 
+</details>
+
 ## Get started
 
 Whichever way you start, say what you want and the assistant should pick the matching skill. If it doesn't, name one: "use the behavioral-coach skill".
@@ -83,13 +93,16 @@ cd ~/peer-kit
 
 Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and save nothing inside the clone. That makes this a good way to try the kit. For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
 
-**3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), then:
+**3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), register the skills with your tool, then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
+
+<details>
+<summary>Register the skills: Copilot CLI, Claude Code, other tools</summary>
 
 - GitHub Copilot CLI: `copilot skill add ~/peer-kit/skills`, then `copilot skill list` to check. This points at your clone, so `git pull` updates the skills. (Checked with Copilot CLI 1.0.114.)
 - Claude Code: `mkdir -p ~/.claude/skills && cp -r ~/peer-kit/skills/* ~/.claude/skills/`. This is a copy that overwrites any skill of the same name, so look at `ls ~/.claude/skills` first, and repeat the copy after `git pull` to update. You can then type `/behavioral-coach` and so on, or just describe what you want. See [Claude Code's skills documentation](https://code.claude.com/docs/en/skills).
 - Other tools: the skills use the open [Agent Skills format](https://agentskills.io/specification). Check where your tool loads skills from, and if you can't find out, paste the file instead.
 
-Then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
+</details>
 
 **If the coach drifts.** In a long chat an assistant can lose track of its instructions. If it hands you answers before you have tried, or fills in details you didn't give, say so plainly (for example, "hint only" or "don't invent that"), or start a fresh chat and paste the skill again.
 
@@ -105,7 +118,10 @@ Then start your assistant from a private practice folder outside any git reposit
 | Tell project stories with real depth | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
 | Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill yet; start with the guide |
 
-Example first messages. Replace the brackets, and leave out what you don't know:
+<details>
+<summary>Example first messages</summary>
+
+Replace the brackets, and leave out what you don't know:
 
 - **Planner:** "I have a [role] interview loop around [date] and about [time] to prepare. The recruiter sent this: [paste]. Where should I start?"
 - **Resume:** "Review this resume for [target role]. Start with a diagnostic, not a rewrite. [paste]"
@@ -114,9 +130,14 @@ Example first messages. Replace the brackets, and leave out what you don't know:
 - **Design:** "Practice a design round with me on [topic]. I have [time]."
 - **Behavioral:** "Help me tighten my answer to [question]: [paste]."
 
+</details>
+
 ## Templates
 
-Blank, optional worksheets. Fill them in a private folder outside this repository.
+Blank, optional worksheets for briefs, stories, evidence, design practice, and practice records, plus a CSV for tracking your interview processes. Fill them in a private folder outside this repository.
+
+<details>
+<summary>The templates and filled examples</summary>
 
 - [Session brief](./templates/session-brief.md): what you know about an interview, with sources and dates.
 - [Experience ledger](./templates/experience-ledger.md): the facts behind your resume claims, separating what was measured from what was estimated.
@@ -127,6 +148,8 @@ Blank, optional worksheets. Fill them in a private folder outside this repositor
 - [Process inventory](./templates/process-inventory.csv): optional tracking of your interview processes, one row each. It is not a scorecard. The [field guide](./templates/process-inventory-fields.md) explains each column.
 
 Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md) and a [practice record](./examples/practice-record-example.md).
+
+</details>
 
 ## References
 
@@ -143,6 +166,11 @@ Practice sites and tools I used or looked at, with my take on each: LeetCode and
 
 ## One possible first week
 
+A light plan for when you don't have an interview date yet: a short inventory, then one rep each for coding, design, and a behavioral story, plus a resume pass if you need it.
+
+<details>
+<summary>The five steps</summary>
+
 1. **Inventory, 20 minutes:** list the interview formats you actually face, what you know about them, and one goal or uncertainty. The planner or the session brief can help.
 2. **Technical rep, 30 to 45 minutes:** one original task, running code, one review. Record the hints and the evidence, not just a score.
 3. **Design, 30 to 45 minutes:** one user journey with state ownership, a request flow, one failure, and one trade-off.
@@ -150,6 +178,8 @@ Practice sites and tools I used or looked at, with my take on each: LeetCode and
 5. **Resume, if needed:** revise two high-value bullets from an evidence ledger, not the whole career at once.
 
 These are options, not a quota. As an interview approaches, prioritize its verified format and the specific gap that could matter. Don't turn maintenance into permanent cramming. If you have a real date, give it and your available time to the planner so it plans around them instead of this generic week.
+
+</details>
 
 ## Limits
 
