@@ -39,6 +39,51 @@ Each folder under `skills/` has to work when it is copied on its own or pasted i
 - The first reply should deliver something useful before asking anything, and then ask at most three questions. For a setup choice, state the default you will assume. For a fact only the candidate knows, leave it unknown instead of guessing.
 - Never save the candidate's material without a location they confirm that is outside any git repository. Decline to help with a live assessment whose rules forbid outside help, and offer practice or a debrief afterward.
 
+## Setup
+
+The checks need Git and Python 3.9 or newer, with no Python packages (PyYAML is optional). The Markdown lint also needs Node.js 22 or newer. CI runs it on every pull request, so you can skip it locally.
+
+**macOS**, with [Homebrew](https://brew.sh):
+
+```bash
+brew install git python node
+```
+
+**Debian and Ubuntu** (including WSL):
+
+```bash
+sudo apt-get update
+sudo apt-get install -y git python3 curl
+```
+
+Don't use `apt-get install nodejs` for the lint: the packaged version is older than 22 on Debian 12 and 13 and on Ubuntu 24.04. Install Node with [nvm](https://github.com/nvm-sh/nvm) instead. Its installer adds a few lines to your shell profile.
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash
+\. "$HOME/.nvm/nvm.sh"
+nvm install --lts
+```
+
+**Windows**, in PowerShell. Open a new terminal afterwards so the programs are on your `PATH`.
+
+```powershell
+winget install --id Git.Git -e
+winget install --id Python.Python.3.13 -e
+winget install --id OpenJS.NodeJS.LTS -e
+```
+
+The python.org installer provides `py` rather than `python3`, so use `py` wherever the commands below say `python3`. CI runs only on Ubuntu, so Windows is untested. If something fails there, use WSL with the Debian and Ubuntu steps.
+
+Then check the versions:
+
+```bash
+git --version
+python3 --version
+node --version
+```
+
+Checked in November 2026: the Homebrew formulas exist (dry run), the winget IDs are in the winget-pkgs repository, and the nvm commands ran on macOS in a scratch directory. The apt commands and the winget installs have not been run.
+
 ## Checks
 
 ```bash
@@ -47,9 +92,9 @@ python3 -m unittest discover -s tools -v
 npx markdownlint-cli2 "**/*.md"
 ```
 
-The last command needs Node.js. It enforces ordinary Markdown style (heading levels, list markers, a language on every code fence) with the settings in `.markdownlint-cli2.yaml`. Line length is deliberately not limited, because each paragraph is one line.
+The last command needs Node.js 22 or newer (see [Setup](#setup)). It enforces ordinary Markdown style (heading levels, list markers, a language on every code fence) with the settings in `.markdownlint-cli2.yaml`. Line length is deliberately not limited, because each paragraph is one line.
 
-The checker needs Python 3.9 or newer and no packages. If PyYAML is installed it parses skill frontmatter with it. It checks Markdown links and anchors (file names must match their exact capitalization, as on Linux), backticked repository paths, that every guide, skill, and template is reachable from the README, skill frontmatter and standalone-ness, CSV shape, line endings, forbidden file types (documents, archives, keys, images, recordings, transcripts, and mail or calendar exports, any of which can hold private details), and privacy patterns in every text file: email addresses, phone numbers, home-directory paths, secrets, and links that point at a person, a meeting, a private workspace, or a hiring or assessment system. A fictional 555 number or a placeholder such as `your-name` passes. CI runs all three commands on every pull request.
+If PyYAML is installed, the checker parses skill frontmatter with it, and CI runs the checker both with and without it. The checker checks Markdown links and anchors (file names must match their exact capitalization, as on Linux), backticked repository paths, that every guide, skill, and template is reachable from the README, skill frontmatter and standalone-ness, CSV shape, line endings, forbidden file types (documents, archives, keys, images, recordings, transcripts, and mail or calendar exports, any of which can hold private details), and privacy patterns in every text file: email addresses, phone numbers, home-directory paths, secrets, and links that point at a person, a meeting, a private workspace, or a hiring or assessment system. A fictional 555 number or a placeholder such as `your-name` passes. CI runs all three commands on every pull request.
 
 To also catch names that must never appear, put one term per line in a file outside this repository: employers, colleagues, interviewers, product names. A line starting with `re:` is a regular expression, and `#` at the start of a line or after whitespace starts a comment. Terms match case-insensitively as whole words within a single line, so a term wrapped across two lines is missed. Then run:
 
