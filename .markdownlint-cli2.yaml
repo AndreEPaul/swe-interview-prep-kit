@@ -1,4 +1,4 @@
-# Markdown style for peer-kit. Run it with: npx markdownlint-cli2 "**/*.md"
+# Markdown style for swe-interview-prep-kit. Run it with: npx markdownlint-cli2 "**/*.md"
 gitignore: true
 config:
   default: true
