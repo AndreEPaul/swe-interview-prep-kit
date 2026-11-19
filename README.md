@@ -1,21 +1,10 @@
 # peer-kit
 
-Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
+Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant. The "peer" in peer-kit means fellow engineers: it is shared by one experienced engineer with others who want help preparing for interviews.
 
-The "peer" in peer-kit means fellow engineers: it is shared by one experienced engineer with others who want help preparing for interviews.
-
-The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills. Each one asks the assistant to work from what you bring (an attempt, a draft, or your notes), give the smallest useful help, say what help it gave, and never invent details about your experience. The guides and templates are useful without any AI.
-
-Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
+The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
 > **Early release.** Corrections and ideas are welcome (see [CONTRIBUTING.md](./CONTRIBUTING.md)), and the [limits](#limits) are real.
-
-## What's inside
-
-- **Guides:** short preparation notes on resumes, coding screens, AI-assisted rounds, design, behavioral stories, and professional presence.
-- **Coaching skills:** instructions that make an AI assistant a practice partner for each of those topics except professional presence, plus an optional planner that turns scattered interview details into a short brief.
-- **Templates:** blank worksheets for briefs, stories, evidence, design practice, and practice records.
-- **A [coaching protocol](./COACHING_PROTOCOL.md):** the ground rules behind every skill, explained in full.
 
 ## How the coaching works
 
@@ -169,7 +158,7 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 ## Limits
 
 - It is not a complete curriculum, a question bank, or a prediction of any company's questions, and it guarantees no offer.
-- It doesn't cover classic algorithm drills, take-home projects, or offer negotiation. Worked examples lean toward JavaScript, TypeScript, React, and Python.
+- It doesn't cover classic algorithm drills (the [references](./guides/references.md) list practice sites), take-home projects, or offer negotiation. Worked examples lean toward JavaScript, TypeScript, React, and Python.
 - AI assistants make mistakes and behave differently across tools and models. The skills were smoke-tested by giving fresh sessions run through GitHub Copilot CLI only a skill file and made-up candidate messages, then checking each reply against criteria written beforehand. That is not proof they work in every tool or model.
 - The Copilot CLI install command was run. The Claude Code steps follow its documentation and haven't been run. The shell commands assume macOS or Linux; on Windows, paste a skill instead or adapt the steps.
 - The methods come from one engineer's experience with AI coaching (see the [author's note](#authors-note)), not from a controlled study.
