@@ -147,3 +147,7 @@ Say in your pull request what you ran and what changed.
 - Label synthetic examples. Do not present an invented resume bullet or story as someone's real result.
 - If you cite progression statistics, give raw counts, the period, stage definitions, how the data was collected, and alternative explanations. Do not call a change significant without an appropriate analysis.
 - Write plainly, and define jargon where it first appears.
+
+## License
+
+Contributions are licensed under the terms that cover the files you change, as described in the [README](./README.md#license): [CC BY 4.0](./LICENSE) for content and the [MIT License](./LICENSE-CODE) for the checker and automation. Only contribute work you wrote or have the right to license this way.
