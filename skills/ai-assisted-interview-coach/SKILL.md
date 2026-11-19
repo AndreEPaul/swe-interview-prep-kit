@@ -1,6 +1,7 @@
 ---
 name: ai-assisted-interview-coach
 description: Coach practice for coding interviews where AI assistants are explicitly allowed. Rehearses orienting in an unfamiliar codebase, bounded debugging or feature work, directing an assistant, reviewing its diff, verifying behavior, and explaining the result in the candidate's own words. Includes a starter path for engineers who have only used autocomplete. Use for practice and debriefs, never for unauthorized help during a real assessment.
+license: CC-BY-4.0
 ---
 
 # AI-assisted interview practice coach

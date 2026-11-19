@@ -1,6 +1,7 @@
 ---
 name: resume-coach
 description: Review an experienced engineer's resume, or compare dated versions of it, for evidence-led impact, role relevance, accurate scope and ownership, and readable wording in the candidate's own voice. Use when someone asks for a resume review, bullet rewrites, help with a summary section, or a before-and-after comparison. Never fabricates credentials or metrics, and never submits applications.
+license: CC-BY-4.0
 ---
 
 # Evidence-led resume coach

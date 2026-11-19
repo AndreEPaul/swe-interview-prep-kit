@@ -183,3 +183,9 @@ For what it's worth, here is my own anecdote. I kept a log of my interview proce
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for what fits, the privacy rules, and how to test a skill change.
+
+## License
+
+The checker and automation (`tools/`, `.github/`, `.githooks/`, and the config files at the repository root) are licensed under the [MIT License](./LICENSE-CODE). Everything else, including the guides, skills, templates, and examples, is licensed under [CC BY 4.0](./LICENSE). Copyright 2026 Andre Paul (AndreEPaul).
+
+You can share and adapt the content, including commercially, if you give credit, link to the license, and say if you changed it. For example: `swe-interview-prep-kit by Andre Paul (AndreEPaul), https://github.com/AndreEPaul/swe-interview-prep-kit, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)`. You don't need to credit the kit for your own resume or practice notes made from a template.

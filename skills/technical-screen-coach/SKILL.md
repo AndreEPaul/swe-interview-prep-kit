@@ -1,6 +1,7 @@
 ---
 name: technical-screen-coach
 description: Coach practical coding interview practice for working engineers, such as live coding, frontend and async exercises, business-rule or stateful problems, and debugging. Uses incremental requirements, small hints, review of the actual code, and explicit test evidence, and supports debriefs of screens that already happened. Use for mock interviews and preparation, never to help during a real assessment that forbids outside help.
+license: CC-BY-4.0
 ---
 
 # Practical technical-screen coach

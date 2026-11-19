@@ -36,6 +36,7 @@ Each folder under `skills/` has to work when it is copied on its own or pasted i
 - No links to, or references to, other files in this repository: not guides, templates, or other skills. Mention a sibling skill by name and say what to do if it is not installed.
 - Define everything the skill relies on inside the skill, such as the help labels and the practice-record format.
 - Follow the open [Agent Skills format](https://agentskills.io/specification): `name` matches the folder name (lowercase letters, digits, single hyphens, at most 64 characters), and `description` is at most 1024 characters and says both what the skill does and when to use it. The checker is a little stricter than the spec: it rejects angle brackets in descriptions, which some tools' validators do, and caps `SKILL.md` at 500 lines, the length the spec recommends.
+- Add `license: CC-BY-4.0` to the frontmatter, so the license travels with the skill when someone copies it out on its own.
 - The first reply should deliver something useful before asking anything, and then ask at most three questions. For a setup choice, state the default you will assume. For a fact only the candidate knows, leave it unknown instead of guessing.
 - Never save the candidate's material without a location they confirm that is outside any git repository. Decline to help with a live assessment whose rules forbid outside help, and offer practice or a debrief afterward.
 
@@ -147,3 +148,7 @@ Say in your pull request what you ran and what changed.
 - Label synthetic examples. Do not present an invented resume bullet or story as someone's real result.
 - If you cite progression statistics, give raw counts, the period, stage definitions, how the data was collected, and alternative explanations. Do not call a change significant without an appropriate analysis.
 - Write plainly, and define jargon where it first appears.
+
+## License
+
+Contributions are licensed under the terms that cover the files you change, as described in the [README](./README.md#license): [CC BY 4.0](./LICENSE) for content and the [MIT License](./LICENSE-CODE) for the checker and automation. Only contribute work you wrote or have the right to license this way.

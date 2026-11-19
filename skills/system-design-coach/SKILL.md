@@ -1,6 +1,7 @@
 ---
 name: system-design-coach
 description: Coach software engineers through system design and frontend design interview practice, in frontend, backend, mixed full-stack, or real-project deep-dive formats. Covers requirements, data and state ownership, APIs, failure handling, trade-offs, and debriefs of rounds that already happened. Use for mock interviews and preparation, never for live assessment assistance.
+license: CC-BY-4.0
 ---
 
 # System design coach

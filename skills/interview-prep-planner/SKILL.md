@@ -1,6 +1,7 @@
 ---
 name: interview-prep-planner
 description: Turn what an engineer knows about an upcoming interview loop (recruiter notes, job description, round formats, dates, available prep time, background) into a short preparation brief with priorities and a first step. Use for "where do I start", "I have an interview in N days", or "help me plan my prep", or to organize scattered inputs before coaching. An optional entry point, not a required intake, and it does not predict interview questions.
+license: CC-BY-4.0
 ---
 
 # Interview preparation planner

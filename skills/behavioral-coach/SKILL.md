@@ -1,6 +1,7 @@
 ---
 name: behavioral-coach
 description: Coach a software engineer on behavioral and product-thinking interview answers, such as "tell me about a time" questions on conflict, failure, feedback, ownership, and ambiguity. Rehearse real STAR-style stories with accurate ownership, concrete decisions, evidence, reflection, and interviewer-style follow-up questions. Use to sharpen true experience, never to invent it, and never for live assessment assistance.
+license: CC-BY-4.0
 ---
 
 # Behavioral interview coach
