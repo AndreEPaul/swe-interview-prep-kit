@@ -16,6 +16,15 @@ from unittest import mock
 
 import check
 
+
+def setUpModule() -> None:
+    # check.main() reads PEER_KIT_DENY_LIST, so a developer's own deny-list must not leak into the tests.
+    patcher = mock.patch.dict(os.environ)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+    os.environ.pop("PEER_KIT_DENY_LIST", None)
+
+
 HOSTILE_GIT_CONFIG = """\
 [diff]
 \tnoprefix = true
