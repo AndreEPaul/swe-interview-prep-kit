@@ -3,18 +3,26 @@
 
     python tools/check.py
     python tools/check.py --deny-list ~/peer-kit-deny.txt
+    python tools/check.py --history origin/main..HEAD --deny-list ~/peer-kit-deny.txt
 
 Checks markdown links and anchors, that every guide/skill/template is reachable
 from README.md, skill frontmatter and standalone-ness, CSV shape, whitespace,
 forbidden file types, and privacy patterns (machine paths, emails, phone numbers, secrets, links to
 meetings, private workspaces, and hiring systems, and an optional private deny-list). Standard library
 only; PyYAML is used for stricter frontmatter parsing when it is installed. Exit status is 1 if any
-problem is found.
+problem is found, and 2 if the checker cannot run.
 
 Deny-list file: one term per line, matched case-insensitively as a whole word on a
 single line; start a line with "re:" for a regular expression; "#" at the start of a
 line or after whitespace starts a comment. Keep that file outside this repository.
 Matches are reported by line number, never by term.
+
+--history RANGE checks commits instead of the working tree, so it finds a leak that was added
+and later removed. For each commit in RANGE (any revision or range git accepts, such as HEAD or
+origin/main..HEAD) it checks the message, the added lines, and the added paths with the same
+rules. Author and committer email addresses are checked against the deny-list only, because
+commit identities are public by design. Merge commits are checked by message only, and binary
+files by name only.
 """
 
 from __future__ import annotations
@@ -26,8 +34,10 @@ import os
 import re
 import subprocess
 import sys
+import uuid
 from collections import deque
-from pathlib import Path
+from dataclasses import dataclass, field
+from pathlib import Path, PurePosixPath
 from typing import Dict, Iterator, List, NamedTuple, Optional, Set, Tuple
 from urllib.parse import unquote
 
@@ -435,25 +445,42 @@ def check_csv(root: Path, path: Path, text: str, problems: List[Problem]) -> Non
             problems.append(Problem(where, number, f"{len(row)} columns, header has {len(header)}"))
 
 
+def check_deny_list(where: str, number: int, line: str, deny: List[Tuple[int, "re.Pattern[str]"]],
+                    problems: List[Problem]) -> None:
+    for entry, pattern in deny:
+        if pattern.search(line):
+            problems.append(Problem(where, number, f"matches deny-list line {entry}"))
+
+
+def check_deny_path(where: str, name: str, deny: List[Tuple[int, "re.Pattern[str]"]],
+                    problems: List[Problem]) -> None:
+    for entry, pattern in deny:
+        if pattern.search(name):
+            problems.append(Problem(where, 0, f"path matches deny-list line {entry}"))
+
+
+def check_line(where: str, number: int, line: str, deny: List[Tuple[int, "re.Pattern[str]"]],
+               problems: List[Problem]) -> None:
+    for match in EMAIL.finditer(line):
+        domain = match.group(1).lower()
+        if match.group(0).lower() in ALLOWED_EMAIL_ADDRESSES:
+            continue
+        if not any(domain == d or domain.endswith("." + d) for d in ALLOWED_EMAIL_DOMAINS):
+            problems.append(Problem(where, number, "email address (use an example.com address or remove it)"))
+    for match in HOME_PATH.finditer(line):
+        owner = (match.group(1) or match.group(2) or "").lower()
+        if owner not in GENERIC_HOME_NAMES:
+            problems.append(Problem(where, number, "absolute home-directory path (remove or generalize it)"))
+    for label, pattern in PRIVACY_PATTERNS:
+        if pattern.search(line):
+            problems.append(Problem(where, number, label))
+    check_deny_list(where, number, line, deny, problems)
+
+
 def check_privacy(where: str, text: str, deny: List[Tuple[int, "re.Pattern[str]"]],
                   problems: List[Problem]) -> None:
     for number, line in enumerate(lines_of(text), 1):
-        for match in EMAIL.finditer(line):
-            domain = match.group(1).lower()
-            if match.group(0).lower() in ALLOWED_EMAIL_ADDRESSES:
-                continue
-            if not any(domain == d or domain.endswith("." + d) for d in ALLOWED_EMAIL_DOMAINS):
-                problems.append(Problem(where, number, "email address (use an example.com address or remove it)"))
-        for match in HOME_PATH.finditer(line):
-            owner = (match.group(1) or match.group(2) or "").lower()
-            if owner not in GENERIC_HOME_NAMES:
-                problems.append(Problem(where, number, "absolute home-directory path (remove or generalize it)"))
-        for label, pattern in PRIVACY_PATTERNS:
-            if pattern.search(line):
-                problems.append(Problem(where, number, label))
-        for entry, pattern in deny:
-            if pattern.search(line):
-                problems.append(Problem(where, number, f"matches deny-list line {entry}"))
+        check_line(where, number, line, deny, problems)
 
 
 def check_whitespace(where: str, text: str, problems: List[Problem]) -> None:
@@ -468,15 +495,23 @@ def check_whitespace(where: str, text: str, problems: List[Problem]) -> None:
         problems.append(Problem(where, 0, "extra blank line at end of file"))
 
 
+def forbidden_name_reason(name: str) -> Optional[str]:
+    """Why a file with this name must never be committed, or None. Shared by the tree and history checks."""
+    path = PurePosixPath(name)
+    if path.suffix.lower() in FORBIDDEN_SUFFIXES:
+        return f"{path.suffix} files must not be committed"
+    if path.name in {".DS_Store", ".npmrc", ".env"} or (path.name.startswith(".env.") and not path.name.endswith((".example", ".sample", ".template"))):
+        return "local environment or config file must not be committed"
+    return None
+
+
 def check_file_policy(root: Path, path: Path, problems: List[Problem]) -> None:
     where = rel(root, path)
-    name = path.name
+    reason = forbidden_name_reason(where)
     if path.is_symlink():
         problems.append(Problem(where, 0, "symlinks are not allowed"))
-    elif path.suffix.lower() in FORBIDDEN_SUFFIXES:
-        problems.append(Problem(where, 0, f"{path.suffix} files must not be committed"))
-    elif name in {".DS_Store", ".npmrc", ".env"} or (name.startswith(".env.") and not name.endswith((".example", ".sample", ".template"))):
-        problems.append(Problem(where, 0, "local environment or config file must not be committed"))
+    elif reason:
+        problems.append(Problem(where, 0, reason))
     elif path.stat().st_size > MAX_FILE_BYTES:
         problems.append(Problem(where, 0, "file is larger than 1 MB"))
 
@@ -509,9 +544,7 @@ def run(root: Path, deny: Optional[List[Tuple[int, "re.Pattern[str]"]]] = None) 
     for path in files:
         where = rel(root, path)
         check_file_policy(root, path, problems)
-        for entry, pattern in deny:
-            if pattern.search(where):
-                problems.append(Problem(where, 0, f"path matches deny-list line {entry}"))
+        check_deny_path(where, where, deny, problems)
         if path.is_symlink():
             continue
         is_text = path.suffix.lower() in TEXT_SUFFIXES
@@ -552,12 +585,147 @@ def run(root: Path, deny: Optional[List[Tuple[int, "re.Pattern[str]"]]] = None) 
     return sorted(problems, key=lambda p: (p.path, p.line, p.message)), len(files)
 
 
+class HistoryError(Exception):
+    """git could not produce the history that was asked for."""
+
+
+HUNK_HEADER = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@")
+GIT_ESCAPE = re.compile(rb"\\([0-7]{3}|.)", re.S)
+C_ESCAPES = {b"a": b"\a", b"b": b"\b", b"f": b"\f", b"n": b"\n", b"r": b"\r", b"t": b"\t", b"v": b"\v"}
+
+
+def unquote_git_path(text: str) -> str:
+    """Undo git's C-style quoting, which it applies to paths containing quotes, backslashes, or control characters."""
+    if len(text) < 2 or text[0] != '"' or text[-1] != '"':
+        return text
+
+    def decode(match: "re.Match[bytes]") -> bytes:
+        code = match.group(1)
+        if len(code) == 3:
+            return bytes([int(code, 8) & 0xFF])
+        return C_ESCAPES.get(code, code)
+
+    return GIT_ESCAPE.sub(decode, text[1:-1].encode("utf-8")).decode("utf-8", "replace")
+
+
+def diff_git_path(header: str) -> Optional[str]:
+    """Path named by a "diff --git a/P b/P" line. Rename detection is off, so both sides are the same path."""
+    rest = header[len("diff --git "):]
+    for quote in ('"', ""):
+        size = (len(rest) - (9 if quote else 5)) // 2  # two prefixes, the space between, and any quotes
+        name = rest[len(quote) + 2:len(quote) + 2 + size]
+        if size > 0 and rest == f"{quote}a/{name}{quote} {quote}b/{name}{quote}":
+            return unquote_git_path(f'"{name}"') if quote else name
+    return None
+
+
+@dataclass
+class FileDiff:
+    path: Optional[str]
+    deleted: bool = False
+    added: List[Tuple[int, str]] = field(default_factory=list)  # (line number in the new file, text)
+
+
+def parse_diff(diff: str) -> Iterator[FileDiff]:
+    """Split `git log -p -U0 --no-renames` output into files and their added lines.
+
+    Only lines after a hunk header are content, so an added line such as "++ x", which git prints as "+++ x",
+    is never mistaken for a file header.
+    """
+    current: Optional[FileDiff] = None
+    in_hunk = False
+    number = 0
+    for line in diff.split("\n"):
+        if line.startswith("diff --git "):
+            if current:
+                yield current
+            current, in_hunk = FileDiff(diff_git_path(line)), False
+        elif current is None:
+            continue
+        elif line.startswith("@@"):
+            match = HUNK_HEADER.match(line)
+            if not match:
+                raise ValueError(f"cannot parse diff hunk header {line[:40]!r}")
+            in_hunk, number = True, int(match.group(1))
+        elif in_hunk and line.startswith("+"):
+            current.added.append((number, line[1:]))
+            number += 1
+        elif in_hunk and (line == "" or line.startswith(" ")):
+            number += 1  # context line; -U0 normally prints none, but a user's diff.interHunkContext can add some
+        elif not in_hunk and line.startswith("deleted file mode"):
+            current.deleted = True
+    if current:
+        yield current
+
+
+def scan_commit(short: str, author_email: str, committer_email: str, message: str, diff: str,
+                deny: List[Tuple[int, "re.Pattern[str]"]]) -> List[Problem]:
+    problems: List[Problem] = []
+    # Names and addresses on a commit are public by design, so the generic rules do not apply to them. Only the
+    # deny-list does, and only to the addresses: a work address on it is how the wrong identity usually gets committed,
+    # while a name on it (such as the maintainer's own) would otherwise fail every commit.
+    check_deny_list(f"{short} (author email)", 0, author_email, deny, problems)
+    if committer_email != author_email:
+        check_deny_list(f"{short} (committer email)", 0, committer_email, deny, problems)
+    for number, line in enumerate(lines_of(message), 1):
+        check_line(f"{short} (commit message)", number, line, deny, problems)
+    try:
+        for file in parse_diff(diff):
+            where = f"{short} {file.path or '(unparsed path)'}"
+            if file.path and not file.deleted:  # deleting a forbidden file is the fix, not a problem
+                reason = forbidden_name_reason(file.path)
+                if reason:
+                    problems.append(Problem(where, 0, reason))
+                check_deny_path(where, file.path, deny, problems)
+            for number, line in file.added:
+                check_line(where, number, line, deny, problems)
+    except ValueError as exc:
+        problems.append(Problem(short, 0, str(exc)))
+    return problems
+
+
+def scan_history(root: Path, rev_range: str,
+                 deny: Optional[List[Tuple[int, "re.Pattern[str]"]]] = None) -> Tuple[List[Problem], int]:
+    """Check every commit in rev_range, which is any revision or range that git accepts."""
+    deny = deny or []
+    if not rev_range or rev_range.startswith("-"):
+        raise HistoryError(f"not a revision or range: {rev_range!r}")
+    token = f"@@peer-kit-{uuid.uuid4().hex}@@"  # unguessable, so no message or file can fake a record boundary
+    # Pin every setting that changes what `git log -p` prints, so a user's own git config cannot hide anything.
+    command = [
+        "git", "--no-replace-objects", "-C", str(root),
+        "-c", "core.quotepath=off", "-c", "log.showSignature=false", "-c", "log.showRoot=true",
+        "log", "--no-color", "--no-ext-diff", "--no-textconv", "--no-renames", "--encoding=UTF-8",
+        "--src-prefix=a/", "--dst-prefix=b/", "-p", "-U0",
+        f"--format={token}%x00%H%x00%ae%x00%ce%x00%B%x00", rev_range, "--",
+    ]
+    try:
+        done = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except OSError as exc:
+        raise HistoryError(f"cannot run git: {exc.strerror or exc}")
+    if done.returncode != 0:
+        raise HistoryError(done.stderr.decode("utf-8", "replace").strip() or f"git exited with status {done.returncode}")
+    records = done.stdout.decode("utf-8", "replace").split(token)[1:]
+    problems: List[Problem] = []
+    for record in records:
+        fields = record.split("\0", 5)  # "", hash, author email, committer email, message, then the diff
+        if len(fields) != 6:
+            problems.append(Problem("(git log)", 0, "cannot parse the history output"))
+            continue
+        _, sha, author_email, committer_email, message, diff = fields
+        found = scan_commit(sha[:8], author_email, committer_email, message, diff, deny)
+        problems.extend(sorted(found, key=lambda p: (p.path, p.line, p.message)))
+    return problems, len(records)
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent,
                         help="repository root (default: the parent of tools/)")
     parser.add_argument("--deny-list", type=Path, default=os.environ.get("PEER_KIT_DENY_LIST") or None,
                         help="private file of terms that must not appear (env: PEER_KIT_DENY_LIST)")
+    parser.add_argument("--history", metavar="RANGE",
+                        help="check the commits in RANGE, such as HEAD or origin/main..HEAD, instead of the working tree")
     args = parser.parse_args(argv)
     if not args.root.is_dir():
         print(f"repository root not found: {args.root}", file=sys.stderr)
@@ -573,14 +741,24 @@ def main(argv: Optional[List[str]] = None) -> int:
         except (OSError, ValueError) as exc:  # UnicodeDecodeError is a ValueError
             print(f"cannot use deny-list {deny_path}: {exc}", file=sys.stderr)
             return 2
-    problems, count = run(args.root, deny)
+    if args.history is not None:
+        try:
+            problems, count = scan_history(args.root, args.history, deny)
+        except HistoryError as exc:
+            print(f"cannot read history: {exc}", file=sys.stderr)
+            return 2
+        noun = "commit"
+    else:
+        problems, count = run(args.root, deny)
+        noun = "file"
     for problem in problems:
         print(problem)
     suffix = f" (deny-list: {len(deny)} term(s))" if deny is not None else " (no deny-list supplied)"
+    counted = f"{count} {noun}{'' if count == 1 else 's'}"
     if problems:
-        print(f"FAIL: {len(problems)} problem(s) in {count} files{suffix}")
+        print(f"FAIL: {len(problems)} problem(s) in {counted}{suffix}")
         return 1
-    print(f"OK: {count} files checked{suffix}")
+    print(f"OK: {counted} checked{suffix}")
     return 0
 
 

@@ -61,6 +61,15 @@ You can set `PEER_KIT_DENY_LIST` instead of passing the flag. A match is reporte
 
 The checker's link patterns and their tests name some services. If a term is also one of those names, it matches inside `tools/` too, so narrow it with a `re:` line that skips those lines.
 
+Those checks read the files as they are now. A leak that was added in one commit and removed in the next is gone from the files but still in the history, and it is published with the first push. Check the commits as well:
+
+```bash
+python3 tools/check.py --history HEAD --deny-list ~/peer-kit-deny.txt
+python3 tools/check.py --history origin/main..HEAD --deny-list ~/peer-kit-deny.txt
+```
+
+The first command audits every commit, which is worth doing once before the repository is first published. The second checks only the commits that are not on `origin/main` yet. The range can be anything `git log` accepts. With `--history`, the commits are checked instead of the working tree: each commit's message, added lines, and added file paths get the same rules as above, and deleting a forbidden file is not reported. A merge commit is checked by its message only, because its changes were checked in the commits it merged. Binary files are checked by name only. Commit identities are public by design, so only author and committer email addresses are checked, and only against the deny-list, which catches a commit made by mistake under an employer's address when that employer is on the list. Each problem starts with the short commit hash. Fixing one means rewriting history, so do it before you push.
+
 ## Testing a skill change
 
 Static checks cannot tell you whether a coach behaves well. For any change to a skill's behavior:
