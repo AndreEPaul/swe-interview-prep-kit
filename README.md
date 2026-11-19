@@ -1,6 +1,6 @@
-# peer-kit
+# swe-interview-prep-kit
 
-Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant. The "peer" in peer-kit means fellow engineers: it is shared by one experienced engineer with others who want help preparing for interviews.
+Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
@@ -61,8 +61,8 @@ Whichever way you start, say what you want and the assistant should pick the mat
 **2. Open your assistant in a clone.**
 
 ```bash
-git clone https://github.com/AndreEPaul/peer-kit.git ~/peer-kit
-cd ~/peer-kit
+git clone https://github.com/AndreEPaul/swe-interview-prep-kit.git ~/swe-interview-prep-kit
+cd ~/swe-interview-prep-kit
 ```
 
 Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and save nothing inside the clone. That makes this a good way to try the kit. For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
@@ -72,8 +72,8 @@ Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do)
 <details>
 <summary>Register the skills: Copilot CLI, Claude Code, other tools</summary>
 
-- GitHub Copilot CLI: `copilot skill add ~/peer-kit/skills`, then `copilot skill list` to check. This points at your clone, so `git pull` updates the skills. (Checked with Copilot CLI 1.0.114.)
-- Claude Code: `mkdir -p ~/.claude/skills && cp -r ~/peer-kit/skills/* ~/.claude/skills/`. This is a copy that overwrites any skill of the same name, so look at `ls ~/.claude/skills` first, and repeat the copy after `git pull` to update. You can then type `/behavioral-coach` and so on, or just describe what you want. See [Claude Code's skills documentation](https://code.claude.com/docs/en/skills).
+- GitHub Copilot CLI: `copilot skill add ~/swe-interview-prep-kit/skills`, then `copilot skill list` to check. This points at your clone, so `git pull` updates the skills. (Checked with Copilot CLI 1.0.114.)
+- Claude Code: `mkdir -p ~/.claude/skills && cp -r ~/swe-interview-prep-kit/skills/* ~/.claude/skills/`. This is a copy that overwrites any skill of the same name, so look at `ls ~/.claude/skills` first, and repeat the copy after `git pull` to update. You can then type `/behavioral-coach` and so on, or just describe what you want. See [Claude Code's skills documentation](https://code.claude.com/docs/en/skills).
 - Other tools: the skills use the open [Agent Skills format](https://agentskills.io/specification). Check where your tool loads skills from, and if you can't find out, paste the file instead.
 
 </details>
@@ -165,9 +165,9 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 
 ## Author's note
 
-peer-kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
+This kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
 
-For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where peer-kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
+For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where this kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
 
 <details>
 <summary>How I counted</summary>

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Consistency and privacy checks for peer-kit.
+"""Consistency and privacy checks for swe-interview-prep-kit.
 
     python tools/check.py
-    python tools/check.py --deny-list ~/peer-kit-deny.txt
-    python tools/check.py --history origin/main..HEAD --deny-list ~/peer-kit-deny.txt
+    python tools/check.py --deny-list ~/swe-interview-prep-kit-deny.txt
+    python tools/check.py --history origin/main..HEAD --deny-list ~/swe-interview-prep-kit-deny.txt
 
 Checks markdown links and anchors, that every guide/skill/template is reachable
 from README.md, skill frontmatter and standalone-ness, CSV shape, whitespace,
@@ -690,7 +690,7 @@ def scan_history(root: Path, rev_range: str,
     deny = deny or []
     if not rev_range or rev_range.startswith("-"):
         raise HistoryError(f"not a revision or range: {rev_range!r}")
-    token = f"@@peer-kit-{uuid.uuid4().hex}@@"  # unguessable, so no message or file can fake a record boundary
+    token = f"@@swe-interview-prep-kit-{uuid.uuid4().hex}@@"  # unguessable, so no message or file can fake a record boundary
     # Pin every setting that changes what `git log -p` prints, so a user's own git config cannot hide anything.
     command = [
         "git", "--no-replace-objects", "-C", str(root),
@@ -722,8 +722,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent,
                         help="repository root (default: the parent of tools/)")
-    parser.add_argument("--deny-list", type=Path, default=os.environ.get("PEER_KIT_DENY_LIST") or None,
-                        help="private file of terms that must not appear (env: PEER_KIT_DENY_LIST)")
+    parser.add_argument("--deny-list", type=Path, default=os.environ.get("SWE_INTERVIEW_PREP_KIT_DENY_LIST") or None,
+                        help="private file of terms that must not appear (env: SWE_INTERVIEW_PREP_KIT_DENY_LIST)")
     parser.add_argument("--history", metavar="RANGE",
                         help="check the commits in RANGE, such as HEAD or origin/main..HEAD, instead of the working tree")
     args = parser.parse_args(argv)

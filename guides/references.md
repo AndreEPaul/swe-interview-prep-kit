@@ -1,6 +1,6 @@
 # References: practice sites and tools
 
-These are outside resources I used or looked at while preparing, with my take on each. They are one engineer's opinions, not a ranking. peer-kit doesn't include their content (it isn't a question bank), so use them alongside it.
+These are outside resources I used or looked at while preparing, with my take on each. They are one engineer's opinions, not a ranking. This kit doesn't include their content (it isn't a question bank), so use them alongside it.
 
 Prices, free tiers, and content change, so check a site before you pay. These notes are current as of November 2026.
 
