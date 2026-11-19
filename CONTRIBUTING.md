@@ -44,9 +44,12 @@ Each folder under `skills/` has to work when it is copied on its own or pasted i
 ```bash
 python3 tools/check.py
 python3 -m unittest discover -s tools -v
+npx markdownlint-cli2 "**/*.md"
 ```
 
-The checker needs Python 3.9 or newer and no packages. If PyYAML is installed it parses skill frontmatter with it. It checks Markdown links and anchors (file names must match their exact capitalization, as on Linux), backticked repository paths, that every guide, skill, and template is reachable from the README, skill frontmatter and standalone-ness, CSV shape, line endings, forbidden file types, and privacy patterns such as email addresses, home-directory paths, and secrets in every text file. CI runs both commands on every pull request.
+The last command needs Node.js. It enforces ordinary Markdown style (heading levels, list markers, a language on every code fence) with the settings in `.markdownlint-cli2.yaml`. Line length is deliberately not limited, because each paragraph is one line.
+
+The checker needs Python 3.9 or newer and no packages. If PyYAML is installed it parses skill frontmatter with it. It checks Markdown links and anchors (file names must match their exact capitalization, as on Linux), backticked repository paths, that every guide, skill, and template is reachable from the README, skill frontmatter and standalone-ness, CSV shape, line endings, forbidden file types (documents, archives, keys, images, recordings, transcripts, and mail or calendar exports, any of which can hold private details), and privacy patterns in every text file: email addresses, phone numbers, home-directory paths, secrets, and links that point at a person, a meeting, a private workspace, or a hiring or assessment system. A fictional 555 number or a placeholder such as `your-name` passes. CI runs all three commands on every pull request.
 
 To also catch names that must never appear, put one term per line in a file outside this repository: employers, colleagues, interviewers, product names. A line starting with `re:` is a regular expression, and `#` at the start of a line or after whitespace starts a comment. Terms match case-insensitively as whole words within a single line, so a term wrapped across two lines is missed. Then run:
 
@@ -55,6 +58,26 @@ python3 tools/check.py --deny-list ~/peer-kit-deny.txt
 ```
 
 You can set `PEER_KIT_DENY_LIST` instead of passing the flag. A match is reported by file and line number, not by the matched text. A file path that itself contains a term is still printed. The last line says how many terms were loaded.
+
+The checker's link patterns and their tests name some services. If a term is also one of those names, it matches inside `tools/` too, so narrow it with a `re:` line that skips those lines.
+
+Those checks read the files as they are now. A leak that was added in one commit and removed in the next is gone from the files but still in the history, and it is published with the first push. Check the commits as well:
+
+```bash
+python3 tools/check.py --history HEAD --deny-list ~/peer-kit-deny.txt
+python3 tools/check.py --history origin/main..HEAD --deny-list ~/peer-kit-deny.txt
+```
+
+The first command audits every commit, which is worth doing once before the repository is first published. The second checks only the commits that are not on `origin/main` yet. The range can be anything `git log` accepts. With `--history`, the commits are checked instead of the working tree: each commit's message, added lines, and added file paths get the same rules as above, and deleting a forbidden file is not reported. A merge commit is checked by its message only, because its changes were checked in the commits it merged. Binary files are checked by name only. Commit identities are public by design, so only author and committer email addresses are checked, and only against the deny-list, which catches a commit made by mistake under an employer's address when that employer is on the list. Each problem starts with the short commit hash. Fixing one means rewriting history, so do it before you push.
+
+CI runs the checker over the files on every pull request and over the pull request's commits too (the `commits` job). It cannot see your deny-list, and it runs only after a push, when a leak is already on GitHub. So the deny-list and the history check are worth running before you push. To have git do both for you, turn on the pre-push hook once per clone, and set the deny-list path in your shell profile:
+
+```bash
+git config core.hooksPath .githooks
+export PEER_KIT_DENY_LIST=~/peer-kit-deny.txt
+```
+
+The hook checks exactly the commits being pushed (for a new branch, the commits no remote-tracking branch has yet) and refuses the push if the checker finds a problem or cannot run. It is off until you enable it, git then ignores hooks in `.git/hooks` for this clone, and `git push --no-verify` skips it once.
 
 ## Testing a skill change
 

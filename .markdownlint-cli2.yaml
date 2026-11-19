@@ -1,0 +1,12 @@
+# Markdown style for peer-kit. Run it with: npx markdownlint-cli2 "**/*.md"
+gitignore: true
+config:
+  default: true
+  # Each paragraph is one line, so wrapping at 80 columns would only add diff noise.
+  MD013: false
+  # The README folds the author's note into a <details> block.
+  MD033:
+    allowed_elements: [details, summary]
+ignores:
+  # A one-line `@AGENTS.md` import for Claude Code, not a document.
+  - CLAUDE.md

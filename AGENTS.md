@@ -15,3 +15,4 @@ This repository is a toolkit for interview preparation: guides, coaching skills,
 1. Read [CONTRIBUTING.md](./CONTRIBUTING.md), and follow its privacy and standalone-skill rules.
 2. Before you say you are done, run `python3 tools/check.py` and `python3 -m unittest discover -s tools`.
 3. Keep each commit to one concern. Describe any skill behavior change with the test you ran, not just the diff.
+4. If a check or the pre-push hook fails, fix the cause or tell the user. Do not bypass it with `git push --no-verify`, by changing `core.hooksPath`, or by weakening the checker.
