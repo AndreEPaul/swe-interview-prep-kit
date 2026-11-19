@@ -597,6 +597,89 @@ class HistoryTests(unittest.TestCase):
             self.run_main("--history", "-x")
         self.assertEqual(self.run_main("--history", "HEAD", root=self.home)[0], 2)  # not a repository
 
+    def hooked_remote(self):
+        """Connect this repository to a bare remote, with the real pre-push hook. Returns push() and remote_branches()."""
+        source = Path(check.__file__).resolve().parent.parent
+        (self.root / "tools").mkdir()
+        shutil.copy(source / "tools" / "check.py", self.root / "tools" / "check.py")  # the hook runs the checker next to it
+        (self.root / ".git" / "info").mkdir(exist_ok=True)
+        (self.root / ".git" / "info" / "exclude").write_bytes(b"tools/\n")
+        remote = self.tmp / "remote.git"
+        self.git("init", "-q", "--bare", str(remote))
+        self.git("remote", "add", "origin", str(remote))
+        self.git("config", "core.hooksPath", str(source / ".githooks"))
+
+        def push(*args: str, path: str | None = None) -> tuple[int, str]:
+            env = {**os.environ, "PATH": path} if path else os.environ.copy()
+            done = subprocess.run(["git", "-C", str(self.root), "push", *args], stdout=subprocess.PIPE,
+                                  stderr=subprocess.STDOUT, env=env)
+            return done.returncode, done.stdout.decode("utf-8", "replace")
+
+        def remote_branches() -> list[str]:
+            return self.git("--git-dir", str(remote), "for-each-ref", "--format=%(refname:short)", "refs/heads").split()
+
+        return push, remote_branches
+
+    @unittest.skipIf(os.name == "nt", "the hook is a POSIX shell script")
+    def test_pre_push_hook_checks_only_what_is_pushed(self) -> None:
+        push, remote_branches = self.hooked_remote()
+        self.commit("Add guide", {"guides/a.md": "# Guide\n"})
+        code, output = push("origin", "main")
+        self.assertEqual(code, 0, output)
+        self.assertIn("1 commit checked", output)
+
+        self.commit("Extend guide", {"guides/a.md": "# Guide\n\nmore\n"})
+        code, output = push("origin", "main")  # an update: only the commits the remote lacks are checked
+        self.assertEqual(code, 0, output)
+        self.assertIn("1 commit checked", output)
+
+        code, output = push("origin", "main:refs/tags/v1")  # the commit is already on the remote, so nothing is checked
+        self.assertEqual(code, 0, output)
+        self.assertNotIn("checked", output)
+
+        self.git("checkout", "-q", "-b", "fine")
+        self.commit("Edit guide", {"guides/a.md": "# Guide\n\ntext\n"})
+        code, output = push("origin", "fine")  # a new branch: only its own commit is checked, not main's again
+        self.assertEqual(code, 0, output)
+        self.assertIn("1 commit checked", output)
+
+        code, output = push("origin", "--delete", "fine")  # nothing is pushed, so there is nothing to check
+        self.assertEqual(code, 0, output)
+        self.assertEqual(remote_branches(), ["main"])
+
+    @unittest.skipIf(os.name == "nt", "the hook is a POSIX shell script")
+    def test_pre_push_hook_refuses_leaks_and_fails_closed(self) -> None:
+        push, remote_branches = self.hooked_remote()
+        self.commit("Add guide", {"guides/a.md": "# Guide\n"})
+        self.assertEqual(push("origin", "main")[0], 0)
+
+        self.git("checkout", "-q", "-b", "leaky")
+        self.commit("Add contact", {"guides/a.md": f"# Guide\n\n{self.LEAK}\n"})
+        self.commit("Remove contact", {"guides/a.md": "# Guide\n"})
+        code, output = push("origin", "leaky")  # the files are clean again, but the first commit would be published
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("guides/a.md:3: email address", output)
+        self.assertEqual(remote_branches(), ["main"])
+
+        self.git("checkout", "-q", "-b", "fine", "main")
+        self.commit("Add notes", {"guides/b.md": "# B\n"})
+        for refs in (("fine", "leaky"), ("leaky", "fine")):  # one bad ref stops the whole push, in either order
+            code, output = push("origin", *refs)
+            self.assertNotEqual(code, 0, output)
+            self.assertEqual(remote_branches(), ["main"])
+
+        bin_dir = self.tmp / "bin"
+        bin_dir.mkdir()
+        for tool in ("git", "tail"):
+            (bin_dir / tool).symlink_to(str(shutil.which(tool)))
+        code, output = push("origin", "fine", path=str(bin_dir))  # without Python the commits cannot be checked
+        self.assertNotEqual(code, 0, output)
+        self.assertIn("Python 3 not found", output)
+        self.assertEqual(remote_branches(), ["main"])
+        code, output = push("origin", "fine")  # the same push succeeds once Python is available
+        self.assertEqual(code, 0, output)
+        self.assertEqual(remote_branches(), ["fine", "main"])
+
 
 if __name__ == "__main__":
     unittest.main()

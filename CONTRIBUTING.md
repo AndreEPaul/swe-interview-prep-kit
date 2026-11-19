@@ -70,6 +70,15 @@ python3 tools/check.py --history origin/main..HEAD --deny-list ~/peer-kit-deny.t
 
 The first command audits every commit, which is worth doing once before the repository is first published. The second checks only the commits that are not on `origin/main` yet. The range can be anything `git log` accepts. With `--history`, the commits are checked instead of the working tree: each commit's message, added lines, and added file paths get the same rules as above, and deleting a forbidden file is not reported. A merge commit is checked by its message only, because its changes were checked in the commits it merged. Binary files are checked by name only. Commit identities are public by design, so only author and committer email addresses are checked, and only against the deny-list, which catches a commit made by mistake under an employer's address when that employer is on the list. Each problem starts with the short commit hash. Fixing one means rewriting history, so do it before you push.
 
+CI runs the checker over the files on every pull request and over the pull request's commits too (the `commits` job). It cannot see your deny-list, and it runs only after a push, when a leak is already on GitHub. So the deny-list and the history check are worth running before you push. To have git do both for you, turn on the pre-push hook once per clone, and set the deny-list path in your shell profile:
+
+```bash
+git config core.hooksPath .githooks
+export PEER_KIT_DENY_LIST=~/peer-kit-deny.txt
+```
+
+The hook checks exactly the commits being pushed (for a new branch, the commits no remote-tracking branch has yet) and refuses the push if the checker finds a problem or cannot run. It is off until you enable it, git then ignores hooks in `.git/hooks` for this clone, and `git push --no-verify` skips it once.
+
 ## Testing a skill change
 
 Static checks cannot tell you whether a coach behaves well. For any change to a skill's behavior:
