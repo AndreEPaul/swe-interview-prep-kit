@@ -19,7 +19,7 @@ Out of scope:
 
 ## Privacy rules
 
-This repository is public, so nothing in it can be private. Never include:
+Treat everything in this repository as public, so nothing in it can be private. Never include:
 
 - Employer code, configuration, internal designs, or customer and internal identifiers.
 - Assessment questions, paid-source text or screenshots, or other people's copyrighted material.

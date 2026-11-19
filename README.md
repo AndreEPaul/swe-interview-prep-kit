@@ -178,6 +178,8 @@ For what it's worth, here is my own anecdote. I kept a log of my interview proce
 
 </details>
 
+**Not public yet.** This repository is private for now and shared with a small group for feedback. I plan to publish it soon, and everything in it will be public then, including any issues, pull requests, and discussions, so please keep private details out of anything you post.
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for what fits, the privacy rules, and how to test a skill change.
