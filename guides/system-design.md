@@ -83,6 +83,8 @@ Use three readable zones: scope/questions, model/contracts, components/numbered 
 
 Walk between the UX mock and the relevant model/component. Keep a small deferred list. Do not spend the round decorating the board or transcribing an essay.
 
+If the round uses a digital whiteboard, practice on one beforehand. [References](./references.md) lists free options.
+
 ## Finish in 30 seconds
 
 Summarize the source of truth, request/data flow, main invariant, failure policy, trade-off, and what would make you revisit it. "Use a cache and a global store" is not a design explanation.

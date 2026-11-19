@@ -128,6 +128,10 @@ Blank, optional worksheets. Fill them in a private folder outside this repositor
 
 Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md) and a [practice record](./examples/practice-record-example.md).
 
+## References
+
+Practice sites and tools I used or looked at, with my take on each: LeetCode and NeetCode, HackTheRounds, interviewing.io, GreatFrontEnd, Hello Interview, and whiteboarding tools. See [References](./guides/references.md).
+
 ## Keep your material private
 
 - Keep resumes, stories, practice records, and plans in a private folder outside any git repository, and confirm the save path before an assistant writes anything. Ignore rules are only a backup. Create the folder, then check it with `git -C ~/prep-notes rev-parse --is-inside-work-tree`: you want "not a git repository", and if it prints `true`, pick another folder. Skip folders that sync to a service you don't want holding your resume.
