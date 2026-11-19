@@ -6,24 +6,9 @@ The "peer" in peer-kit means fellow engineers: it is shared by one experienced e
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills. Each one asks the assistant to work from what you bring (an attempt, a draft, or your notes), give the smallest useful help, say what help it gave, and never invent details about your experience. The guides and templates are useful without any AI.
 
-Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
+Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
 > **Early release.** Corrections and ideas are welcome (see [CONTRIBUTING.md](./CONTRIBUTING.md)), and the [limits](#limits) are real.
-
-## Author's note
-
-peer-kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
-
-For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where peer-kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
-
-<details>
-<summary>How I counted</summary>
-
-- **Data and period:** the interview processes in my own log, spanning a little over a year. None of them straddled the date I started working with the coach, so each one falls in exactly one group.
-- **"Reached the final round":** got to the final loop with the hiring team, which is the last interview stage of a process, whether or not an offer followed.
-- **Other explanations:** more interviews behind me, which roles and companies I applied to, and the job market could account for some or all of the difference. One process moves a rate by about 6 to 7 points, and with groups this small, a gap like this could also appear by chance alone.
-
-</details>
 
 ## What's inside
 
@@ -188,6 +173,21 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 - AI assistants make mistakes and behave differently across tools and models. The skills were smoke-tested by giving fresh sessions run through GitHub Copilot CLI only a skill file and made-up candidate messages, then checking each reply against criteria written beforehand. That is not proof they work in every tool or model.
 - The Copilot CLI install command was run. The Claude Code steps follow its documentation and haven't been run. The shell commands assume macOS or Linux; on Windows, paste a skill instead or adapt the steps.
 - The methods come from one engineer's experience with AI coaching (see the [author's note](#authors-note)), not from a controlled study.
+
+## Author's note
+
+peer-kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
+
+For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where peer-kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
+
+<details>
+<summary>How I counted</summary>
+
+- **Data and period:** the interview processes in my own log, spanning a little over a year. None of them straddled the date I started working with the coach, so each one falls in exactly one group.
+- **"Reached the final round":** got to the final loop with the hiring team, which is the last interview stage of a process, whether or not an offer followed.
+- **Other explanations:** more interviews behind me, which roles and companies I applied to, and the job market could account for some or all of the difference. One process moves a rate by about 6 to 7 points, and with groups this small, a gap like this could also appear by chance alone.
+
+</details>
 
 ## Contributing
 
