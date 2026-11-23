@@ -2,6 +2,16 @@
 
 This repository is a small toolkit of guides, AI coaching skills, and templates for experienced engineers preparing for interviews. The most useful contributions keep it accurate, private by default, and usable without any other setup.
 
+**Only changing your own copy?** You can skip this page. It is for changes you send back to this repository; for your own copy, change whatever you like (see [Customize it or contribute](./README.md#customize-it-or-contribute)).
+
+## Ways to take part
+
+- **Ask or share in [Discussions](https://github.com/AndreEPaul/swe-interview-prep-kit/discussions).** Questions, ideas, and how you have used or adapted the kit are all welcome.
+- **Report or suggest in [Issues](https://github.com/AndreEPaul/swe-interview-prep-kit/issues).** A real case helps most: what you asked, what the text led you or an assistant to do, and what you expected instead.
+- **Change it in a [pull request](https://github.com/AndreEPaul/swe-interview-prep-kit/pulls).** Fork the repository, make the change, run the [checks](#checks), and say what you ran. A typo, a broken link, or a wrong claim can go straight to a pull request. Anything larger than a guide section should start with an issue or discussion.
+
+You don't have to do all of it: a short note that something confused you is a contribution. Whatever you post, leave out private details (see the [privacy rules](#privacy-rules)).
+
 ## What fits
 
 Welcome:
@@ -9,7 +19,7 @@ Welcome:
 - Corrections: wrong or outdated claims, broken links, unclear wording.
 - Changes to a guide or skill, ideally backed by a real case where the current text misled a reader or an assistant.
 - Original, synthetic examples, clearly labeled as synthetic.
-- Coverage for formats the kit does not handle yet (see the limits in the [README](./README.md)). For anything larger than a guide section, open an issue first.
+- Coverage for formats the kit does not handle yet (see the limits in the [README](./README.md)). For anything larger than a guide section, open an issue or discussion first.
 
 Out of scope:
 
