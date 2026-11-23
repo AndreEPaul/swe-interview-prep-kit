@@ -4,7 +4,7 @@ Interview preparation for experienced engineers: practical guides, AI coaching s
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
-> **Early release.** Corrections and ideas are welcome (see [CONTRIBUTING.md](./CONTRIBUTING.md)), and the [limits](#limits) are real.
+> **Early release.** Corrections, ideas, and your own adaptations are welcome (see [Customize it or contribute](#customize-it-or-contribute)), and the [limits](#limits) are real.
 
 ## How the coaching works
 
@@ -65,7 +65,7 @@ git clone https://github.com/AndreEPaul/swe-interview-prep-kit.git ~/swe-intervi
 cd ~/swe-interview-prep-kit
 ```
 
-Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and save nothing inside the clone. That makes this a good way to try the kit. For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
+Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and keep your material out of the clone. That makes this a good way to try the kit, and to [change it for yourself](#customize-it-or-contribute). For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
 
 **3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), register the skills with your tool, then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
 
@@ -180,9 +180,17 @@ For what it's worth, here is my own anecdote. I kept a log of my interview proce
 
 **Not public yet.** This repository is private for now and shared with a small group for feedback. I plan to publish it soon, and everything in it will be public then, including any issues, pull requests, and discussions, so please keep private details out of anything you post.
 
-## Contributing
+## Customize it or contribute
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for what fits, the privacy rules, and how to test a skill change.
+**Make it yours.** Clone or fork it and change anything: swap the examples for your language, tune a coach, drop what you don't use. [CONTRIBUTING.md](./CONTRIBUTING.md) is for changes you send back, so skip it for your own copy. Your resume and notes still stay in a private folder outside the clone (see [Keep your material private](#keep-your-material-private)). If you share your version, the [license](#license) asks for credit.
+
+**Send it back.** The kit gets better when people say what worked and what didn't:
+
+- [Discussions](https://github.com/AndreEPaul/swe-interview-prep-kit/discussions): questions, ideas, and how you've used or adapted it.
+- [Issues](https://github.com/AndreEPaul/swe-interview-prep-kit/issues): something wrong, unclear, or missing.
+- [Pull requests](https://github.com/AndreEPaul/swe-interview-prep-kit/pulls): a small fix can go straight in, and anything larger should start with an issue or discussion. [CONTRIBUTING.md](./CONTRIBUTING.md) covers what fits, the privacy rules, and how to test a skill change.
+
+Keep resumes, employer details, and anything about other people out of whatever you post.
 
 ## License
 
