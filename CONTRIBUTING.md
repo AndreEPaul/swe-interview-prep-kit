@@ -11,7 +11,7 @@ This repository is a small toolkit of guides, AI coaching skills, and templates 
 - **Change it in a [pull request](https://github.com/AndreEPaul/swe-interview-prep-kit/pulls).** Fork the repository, make the change, run the [checks](#checks), and say what you ran. A typo, a broken link, or a wrong claim can go straight to a pull request. Anything larger than a guide section should start with an issue or discussion. The maintainer reviews every pull request before it is merged, and a small, focused change is the easiest to review.
 - **Report a security or privacy problem privately.** A flaw in the checker or hook, text that could lead an assistant to leak private material, or private information that has landed in the repository: follow the [security policy](./SECURITY.md) instead of posting it publicly.
 
-You don't have to do all of it: a short note that something confused you is a contribution. Whatever you post, leave out private details (see the [privacy rules](#privacy-rules)).
+You don't have to do all of it: a short note that something confused you is a contribution. Whatever you post, leave out private details (see the [privacy rules](#privacy-rules)). Everyone taking part follows the [code of conduct](./CODE_OF_CONDUCT.md).
 
 ## What fits
 
