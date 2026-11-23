@@ -178,8 +178,6 @@ For what it's worth, here is my own anecdote. I kept a log of my interview proce
 
 </details>
 
-**Not public yet.** This repository is private for now and shared with a small group for feedback. I plan to publish it soon, and everything in it will be public then, including any issues, pull requests, and discussions, so please keep private details out of anything you post.
-
 ## Customize it or contribute
 
 **Make it yours.** Clone or fork it and change anything: swap the examples for your language, tune a coach, drop what you don't use. [CONTRIBUTING.md](./CONTRIBUTING.md) is for changes you send back, so skip it for your own copy. Your resume and notes still stay in a private folder outside the clone (see [Keep your material private](#keep-your-material-private)). If you share your version, the [license](#license) asks for credit.
