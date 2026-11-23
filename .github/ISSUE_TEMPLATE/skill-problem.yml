@@ -1,0 +1,46 @@
+name: Skill problem
+description: A coaching skill gave a poor, unclear, or unsafe reply
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. A real case helps most: describe what happened, and leave blank anything you don't know. Please don't paste real private material. Paraphrase it, or use a synthetic stand-in.
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill?
+      description: The folder name under `skills/`, for example `resume-coach`.
+    validations:
+      required: true
+  - type: input
+    id: setup
+    attributes:
+      label: Which assistant, and how did you load the skill?
+      description: The tool and model if you know them, and whether you installed the skill or pasted it into a chat. Skills behave differently across tools, so this matters.
+  - type: textarea
+    id: asked
+    attributes:
+      label: What you asked
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What the assistant did
+      description: Quote the lines of the skill that led to it, if you can see which they were.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I left out private details such as resume text, employer names, and other people's names. See the [privacy rules](https://github.com/AndreEPaul/swe-interview-prep-kit/blob/main/CONTRIBUTING.md#privacy-rules).
+          required: true

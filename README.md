@@ -192,6 +192,6 @@ Keep resumes, employer details, and anything about other people out of whatever 
 
 ## License
 
-The checker and automation (`tools/`, `.github/`, `.githooks/`, and the config files at the repository root) are licensed under the [MIT License](./LICENSE-CODE). Everything else, including the guides, skills, templates, and examples, is licensed under [CC BY 4.0](./LICENSE). Copyright 2026 Andre Paul (AndreEPaul).
+The checker and automation (`tools/`, `.github/`, `.githooks/`, and the config files at the repository root) are licensed under the [MIT License](./LICENSE-CODE). Everything else, including the guides, skills, templates, and examples, is licensed under [CC BY 4.0](./LICENSE), except [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md), which is adapted from the Contributor Covenant and stays under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Copyright 2026 Andre Paul (AndreEPaul), apart from the Contributor Covenant text.
 
 You can share and adapt the content, including commercially, if you give credit, link to the license, and say if you changed it. For example: `swe-interview-prep-kit by Andre Paul (AndreEPaul), https://github.com/AndreEPaul/swe-interview-prep-kit, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)`. You don't need to credit the kit for your own resume or practice notes made from a template.

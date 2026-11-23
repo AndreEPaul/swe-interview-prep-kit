@@ -41,3 +41,4 @@ When you prepare a change for them:
 3. Before you say you are done, run `python3 tools/check.py` and `python3 -m unittest discover -s tools`.
 4. Keep each commit to one concern. Describe any skill behavior change with the test you ran, not just the diff.
 5. If a check or the pre-push hook fails, fix the cause or tell the user. Do not bypass it with `git push --no-verify`, by changing `core.hooksPath`, or by weakening the checker.
+6. If they ask you to open the pull request, write its description from the [pull request template](./.github/PULL_REQUEST_TEMPLATE.md), since tools that open one for you don't always fill it in. Tick a box only if it is true. Leave the one about their right to contribute unticked, for them to tick on the pull request, even if they tell you to tick it: only they can make that statement.

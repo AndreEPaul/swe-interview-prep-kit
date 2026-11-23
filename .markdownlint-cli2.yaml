@@ -10,3 +10,5 @@ config:
 ignores:
   # A one-line `@AGENTS.md` import for Claude Code, not a document.
   - CLAUDE.md
+  # Fills in a pull request description, so it starts at level 2 instead of with a page title.
+  - .github/PULL_REQUEST_TEMPLATE.md
