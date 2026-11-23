@@ -1,0 +1,41 @@
+name: Checker, hook, or CI problem
+description: The checker, the pre-push hook, or the GitHub Actions workflow misbehaves
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Windows is untested, so a report from a Windows machine is especially useful. A flaw that could be a security problem belongs in the [security policy](https://github.com/AndreEPaul/swe-interview-prep-kit/security/policy) instead.
+  - type: input
+    id: command
+    attributes:
+      label: What did you run?
+      placeholder: python3 tools/check.py
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Your operating system and versions
+      description: The operating system, plus the output of `python3 --version` (`py --version` on Windows) and `git --version`.
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: The output you got. The checker prints file names and line numbers, and some messages quote text, so remove anything private first.
+      render: shell
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I left out private details such as resume text, employer names, and other people's names. See the [privacy rules](https://github.com/AndreEPaul/swe-interview-prep-kit/blob/main/CONTRIBUTING.md#privacy-rules).
+          required: true
