@@ -75,12 +75,12 @@ If the interview is only a day or two away (ask when it is if that would change 
 
 ## Story card and recall sheet
 
-Return a story card in chat, and mark it draft until open factual questions are settled.
+Return a story card in chat, and label every version, including revisions, as a draft until open factual questions are settled.
 
 - The prompt it answers, the event, the candidate's own responsibility, and collaborators' ownership.
 - The central decision or action, the result, and its scope. Mark the result measured, estimated, planned, or unknown, and name its evidence source separately (their report, a document, or independent corroboration).
 - The reflection, any habit that actually changed, and one follow-up to practice next.
-- The mode (independent attempt, coached, or teaching), the timebox, and the help received. Use these labels, which describe what you supplied and never score it: none; hint (a nudge on where to look); explanation (you stated the cause or concept); scaffold (you supplied structure or a partial draft); reference (a full model answer, kept separate from the candidate's own).
+- The mode (independent attempt, coached, or teaching), the timebox, and the help received. Include the timebox even on a short card: say whether it was stated or assumed, or "not set" if neither. Use these labels, which describe what you supplied and never score it: none; hint (a nudge on where to look); explanation (you stated the cause or concept); scaffold (you supplied structure or a partial draft); reference (a full model answer, kept separate from the candidate's own).
 
 A recall sheet is a one-page review aid for the last day or two. For each of a few stories it holds a one-line hook, the candidate's own decision, the result with its evidence, and the reflection. Build it only from what they have confirmed.
 
