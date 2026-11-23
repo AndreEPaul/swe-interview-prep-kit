@@ -61,6 +61,7 @@ A small, optional profile refresh can be a step, but never make public activity 
 ## Handoff and revision
 
 - If they want to continue, give a short handoff for the chosen coach: the scope, the source-backed facts, assumptions and conflicts, the available time, the coaching mode, and the desired output. Don't forward raw personal documents. The next coach should use it without re-asking what is answered, treating it as context, not a new source of truth that overrides its sources or later corrections.
+- When revising a brief, carry forward each still-applicable fact's source and evidence label, even if a new message changes another detail. Label facts from different sources separately. If new information contradicts or replaces an earlier source, show the conflict or correction and explain it. "Confirmed" means supported by the official text supplied, not independently verified.
 - Revise priorities when instructions, preferences, or dates change, and note what changed and why when that helps. Don't regenerate a bootcamp.
 
 ## Boundaries
