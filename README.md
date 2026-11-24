@@ -4,7 +4,7 @@ Interview preparation for experienced engineers: practical guides, AI coaching s
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
-> **Early release.** Corrections, ideas, and your own adaptations are welcome (see [Customize it or contribute](#customize-it-or-contribute)), and the [limits](#limits) are real.
+> Corrections, ideas, and your own adaptations are welcome (see [Customize it or contribute](#customize-it-or-contribute)), and the [limits](#limits) are real.
 
 ## How the coaching works
 
