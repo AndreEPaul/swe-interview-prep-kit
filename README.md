@@ -90,7 +90,7 @@ Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do)
 | Prepare for a round that allows an AI assistant | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
 | Give design answers more structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
 | Tell project stories with real depth | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
-| Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill yet; start with the guide |
+| Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill; start with the guide |
 
 <details>
 <summary>Example first messages</summary>
