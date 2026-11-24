@@ -4,7 +4,7 @@ Interview preparation for experienced engineers: practical guides, AI coaching s
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
-> **Early release.** Corrections, ideas, and your own adaptations are welcome (see [Customize it or contribute](#customize-it-or-contribute)), and the [limits](#limits) are real.
+> Corrections, ideas, and your own adaptations are welcome (see [Customize it or contribute](#customize-it-or-contribute)), and the [limits](#limits) are real.
 
 ## How the coaching works
 
@@ -54,20 +54,18 @@ An illustrative excerpt, abridged from a test run of [behavioral-coach](./skills
 
 ## Get started
 
-Whichever way you start, say what you want and the assistant should pick the matching skill. If it doesn't, name one: "use the behavioral-coach skill".
+These are alternatives, not steps: you only need one. Whichever you use, say what you want. If you have several skills available and the assistant doesn't pick the matching one, name it: "use the behavioral-coach skill".
 
-**1. Paste a skill into any chat (no setup).** Open an AI assistant, paste the raw text of one skill's `SKILL.md` (linked in the table below), and put your first message under it. Each skill stands alone, so you don't need the other files.
+**Paste a skill into any chat (no setup).** Open an AI assistant, paste the raw text of one skill's `SKILL.md` (linked in the table below), and put your first message under it. Each skill stands alone, so you don't need the other files.
 
-**2. Open your assistant in a clone.**
+**Or clone the kit.** Then either open your assistant in the clone or register its skills. Neither needs the other. The commands in this section use the path below, so adjust them if you clone somewhere else.
 
 ```bash
 git clone https://github.com/AndreEPaul/swe-interview-prep-kit.git ~/swe-interview-prep-kit
-cd ~/swe-interview-prep-kit
 ```
 
-Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and keep your material out of the clone. That makes this a good way to try the kit, and to [change it for yourself](#customize-it-or-contribute). For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
-
-**3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), register the skills with your tool, then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
+- **Open your assistant in the clone.** Run `cd ~/swe-interview-prep-kit`, then start your assistant. Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and keep your material out of the clone. That makes this a good way to try the kit, and to [change it for yourself](#customize-it-or-contribute). For your real resume and stories, prefer pasting a skill or registering the skills, so your privacy doesn't depend on the assistant following that rule.
+- **Register the skills once and use them from any folder.** Register them with your tool (commands below), then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
 
 <details>
 <summary>Register the skills: Copilot CLI, Claude Code, other tools</summary>
@@ -90,7 +88,7 @@ Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do)
 | Prepare for a round that allows an AI assistant | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
 | Give design answers more structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
 | Tell project stories with real depth | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
-| Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill yet; start with the guide |
+| Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill; start with the guide |
 
 <details>
 <summary>Example first messages</summary>
@@ -145,7 +143,7 @@ A light plan for when you don't have an interview date yet: a short inventory, t
 <details>
 <summary>The five steps</summary>
 
-1. **Inventory, 20 minutes:** list the interview formats you actually face, what you know about them, and one goal or uncertainty. The planner or the session brief can help.
+1. **Inventory, 20 minutes:** list the interview formats you actually face, what you know about them, and one goal or uncertainty. The planner or the session brief can help. If no interview processes are lined up yet, work with the planner to identify the next best thing to practice, given the roles you're targeting.
 2. **Technical rep, 30 to 45 minutes:** one original task, running code, one review. Record the hints and the evidence, not just a score.
 3. **Design, 30 to 45 minutes:** one user journey with state ownership, a request flow, one failure, and one trade-off.
 4. **Behavioral, 20 minutes:** one true story and two probing follow-ups.
@@ -158,7 +156,8 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 ## Limits
 
 - It is not a complete curriculum, a question bank, or a prediction of any company's questions, and it guarantees no offer.
-- It doesn't cover classic algorithm drills (the [references](./guides/references.md) list practice sites), take-home projects, or offer negotiation. Worked examples lean toward JavaScript, TypeScript, React, and Python.
+- It doesn't cover classic algorithm drills (the [references](./guides/references.md) list practice sites), take-home projects, or offer negotiation.
+- Worked examples lean toward TypeScript, React, and Python. You can ask for another language in your first message (the technical example under Example first messages has a slot for it), and the coach should adapt its tasks and hints. Where the examples don't cover your language, check its language-specific claims against that language's documentation.
 - AI assistants make mistakes and behave differently across tools and models. The skills were smoke-tested by giving fresh sessions run through GitHub Copilot CLI only a skill file and made-up candidate messages, then checking each reply against criteria written beforehand. That is not proof they work in every tool or model.
 - The Copilot CLI install command was run. The Claude Code steps follow its documentation and haven't been run. The shell commands assume macOS or Linux; on Windows, paste a skill instead or adapt the steps.
 - The methods come from one engineer's experience with AI coaching (see the [author's note](#authors-note)), not from a controlled study.
