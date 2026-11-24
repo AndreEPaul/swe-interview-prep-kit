@@ -158,7 +158,8 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 ## Limits
 
 - It is not a complete curriculum, a question bank, or a prediction of any company's questions, and it guarantees no offer.
-- It doesn't cover classic algorithm drills (the [references](./guides/references.md) list practice sites), take-home projects, or offer negotiation. Worked examples lean toward JavaScript, TypeScript, React, and Python.
+- It doesn't cover classic algorithm drills (the [references](./guides/references.md) list practice sites), take-home projects, or offer negotiation.
+- Worked examples lean toward TypeScript, React, and Python. You can ask for another language in your first message (the technical example under Example first messages has a slot for it), and the coach should adapt its tasks and hints. Where the examples don't cover your language, check its language-specific claims against that language's documentation.
 - AI assistants make mistakes and behave differently across tools and models. The skills were smoke-tested by giving fresh sessions run through GitHub Copilot CLI only a skill file and made-up candidate messages, then checking each reply against criteria written beforehand. That is not proof they work in every tool or model.
 - The Copilot CLI install command was run. The Claude Code steps follow its documentation and haven't been run. The shell commands assume macOS or Linux; on Windows, paste a skill instead or adapt the steps.
 - The methods come from one engineer's experience with AI coaching (see the [author's note](#authors-note)), not from a controlled study.
