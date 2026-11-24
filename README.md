@@ -143,7 +143,7 @@ A light plan for when you don't have an interview date yet: a short inventory, t
 <details>
 <summary>The five steps</summary>
 
-1. **Inventory, 20 minutes:** list the interview formats you actually face, what you know about them, and one goal or uncertainty. The planner or the session brief can help.
+1. **Inventory, 20 minutes:** list the interview formats you actually face, what you know about them, and one goal or uncertainty. The planner or the session brief can help. If no interview processes are lined up yet, work with the planner to identify the next best thing to practice, given the roles you're targeting.
 2. **Technical rep, 30 to 45 minutes:** one original task, running code, one review. Record the hints and the evidence, not just a score.
 3. **Design, 30 to 45 minutes:** one user journey with state ownership, a request flow, one failure, and one trade-off.
 4. **Behavioral, 20 minutes:** one true story and two probing follow-ups.
