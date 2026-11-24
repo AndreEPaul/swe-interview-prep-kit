@@ -54,20 +54,18 @@ An illustrative excerpt, abridged from a test run of [behavioral-coach](./skills
 
 ## Get started
 
-Whichever way you start, say what you want and the assistant should pick the matching skill. If it doesn't, name one: "use the behavioral-coach skill".
+These are alternatives, not steps: you only need one. Whichever you use, say what you want. If you have several skills available and the assistant doesn't pick the matching one, name it: "use the behavioral-coach skill".
 
-**1. Paste a skill into any chat (no setup).** Open an AI assistant, paste the raw text of one skill's `SKILL.md` (linked in the table below), and put your first message under it. Each skill stands alone, so you don't need the other files.
+**Paste a skill into any chat (no setup).** Open an AI assistant, paste the raw text of one skill's `SKILL.md` (linked in the table below), and put your first message under it. Each skill stands alone, so you don't need the other files.
 
-**2. Open your assistant in a clone.**
+**Or clone the kit.** Then either open your assistant in the clone or register its skills. Neither needs the other. The commands in this section use the path below, so adjust them if you clone somewhere else.
 
 ```bash
 git clone https://github.com/AndreEPaul/swe-interview-prep-kit.git ~/swe-interview-prep-kit
-cd ~/swe-interview-prep-kit
 ```
 
-Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and keep your material out of the clone. That makes this a good way to try the kit, and to [change it for yourself](#customize-it-or-contribute). For your real resume and stories, prefer option 1 or 3 from a private folder, so your privacy doesn't depend on the assistant following that rule.
-
-**3. Register the skills once and use them from any folder.** Clone as above (adjust the paths if you cloned elsewhere), register the skills with your tool, then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
+- **Open your assistant in the clone.** Run `cd ~/swe-interview-prep-kit`, then start your assistant. Assistants that read `AGENTS.md` or `CLAUDE.md` (Copilot CLI and Claude Code do) are told to read this README, pick the matching skill, and keep your material out of the clone. That makes this a good way to try the kit, and to [change it for yourself](#customize-it-or-contribute). For your real resume and stories, prefer pasting a skill or registering the skills, so your privacy doesn't depend on the assistant following that rule.
+- **Register the skills once and use them from any folder.** Register them with your tool (commands below), then start your assistant from a private practice folder outside any git repository, so files it saves there stay out of version control. Skills are instructions your assistant will follow, so skim one before you install it. These are short and contain no scripts.
 
 <details>
 <summary>Register the skills: Copilot CLI, Claude Code, other tools</summary>
