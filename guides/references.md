@@ -1,6 +1,6 @@
 # References: practice sites and tools
 
-These are outside resources I used or looked at while preparing, with my take on each. They are one engineer's opinions, not a ranking. This kit doesn't include their content (it isn't a question bank), so use them alongside it.
+These are outside resources I used or looked at while preparing, plus one built by a community member, with my take on each. They are one engineer's opinions, not a ranking. This kit doesn't include their content (it isn't a question bank), so use them alongside it.
 
 Prices, free tiers, and content change, so check a site before you pay. These notes are current as of November 2026.
 
@@ -9,6 +9,7 @@ Prices, free tiers, and content change, so check a site before you pay. These no
 - **[interviewing.io](https://interviewing.io)** has a lot of information across the board for many companies. It's less specific than HackTheRounds, but it's free to read. There is also a whole ecosystem of mock interviews and recorded mocks, which is really cool. My take: I've reviewed some of the recordings but never did a mock interview there myself, so I can't speak to that part. Live mocks with an interviewer are paid.
 - **[GreatFrontEnd](https://www.greatfrontend.com)** is much more specific to frontend. My take: a really good resource for frontend-focused algorithm and system design problems, with solutions.
 - **[Hello Interview's system design introduction](https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction)** is a solid collection of system design concepts. I used it at times alongside my AI coaching to prepare for system design interviews.
+- **[Systems Lab](https://d11ry0yeilwlgs.cloudfront.net/)** is a system design simulator made by [@ARB726](https://github.com/ARB726). You assemble an architecture, run simulated traffic through it, and vary one design choice at a time to compare latency, throughput, and illustrative monthly cost. It's a simplified simulation, so use the numbers to build intuition, not as capacity or cost estimates for a real system. Recorded examples need no sign-in. Running your own design does, and the results are saved to your account, so model a generic system rather than your employer's.
 - **[Excalidraw](https://excalidraw.com) and FigJam** are free whiteboarding tools. They have no content of their own, but it's worth practicing with one so you're not scrambling to learn it during the interview. The [system design guide](./system-design.md#whiteboard-delivery) covers how to use the board.
 
 A catalog shows what has been asked, not what you will be asked, so use it to get a feel for a company's style, not to guess questions. And don't use any of these, or an AI assistant, during an assessment whose rules forbid outside help.
