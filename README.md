@@ -125,7 +125,7 @@ Filled examples, all synthetic and labeled as such: an [experience ledger](./exa
 
 ## References
 
-Practice sites and tools I used or looked at, with my take on each: LeetCode and NeetCode, HackTheRounds, interviewing.io, GreatFrontEnd, Hello Interview, and whiteboarding tools. See [References](./guides/references.md).
+Practice sites and tools I used or looked at, with my take on each: LeetCode and NeetCode, HackTheRounds, interviewing.io, GreatFrontEnd, Hello Interview, and whiteboarding tools, plus a system design simulator built by a community member. See [References](./guides/references.md).
 
 ## Keep your material private
 
