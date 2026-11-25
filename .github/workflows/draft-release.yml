@@ -1,0 +1,85 @@
+name: draft-release
+
+# Drafts the next release for review: it runs the same checks as CI, picks the next version, and writes generated
+# release notes. It tags nothing and publishes nothing. Publishing the draft creates the tag, and the protect-tags
+# ruleset lets only a repository admin do that. Start it from main: Actions > draft-release > Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Part of the version to increase
+        type: choice
+        options: [patch, minor, major]
+        default: patch
+
+permissions: {}
+
+concurrency:
+  group: draft-release
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/check.yml
+    permissions:
+      contents: read
+
+  draft:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Pick the next version
+        id: version
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          set -euo pipefail
+          previous=$(git tag --list 'v*' --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1 || true)
+          if [ -z "$previous" ]; then
+            echo "::error::No vMAJOR.MINOR.PATCH tag to count from. Create the first release by hand."
+            exit 1
+          fi
+          if [ "$(git rev-list --count "$previous..$GITHUB_SHA")" -eq 0 ]; then
+            echo "::error::Nothing to release: there are no commits since $previous."
+            exit 1
+          fi
+          IFS=. read -r major minor patch <<< "${previous#v}"
+          case "${BUMP:-patch}" in
+            major) tag="v$((major + 1)).0.0" ;;
+            minor) tag="v${major}.$((minor + 1)).0" ;;
+            patch) tag="v${major}.${minor}.$((patch + 1))" ;;
+            *) echo "::error::Unknown bump '$BUMP'."; exit 1 ;;
+          esac
+          {
+            echo "previous=$previous"
+            echo "tag=$tag"
+          } >> "$GITHUB_OUTPUT"
+      - name: Draft the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ steps.version.outputs.tag }}
+          PREVIOUS: ${{ steps.version.outputs.previous }}
+        run: |
+          set -euo pipefail
+          drafts=$(gh release list --limit 100 --json tagName,isDraft --jq '.[] | select(.isDraft) | .tagName')
+          if grep -qxF "$TAG" <<< "$drafts"; then
+            echo "::error::A draft for $TAG already exists. Publish it or delete it first."
+            exit 1
+          fi
+          url=$(gh release create "$TAG" --draft --target "$GITHUB_SHA" --title "$TAG" --generate-notes --notes-start-tag "$PREVIOUS")
+          {
+            echo "### Draft release $TAG"
+            echo
+            echo "Covers $PREVIOUS to ${GITHUB_SHA::7}. Review the draft, edit the notes if you like, then press **Publish release**, which creates the tag. Until then nothing is tagged or public."
+            echo
+            echo "$url"
+          } >> "$GITHUB_STEP_SUMMARY"
