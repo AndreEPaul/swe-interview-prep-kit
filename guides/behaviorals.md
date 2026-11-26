@@ -108,3 +108,7 @@ Prefer one real example you can explain in depth over a list of tools. Distingui
 Choose two stories, ask one counterfactual or depth question on each, then stop. Across separate interviewers, reuse can be sensible. Within one conversation, use a different beat or story rather than identical retelling; novelty is not more important than relevance.
 
 Prepare genuine career/role motivation and a few team questions. Do not let compensation or a recognizable brand become the only articulated reason you want the work.
+
+## After a real round
+
+While it's fresh, write down which stories you used, what the interviewer probed, and where you stalled, then update those stories' cards and pick one follow-up to practice. [Debriefing real interviews](./debriefing.md) has the full list and a message to paste into your assistant.

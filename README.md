@@ -1,6 +1,6 @@
 # swe-interview-prep-kit
 
-Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
+Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, rounds that allow an AI assistant, and debriefs of your real interviews.
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
@@ -106,6 +106,16 @@ Replace the brackets, and leave out what you don't know:
 
 </details>
 
+## After a real interview
+
+Debrief every real round while it's fresh. In my opinion, your real interviews are the most valuable data points you have as a candidate: they show what a round is actually like, where you actually got stuck, and what is worth practicing next, which no mock or guide can show you directly. That is a view, not a measured result.
+
+- **Do it soon.** A rough ten-minute account the same day beats a careful one a week later. A pass, a miss, a short recruiter call, and silence all count.
+- **Keep it.** Save each debrief in your prep workspace (the private folder described under [Keep your material private](#keep-your-material-private)), update your process inventory, and bring the last few to your next session. Don't count on an assistant remembering earlier chats: bring the notes.
+- **Let it shape your next step.** Choose what to practice from what happened and from what you know is coming, not from a guess about what a company asks. Treat your read of an interviewer, or of the outcome, as a guess until it's confirmed.
+
+[Debriefing real interviews](./guides/debriefing.md) covers what to capture and has a message you can paste into your assistant, and the [interview debrief template](./templates/interview-debrief.md) is there if you want a form. The coach that matches the round can run the debrief with you, and the planner can help turn it into a next step.
+
 ## Templates
 
 Blank, optional worksheets for briefs, stories, evidence, design practice, practice records, and debriefs of real interviews, plus a CSV for tracking your interview processes. Fill them in a private folder outside this repository.
@@ -132,9 +142,9 @@ Practice sites and tools I used or looked at, with my take on each: LeetCode and
 
 ## Keep your material private
 
-- Keep resumes, stories, practice records, and plans in a private folder outside any git repository, and confirm the save path before an assistant writes anything. Ignore rules are only a backup. Create the folder, then check it with `git -C ~/prep-notes rev-parse --is-inside-work-tree`: you want "not a git repository", and if it prints `true`, pick another folder. Skip folders that sync to a service you don't want holding your resume.
+- Keep resumes, stories, practice records, interview debriefs, and plans in a private folder outside any git repository (your prep workspace), and confirm the save path before an assistant writes anything. Ignore rules are only a backup. Create the folder, then check it with `git -C ~/prep-notes rev-parse --is-inside-work-tree`: you want "not a git repository", and if it prints `true`, pick another folder. Skip folders that sync to a service you don't want holding your resume.
 - Your text goes to whichever AI provider you use. Chat apps may keep history or memory, so check those settings before you paste a real resume or story.
-- Use material you are permitted to use. Generalize employer details instead of pasting confidential code, designs, or customer data.
+- Use material you are permitted to use. Generalize employer details instead of pasting confidential code, designs, or customer data. For a real interview, describe a question's shape rather than pasting confidential or assessment text, and leave out interviewers' names.
 - If you review a friend's resume, get their permission first. That is not permission to upload it anywhere else.
 - Never use an assistant during an assessment that prohibits outside help. Permission to prepare is not permission to use help in the interview.
 - Assistants make mistakes. Check facts and results, and keep your own voice.

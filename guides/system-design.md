@@ -90,3 +90,7 @@ If the round uses a digital whiteboard, practice on one beforehand. [References]
 Summarize the source of truth, request/data flow, main invariant, failure policy, trade-off, and what would make you revisit it. "Use a cache and a global store" is not a design explanation.
 
 Use the [design worksheet](../templates/design-worksheet.md) for a practice attempt. After review, choose one weak transition to refine rather than repeat a full mock immediately.
+
+## After a real round
+
+While it's fresh, write down what you were asked, what you proposed, where you stalled, and what the interviewer pushed on, then pick one thing to practice. [Debriefing real interviews](./debriefing.md) has the full list and a message to paste into your assistant.
