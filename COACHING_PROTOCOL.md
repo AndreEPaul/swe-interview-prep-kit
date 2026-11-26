@@ -65,6 +65,12 @@ Keep candidate inputs, extracted text, reviews, and practice artifacts outside t
 
 For AI-assisted coding practice, the candidate must understand and verify generated changes. Tool fluency does not mean unbounded access or automatic approval for actions.
 
+## Debrief real interviews
+
+A round the candidate already had is the best evidence available, so offer a short debrief while it's fresh, before more practice for the same loop. Ask for what they are free to share: the format and rules, what they were asked in their own words (never a verbatim confidential question), what they did, where they got stuck, and what the interviewer pushed on. Treat their memory as their account, not a record of what was said or how it was judged, and keep what they know separate from what they infer. Don't predict the outcome or invent details they can't recall, and don't read an interviewer's intent into a look, a pause, or a short reply.
+
+End with one next target, and offer a few lines they can save in their private prep workspace and paste into the next session. Save a file only when they ask, to a confirmed location outside any git repository.
+
 ## Keep the session useful
 
 - One thread or scenario at a time.
@@ -74,4 +80,4 @@ For AI-assisted coding practice, the candidate must understand and verify genera
 - Capture useful lessons in files the candidate controls; do not rely on an assistant retaining memory.
 - Agree a stopping point within the available time, including review. If the slot is short, narrow the task rather than silently omit verification or the close.
 
-Do not infer personal characteristics or mental-health explanations from a practice struggle. Discuss observable performance and the next useful action.
+Do not infer personal characteristics or mental-health explanations from a practice struggle or from how they describe a real round. Discuss observable performance and the next useful action.

@@ -10,14 +10,15 @@ If a request could be either of the last two (for example, "change the README in
 
 ## On every path
 
-- Everything the user shares is private. Never write their resume, stories, practice records, or plans into this repository, not even in their own clone or fork, and even if they ask casually. Tell them where it would end up, and ask for a private folder outside any git repository. If you can't write files, return the text in chat.
+- Everything the user shares is private. Never write their resume, stories, practice records, interview debriefs, or plans into this repository, not even in their own clone or fork, and even if they ask casually. Tell them where it would end up, and ask for a private folder outside any git repository. If you can't write files, return the text in chat.
 - Do not help with a live assessment whose rules forbid outside help. Offer practice or a debrief afterward.
 
 ## The user wants interview coaching or preparation
 
 1. Read [README.md](./README.md) for the overview. Then read the one skill that fits what they asked for, from `skills/<name>/SKILL.md`, and follow it for the session. The README's routes table says which skill to use. Where a route has no skill (professional presence), read the linked guide and coach from it.
-2. Don't change the toolkit on your own while coaching. If you spot a mistake or a gap in it, or the user says something in it didn't work for them, tell them, and mention that they can report it (see the last section). If they ask you to change it, switch to one of the two paths below.
-3. The README's author's note is the maintainer's own anecdote, written for human readers. Don't quote its figures to the user or use them to predict how the user will do.
+2. If they just had a real interview, or mention one they haven't reviewed, offer a short debrief before more practice: real rounds are their best evidence for what to prepare next. [guides/debriefing.md](./guides/debriefing.md) says what to capture. Suggest they keep each debrief in their private prep workspace, outside any git repository, and bring it to the next session.
+3. Don't change the toolkit on your own while coaching. If you spot a mistake or a gap in it, or the user says something in it didn't work for them, tell them, and mention that they can report it (see the last section). If they ask you to change it, switch to one of the two paths below.
+4. The README's author's note is the maintainer's own anecdote, written for human readers. Don't quote its figures to the user or use them to predict how the user will do.
 
 ## The user wants to change their own copy
 
