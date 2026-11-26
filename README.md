@@ -177,7 +177,7 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 
 ## Author's note
 
-This kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
+This kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, debriefed while they're fresh (see [After a real interview](#after-a-real-interview)), followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
 
 For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where this kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
 
