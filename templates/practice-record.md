@@ -18,6 +18,8 @@
 
 ## Actual interview debrief, if applicable
 
+For a fuller debrief of a real round, use the [interview debrief](./interview-debrief.md) template.
+
 - Required behavior remembered:
 - What happened versus what I infer:
 - Specific interviewer/recruiter feedback:

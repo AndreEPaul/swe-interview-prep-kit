@@ -88,6 +88,7 @@ git clone https://github.com/AndreEPaul/swe-interview-prep-kit.git ~/swe-intervi
 | Prepare for a round that allows an AI assistant | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
 | Give design answers more structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
 | Tell project stories with real depth | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
+| Learn from a real interview you just had | [Debriefing real interviews](./guides/debriefing.md) | The coach for that round, or the [interview-prep-planner](./skills/interview-prep-planner/SKILL.md) to choose what's next |
 | Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill; start with the guide |
 
 <details>
@@ -101,12 +102,13 @@ Replace the brackets, and leave out what you don't know:
 - **AI-assisted:** "My next round allows an AI coding assistant. The rules I was given are [paste, or 'I don't know']. Help me practice."
 - **Design:** "Practice a design round with me on [topic]. I have [time]."
 - **Behavioral:** "Help me tighten my answer to [question]: [paste]."
+- **Debrief:** "I just finished a [round type] interview for [role]. Help me debrief it while it's fresh: [what you were asked, what you did, where you got stuck, and what you're unsure about]."
 
 </details>
 
 ## Templates
 
-Blank, optional worksheets for briefs, stories, evidence, design practice, and practice records, plus a CSV for tracking your interview processes. Fill them in a private folder outside this repository.
+Blank, optional worksheets for briefs, stories, evidence, design practice, practice records, and debriefs of real interviews, plus a CSV for tracking your interview processes. Fill them in a private folder outside this repository.
 
 <details>
 <summary>The templates and filled examples</summary>
@@ -117,9 +119,10 @@ Blank, optional worksheets for briefs, stories, evidence, design practice, and p
 - [Recall sheet](./templates/recall-sheet.md): a one-page review for the last day or two, built from stories you have already confirmed.
 - [Design worksheet](./templates/design-worksheet.md): a plan and review for a design practice session.
 - [Practice record](./templates/practice-record.md): what you tried, what help you had, and your next target.
+- [Interview debrief](./templates/interview-debrief.md): what happened in a real round, what you know versus what you infer, and what to work on next.
 - [Process inventory](./templates/process-inventory.csv): optional tracking of your interview processes, one row each. It is not a scorecard. The [field guide](./templates/process-inventory-fields.md) explains each column.
 
-Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md) and a [practice record](./examples/practice-record-example.md).
+Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md), a [practice record](./examples/practice-record-example.md), and an [interview debrief](./examples/interview-debrief-example.md).
 
 </details>
 
