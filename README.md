@@ -1,6 +1,6 @@
 # swe-interview-prep-kit
 
-Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, and rounds that allow an AI assistant.
+Interview preparation for experienced engineers: practical guides, AI coaching skills, and templates for coding screens, design rounds, behavioral stories, resumes, rounds that allow an AI assistant, and debriefs of your real interviews.
 
 The coaching skills are plain Markdown instructions that you can paste into any AI chat or install in tools that load skills, and the guides and templates are useful without any AI. Use it alongside whatever already works for you: courses, problem sites, books, official interview guidance, and feedback from other people. It supplements human feedback and doesn't replace it, especially for resume reviews and mock interviews (see the [author's note](#authors-note)). It suits engineers returning to interviews after a long gap, preparing for a particular round, or keeping a light practice habit.
 
@@ -88,6 +88,7 @@ git clone https://github.com/AndreEPaul/swe-interview-prep-kit.git ~/swe-intervi
 | Prepare for a round that allows an AI assistant | [AI-assisted interviews](./guides/ai-assisted-interviews.md) | [ai-assisted-interview-coach](./skills/ai-assisted-interview-coach/SKILL.md) |
 | Give design answers more structure | [System and frontend design](./guides/system-design.md) | [system-design-coach](./skills/system-design-coach/SKILL.md) |
 | Tell project stories with real depth | [Behaviorals](./guides/behaviorals.md) | [behavioral-coach](./skills/behavioral-coach/SKILL.md) |
+| Learn from a real interview you just had | [Debriefing real interviews](./guides/debriefing.md) | The coach for that round, or the [interview-prep-planner](./skills/interview-prep-planner/SKILL.md) to choose what's next |
 | Keep your public profile clear and consistent | [Professional presence](./guides/professional-presence.md) | No skill; start with the guide |
 
 <details>
@@ -101,12 +102,23 @@ Replace the brackets, and leave out what you don't know:
 - **AI-assisted:** "My next round allows an AI coding assistant. The rules I was given are [paste, or 'I don't know']. Help me practice."
 - **Design:** "Practice a design round with me on [topic]. I have [time]."
 - **Behavioral:** "Help me tighten my answer to [question]: [paste]."
+- **Debrief:** "I just finished a [round type] interview for [role]. Help me debrief it while it's fresh: [what you were asked, what you did, where you got stuck, and what you're unsure about]."
 
 </details>
 
+## After a real interview
+
+Debrief every real round while it's fresh. In my opinion, your real interviews are the most valuable data points you have as a candidate: they show what a round is actually like, where you actually got stuck, and what is worth practicing next, which no mock or guide can show you directly. That is a view, not a measured result.
+
+- **Do it soon.** A rough ten-minute account the same day beats a careful one a week later. A pass, a miss, a short recruiter call, and silence all count.
+- **Keep it.** Save each debrief in your prep workspace (the private folder described under [Keep your material private](#keep-your-material-private)), update your process inventory, and bring the last few to your next session. Don't count on an assistant remembering earlier chats: bring the notes.
+- **Let it shape your next step.** Choose what to practice from what happened and from what you know is coming, not from a guess about what a company asks. Treat your read of an interviewer, or of the outcome, as a guess until it's confirmed.
+
+[Debriefing real interviews](./guides/debriefing.md) covers what to capture and has a message you can paste into your assistant, and the [interview debrief template](./templates/interview-debrief.md) is there if you want a form. The coach that matches the round can run the debrief with you, and the planner can help turn it into a next step.
+
 ## Templates
 
-Blank, optional worksheets for briefs, stories, evidence, design practice, and practice records, plus a CSV for tracking your interview processes. Fill them in a private folder outside this repository.
+Blank, optional worksheets for briefs, stories, evidence, design practice, practice records, and debriefs of real interviews, plus a CSV for tracking your interview processes. Fill them in a private folder outside this repository.
 
 <details>
 <summary>The templates and filled examples</summary>
@@ -117,9 +129,10 @@ Blank, optional worksheets for briefs, stories, evidence, design practice, and p
 - [Recall sheet](./templates/recall-sheet.md): a one-page review for the last day or two, built from stories you have already confirmed.
 - [Design worksheet](./templates/design-worksheet.md): a plan and review for a design practice session.
 - [Practice record](./templates/practice-record.md): what you tried, what help you had, and your next target.
+- [Interview debrief](./templates/interview-debrief.md): what happened in a real round, what you know versus what you infer, and what to work on next.
 - [Process inventory](./templates/process-inventory.csv): optional tracking of your interview processes, one row each. It is not a scorecard. The [field guide](./templates/process-inventory-fields.md) explains each column.
 
-Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md) and a [practice record](./examples/practice-record-example.md).
+Filled examples, all synthetic and labeled as such: an [experience ledger](./examples/experience-ledger-example.md), a [practice record](./examples/practice-record-example.md), and an [interview debrief](./examples/interview-debrief-example.md).
 
 </details>
 
@@ -129,9 +142,9 @@ Practice sites and tools I used or looked at, with my take on each: LeetCode and
 
 ## Keep your material private
 
-- Keep resumes, stories, practice records, and plans in a private folder outside any git repository, and confirm the save path before an assistant writes anything. Ignore rules are only a backup. Create the folder, then check it with `git -C ~/prep-notes rev-parse --is-inside-work-tree`: you want "not a git repository", and if it prints `true`, pick another folder. Skip folders that sync to a service you don't want holding your resume.
+- Keep resumes, stories, practice records, interview debriefs, and plans in a private folder outside any git repository (your prep workspace), and confirm the save path before an assistant writes anything. Ignore rules are only a backup. Create the folder, then check it with `git -C ~/prep-notes rev-parse --is-inside-work-tree`: you want "not a git repository", and if it prints `true`, pick another folder. Skip folders that sync to a service you don't want holding your resume.
 - Your text goes to whichever AI provider you use. Chat apps may keep history or memory, so check those settings before you paste a real resume or story.
-- Use material you are permitted to use. Generalize employer details instead of pasting confidential code, designs, or customer data.
+- Use material you are permitted to use. Generalize employer details instead of pasting confidential code, designs, or customer data. For a real interview, describe a question's shape rather than pasting confidential or assessment text, and leave out interviewers' names.
 - If you review a friend's resume, get their permission first. That is not permission to upload it anywhere else.
 - Never use an assistant during an assessment that prohibits outside help. Permission to prepare is not permission to use help in the interview.
 - Assistants make mistakes. Check facts and results, and keep your own voice.
@@ -164,7 +177,7 @@ These are options, not a quota. As an interview approaches, prioritize its verif
 
 ## Author's note
 
-This kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
+This kit is meant to supplement human feedback, not replace it, and that goes especially for resume reviews and mock interviews. I believe the best way to prepare is real interviews, debriefed while they're fresh (see [After a real interview](#after-a-real-interview)), followed by mock interviews with a peer. But people are busy and those sessions are hard to coordinate, so this is for the reps in between. When you can get a person to review your resume or run a mock interview with you, take it.
 
 For what it's worth, here is my own anecdote. I kept a log of my interview processes. Before I started working with an AI interview coach, 3 of 14 (21.4%) reached the final round. Since then, 9 of 17 (52.9%) have. Those coaching sessions are where this kit's methods come from, so these figures describe that coaching, not a test of the kit as published. I saw an observable improvement in my own interviewing, and that is why I'm sharing it. It is one person and a small sample, so please read it as an anecdote, not as evidence that it will work for you.
 

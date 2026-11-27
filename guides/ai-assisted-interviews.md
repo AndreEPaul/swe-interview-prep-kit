@@ -93,7 +93,7 @@ Do not merely repeat a generated architecture paragraph or recite code you canno
 
 ## Debrief without grading token volume
 
-Use the [practice record](../templates/practice-record.md) if helpful. Capture:
+Use the [practice record](../templates/practice-record.md) if helpful, and see [Debriefing real interviews](./debriefing.md) for a round that already happened. Capture:
 
 - Format and permitted AI/tool scope versus extra coaching help.
 - Candidate decisions, delegated work, and what the candidate could explain.

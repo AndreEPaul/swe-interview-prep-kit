@@ -159,7 +159,7 @@ You can request an explanation, worked example, or reference at any time; this i
 
 Do not label a coached solution an unaided mock. Do not use practice tools during a real assessment where they are forbidden.
 
-Use the [practice and debrief record](../templates/practice-record.md) when helpful. Return a brief debrief in chat; save it only when requested to a confirmed private location.
+Use the [practice and debrief record](../templates/practice-record.md) when helpful. Return a brief debrief in chat; save it only when requested to a confirmed private location. After a real screen, see [Debriefing real interviews](./debriefing.md).
 
 ## Small CSS/layout pass when the round includes it
 
